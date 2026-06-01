@@ -116,7 +116,7 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 400; letter-spacing: -0
   font-weight: 400;
   text-wrap: balance;
 }
-.display em { font-style: italic; color: var(--navy); font-weight: 400; }
+.display em { font-style: italic; color: var(--gold); font-weight: 400; }
 .display .g { color: var(--gold); font-style: italic; }
 
 .section-title {
@@ -127,7 +127,7 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 400; letter-spacing: -0
   text-wrap: balance;
   margin-top: 14px;
 }
-.section-title em { font-style: italic; color: var(--navy); }
+.section-title em { font-style: italic; color: var(--gold); }
 .section-title .g { color: var(--gold); font-style: italic; }
 
 .deck {
@@ -423,7 +423,7 @@ section.gold-tint { background: linear-gradient(180deg, var(--paper) 0%, var(--g
   letter-spacing: -0.015em;
   color: var(--ink);
 }
-.card .card-title em { font-style: italic; color: var(--navy); }
+.card .card-title em { font-style: italic; color: var(--gold); }
 .card .card-body {
   font-size: 14.5px;
   line-height: 1.55;
@@ -855,7 +855,7 @@ section.gold-tint { background: linear-gradient(180deg, var(--paper) 0%, var(--g
   letter-spacing: -0.015em;
   color: var(--ink);
 }
-.use-card .uc-name em { font-style: italic; color: var(--navy); }
+.use-card .uc-name em { font-style: italic; color: var(--gold); }
 .use-card .uc-pain {
   font-size: 14px;
   line-height: 1.55;
