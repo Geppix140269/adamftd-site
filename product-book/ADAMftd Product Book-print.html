@@ -1,0 +1,2108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ADAMftd · Product Book · The MVP</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,300;8..60,400;8..60,500;8..60,600;8..60,700;8..60,800&family=Inter+Tight:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* ============================================================
+     ADAMftd · Product Book (the MVP)
+     Same editorial direction as the Investor Book.
+     ============================================================ */
+
+  :root {
+    --paper: #FBF8F1;
+    --paper-2: #F5F1E6;
+    --ink: #14110C;
+    --ink-2: #3C3830;
+    --ink-3: #6B655B;
+    --rule: #C8BFA8;
+    --rule-soft: #E5DECB;
+    --navy: #14264A;
+    --navy-2: #243A65;
+    --gold: #A87E2A;
+    --gold-2: #C8A04A;
+    --gold-soft: #EFE3C2;
+    --green: #4F6B3E;
+    --red: #8E2D27;
+    --amber: #A85F1F;
+    --shadow: 0 24px 60px -20px rgba(20,17,12,0.25);
+
+    --serif: 'Source Serif 4', 'Iowan Old Style', Georgia, serif;
+    --sans: 'Inter Tight', -apple-system, BlinkMacSystemFont, sans-serif;
+    --mono: 'JetBrains Mono', ui-monospace, monospace;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    background: #2A2620;
+    color: var(--ink);
+    font-family: var(--serif);
+    font-feature-settings: "kern", "liga", "onum";
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body { padding: 56px 0 120px; }
+
+  /* ----- PAGE ----- */
+  .book { display: flex; flex-direction: column; align-items: center; gap: 28px; }
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    background: var(--paper);
+    position: relative;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+  }
+  .page.cover, .page.close-page { overflow: hidden; }
+
+  .pad { padding: 22mm 22mm 18mm; flex: 1; display: flex; flex-direction: column; }
+  .pad-tight { padding: 16mm 22mm 14mm; }
+
+  /* ----- RUNNING HEADER / FOOTER ----- */
+  .running-head {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    padding: 12mm 22mm 0;
+    font-family: var(--sans);
+    font-size: 9.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+  .running-head .wm { color: var(--ink); font-weight: 600; letter-spacing: 0.18em; }
+  .running-head .wm span { color: var(--gold); }
+  .running-rule { height: 0.5px; background: var(--rule); margin: 4mm 22mm 0; }
+
+  .running-foot {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0 22mm 10mm;
+    font-family: var(--sans);
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+  .running-foot .pgnum { font-variant-numeric: tabular-nums; letter-spacing: 0.08em; }
+  .running-foot-rule { height: 0.5px; background: var(--rule); margin: 0 22mm 4mm; }
+
+  /* ----- TYPOGRAPHY ----- */
+  .eyebrow {
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+  .eyebrow-navy { color: var(--navy); }
+
+  h2.section {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 1.05;
+    letter-spacing: -0.018em;
+    color: var(--navy);
+    margin-bottom: 4mm;
+  }
+  h2.section em { font-style: italic; color: var(--gold); }
+  .section-deck {
+    font-family: var(--serif);
+    font-size: 16px;
+    line-height: 1.45;
+    color: var(--ink-2);
+    font-style: italic;
+    max-width: 150mm;
+    margin-bottom: 10mm;
+  }
+
+  h3 {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 17px;
+    color: var(--navy);
+    letter-spacing: -0.005em;
+    margin-bottom: 3mm;
+  }
+  h3.smallcaps {
+    font-family: var(--sans);
+    font-size: 10.5px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--ink-3);
+    margin-bottom: 4mm;
+    padding-bottom: 2mm;
+    border-bottom: 0.5px solid var(--rule);
+  }
+  h3.smallcaps .num { color: var(--gold); margin-right: 8px; font-variant-numeric: tabular-nums; }
+
+  p, .body-copy {
+    font-family: var(--serif);
+    font-size: 12.5px;
+    line-height: 1.55;
+    color: var(--ink-2);
+    text-wrap: pretty;
+  }
+  p + p { margin-top: 3mm; }
+  .lede {
+    font-size: 15px;
+    line-height: 1.5;
+    color: var(--ink);
+    font-weight: 400;
+  }
+  .lede .drop {
+    float: left;
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 52px;
+    line-height: 0.85;
+    color: var(--navy);
+    padding: 4px 8px 0 0;
+    font-style: normal;
+  }
+
+  /* ----- UI BITS ----- */
+  .hairline { height: 0.5px; background: var(--rule); }
+  .gold-rule { height: 1px; background: var(--gold); }
+  .pull-rule { width: 28mm; height: 1px; background: var(--gold); margin: 6mm 0; }
+
+  .figure-num {
+    font-family: var(--sans);
+    font-size: 9.5px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+  .figure-num span { color: var(--gold); }
+  .caption {
+    font-family: var(--sans);
+    font-size: 9.5px;
+    line-height: 1.5;
+    color: var(--ink-3);
+    font-style: italic;
+  }
+
+  /* ----- METRIC ----- */
+  .metric { display: flex; flex-direction: column; gap: 2px; }
+  .metric .num {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 44px;
+    line-height: 0.95;
+    color: var(--navy);
+    letter-spacing: -0.02em;
+    font-variant-numeric: tabular-nums lining-nums;
+  }
+  .metric .num.gold { color: var(--gold); }
+  .metric .num.sm { font-size: 32px; }
+  .metric .num.lg { font-size: 60px; }
+  .metric .lbl {
+    font-family: var(--sans);
+    font-size: 9.5px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin-top: 2mm;
+  }
+  .metric .note {
+    font-family: var(--serif);
+    font-size: 11px;
+    line-height: 1.45;
+    color: var(--ink-2);
+    font-style: italic;
+    margin-top: 1mm;
+  }
+
+  /* ----- LIST ----- */
+  ul.editorial { list-style: none; padding: 0; }
+  ul.editorial li {
+    font-family: var(--serif);
+    font-size: 12px;
+    line-height: 1.55;
+    color: var(--ink-2);
+    padding: 2.5mm 0 2.5mm 8mm;
+    position: relative;
+    border-bottom: 0.5px solid var(--rule-soft);
+  }
+  ul.editorial li:last-child { border-bottom: none; }
+  ul.editorial li::before {
+    content: '';
+    position: absolute; left: 0; top: 5mm;
+    width: 4mm; height: 0.5px; background: var(--gold);
+  }
+  ul.editorial li strong { color: var(--navy); font-weight: 600; }
+  ul.tight li { padding: 1.5mm 0 1.5mm 8mm; font-size: 11.5px; }
+  ul.tight li::before { top: 4mm; }
+
+  /* ----- CARD ----- */
+  .card-ed {
+    border: 0.5px solid var(--rule);
+    background: rgba(255,255,255,0.4);
+    padding: 6mm;
+    display: flex;
+    flex-direction: column;
+  }
+  .card-ed .card-eyebrow {
+    font-family: var(--sans);
+    font-size: 9.5px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    padding-bottom: 3mm;
+    border-bottom: 0.5px solid var(--gold);
+    margin-bottom: 4mm;
+  }
+  .card-ed.dark {
+    background: var(--navy);
+    border-color: var(--navy);
+    color: rgba(255,255,255,0.85);
+  }
+  .card-ed.dark .card-eyebrow { color: var(--gold-2); border-bottom-color: var(--gold-2); }
+  .card-ed.dark p,
+  .card-ed.dark .body-copy { color: rgba(255,255,255,0.82); }
+  .card-ed.dark h3 { color: #fff; }
+  .card-ed.dark ul.editorial li { color: rgba(255,255,255,0.78); border-color: rgba(255,255,255,0.1); }
+  .card-ed.dark ul.editorial li strong { color: var(--gold-2); }
+  .card-ed.dark ul.editorial li::before { background: var(--gold-2); }
+
+  /* ----- GRID ----- */
+  .grid { display: grid; gap: 6mm; }
+  .grid-2 { grid-template-columns: 1fr 1fr; }
+  .grid-3 { grid-template-columns: repeat(3, 1fr); }
+  .grid-4 { grid-template-columns: repeat(4, 1fr); }
+  .grid-5 { grid-template-columns: repeat(5, 1fr); }
+
+  /* ----- COLUMNS (editorial body) ----- */
+  .twocol {
+    column-count: 2;
+    column-gap: 8mm;
+    column-rule: 0.5px solid var(--rule-soft);
+  }
+  .twocol p { font-size: 12px; line-height: 1.55; }
+  .twocol p + p { margin-top: 2mm; }
+
+  /* ----- TABLES ----- */
+  table.editorial {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--sans);
+    font-size: 11px;
+    color: var(--ink-2);
+  }
+  table.editorial thead th {
+    text-align: left;
+    font-weight: 600;
+    font-size: 9.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    padding: 6px 8px 6px 0;
+    border-top: 1px solid var(--ink);
+    border-bottom: 0.5px solid var(--ink);
+  }
+  table.editorial tbody td {
+    padding: 7px 8px 7px 0;
+    border-bottom: 0.5px solid var(--rule-soft);
+    vertical-align: top;
+    line-height: 1.45;
+  }
+  table.editorial tbody tr:last-child td { border-bottom: 0.5px solid var(--ink); }
+  table.editorial td.num,
+  table.editorial th.num { text-align: right; font-variant-numeric: tabular-nums lining-nums; }
+  table.editorial td.b { color: var(--navy); font-weight: 600; }
+  table.editorial td.accent { color: var(--gold); font-weight: 600; }
+
+  /* ----- PULL ----- */
+  .pull {
+    font-family: var(--serif);
+    font-size: 22px;
+    line-height: 1.25;
+    color: var(--navy);
+    font-weight: 400;
+    letter-spacing: -0.012em;
+    padding: 6mm 0 6mm 8mm;
+    border-left: 1px solid var(--gold);
+    font-style: italic;
+  }
+  .pull em { color: var(--gold); font-style: italic; }
+  .pull-attr {
+    font-family: var(--sans);
+    font-size: 9.5px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin-top: 3mm;
+    font-style: normal;
+  }
+
+  .quote-box {
+    background: var(--navy);
+    color: #fff;
+    padding: 10mm 12mm;
+    text-align: center;
+    position: relative;
+  }
+  .quote-box::before, .quote-box::after {
+    content: ''; position: absolute; left: 8mm; right: 8mm; height: 0.5px;
+    background: var(--gold-2);
+  }
+  .quote-box::before { top: 4mm; }
+  .quote-box::after { bottom: 4mm; }
+  .quote-box .qt {
+    font-family: var(--serif);
+    font-size: 24px;
+    line-height: 1.3;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    color: #fff;
+    font-style: italic;
+  }
+  .quote-box .qt em { color: var(--gold-2); font-style: italic; }
+  .quote-box .qt-attr {
+    font-family: var(--sans);
+    font-size: 9.5px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    margin-top: 5mm;
+  }
+
+  /* ============================================================
+     COVER PAGE
+     ============================================================ */
+  .cover {
+    background: var(--paper);
+    position: relative;
+    padding: 22mm;
+    display: flex;
+    flex-direction: column;
+  }
+  .cover-mark {
+    display: flex; justify-content: space-between; align-items: center;
+    border-top: 0.5px solid var(--ink);
+    border-bottom: 0.5px solid var(--ink);
+    padding: 4mm 0;
+  }
+  .cover-brand {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 22px;
+    color: var(--ink);
+    letter-spacing: 0.04em;
+  }
+  .cover-brand span { color: var(--gold); font-style: italic; }
+  .cover-rt {
+    font-family: var(--sans);
+    font-size: 9.5px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    text-align: right;
+  }
+  .cover-rt strong { color: var(--ink); display: block; font-weight: 600; margin-top: 2mm; }
+
+  .cover-body { flex: 1; display: flex; flex-direction: column; justify-content: center; position: relative; }
+  .cover-eyebrow {
+    font-family: var(--sans);
+    font-size: 10.5px;
+    letter-spacing: 0.34em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 10mm;
+  }
+  .cover-title {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: 76px;
+    line-height: 0.92;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    margin-bottom: 10mm;
+  }
+  .cover-title em { font-style: italic; color: var(--gold); font-weight: 400; }
+  .cover-title .navy { color: var(--navy); }
+  .cover-sub {
+    font-family: var(--serif);
+    font-size: 15px;
+    line-height: 1.5;
+    color: var(--ink-2);
+    font-style: italic;
+    max-width: 140mm;
+    margin-bottom: 12mm;
+  }
+  .cover-meta-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 0.5px solid var(--ink);
+    border-bottom: 0.5px solid var(--ink);
+  }
+  .cover-meta-cell {
+    padding: 5mm 0;
+    border-right: 0.5px solid var(--rule);
+    padding-right: 5mm;
+  }
+  .cover-meta-cell:last-child { border-right: none; padding-right: 0; padding-left: 5mm; }
+  .cover-meta-cell:not(:first-child) { padding-left: 5mm; }
+  .cover-meta-lbl {
+    font-family: var(--sans);
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    font-weight: 600;
+    margin-bottom: 2mm;
+  }
+  .cover-meta-val {
+    font-family: var(--serif);
+    font-size: 18px;
+    color: var(--navy);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    font-variant-numeric: tabular-nums;
+  }
+  .cover-meta-val em { color: var(--gold); font-style: italic; }
+
+  /* MVP stamp on cover */
+  .mvp-stamp {
+    position: absolute;
+    right: 0; top: 30mm;
+    border: 1.5px solid var(--gold);
+    padding: 4mm 7mm;
+    transform: rotate(-3deg);
+    background: var(--paper);
+  }
+  .mvp-stamp .mvp-label {
+    font-family: var(--sans);
+    font-size: 10px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 700;
+    margin-bottom: 2mm;
+  }
+  .mvp-stamp .mvp-date {
+    font-family: var(--serif);
+    font-size: 16px;
+    color: var(--navy);
+    font-weight: 500;
+    letter-spacing: -0.005em;
+  }
+  .mvp-stamp .mvp-sub {
+    font-family: var(--serif);
+    font-size: 11px;
+    color: var(--ink-3);
+    font-style: italic;
+    margin-top: 1mm;
+  }
+
+  /* ============================================================
+     CONFIDENTIALITY + CONTENTS
+     ============================================================ */
+  .conf-stamp {
+    border: 0.5px solid var(--ink);
+    padding: 6mm 8mm;
+    text-align: center;
+    margin: 30mm auto;
+    max-width: 140mm;
+  }
+  .conf-stamp .stamp-eyebrow {
+    font-family: var(--sans);
+    font-size: 10px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 3mm;
+  }
+  .conf-stamp .stamp-title {
+    font-family: var(--serif);
+    font-size: 28px;
+    color: var(--navy);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    margin-bottom: 3mm;
+  }
+  .conf-stamp .stamp-sub {
+    font-family: var(--serif);
+    font-size: 12px;
+    color: var(--ink-2);
+    font-style: italic;
+  }
+  .conf-body p {
+    font-size: 11.5px;
+    color: var(--ink-2);
+    line-height: 1.6;
+    margin-bottom: 3mm;
+  }
+  .conf-body h4 {
+    font-family: var(--sans);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--navy);
+    font-weight: 600;
+    margin: 8mm 0 3mm;
+    padding-bottom: 2mm;
+    border-bottom: 0.5px solid var(--rule);
+  }
+
+  .toc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 10mm;
+    margin-top: 6mm;
+  }
+  .toc-row {
+    display: grid;
+    grid-template-columns: 10mm 1fr 10mm;
+    align-items: baseline;
+    padding: 2.5mm 0;
+    border-bottom: 0.5px solid var(--rule-soft);
+    gap: 3mm;
+  }
+  .toc-row.section-head { border-bottom: 0.5px solid var(--ink); padding: 4mm 0 2mm; border-top: 0.5px solid var(--ink); margin-top: 4mm; }
+  .toc-row.section-head:first-child { margin-top: 0; }
+  .toc-row.section-head .toc-num,
+  .toc-row.section-head .toc-pg { color: var(--ink); }
+  .toc-row.section-head .toc-title {
+    font-family: var(--sans);
+    font-size: 9.5px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+  }
+  .toc-num {
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--gold);
+    letter-spacing: 0.06em;
+    font-variant-numeric: tabular-nums;
+  }
+  .toc-title {
+    font-family: var(--serif);
+    font-size: 12.5px;
+    color: var(--ink);
+    font-weight: 400;
+    cursor: pointer;
+    transition: color 0.15s;
+    line-height: 1.25;
+  }
+  .toc-title:hover { color: var(--gold); }
+  .toc-title .sub {
+    display: block;
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 10px;
+    color: var(--ink-3);
+    margin-top: 0.5mm;
+    line-height: 1.3;
+  }
+  .toc-pg {
+    font-family: var(--sans);
+    font-size: 10px;
+    color: var(--ink);
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* ============================================================
+     LAYER CARDS (intelligence layers)
+     ============================================================ */
+  .layer-card {
+    border: 0.5px solid var(--rule);
+    padding: 5mm;
+    background: rgba(255,255,255,0.3);
+    display: flex; flex-direction: column;
+    min-height: 50mm;
+  }
+  .layer-card.featured { background: var(--navy); border-color: var(--navy); }
+  .layer-card.featured .lc-num,
+  .layer-card.featured .lc-name { color: #fff; }
+  .layer-card.featured .lc-desc,
+  .layer-card.featured .lc-stat { color: rgba(255,255,255,0.78); }
+  .layer-card.featured .lc-stat strong { color: var(--gold-2); }
+  .layer-card.featured .lc-divider { background: rgba(255,255,255,0.15); }
+  .lc-num {
+    font-family: var(--sans);
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 2mm;
+  }
+  .lc-name {
+    font-family: var(--serif);
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--navy);
+    letter-spacing: -0.005em;
+    line-height: 1.1;
+    margin-bottom: 3mm;
+  }
+  .lc-desc {
+    font-family: var(--serif);
+    font-size: 11px;
+    line-height: 1.5;
+    color: var(--ink-2);
+    flex: 1;
+  }
+  .lc-divider {
+    height: 0.5px; background: var(--rule-soft);
+    margin: 3mm 0;
+  }
+  .lc-stat {
+    font-family: var(--sans);
+    font-size: 9.5px;
+    color: var(--ink-3);
+    line-height: 1.5;
+  }
+  .lc-stat strong { color: var(--navy); font-weight: 600; }
+
+  /* ============================================================
+     13-TOOLS GRID
+     ============================================================ */
+  .tool-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border-top: 0.5px solid var(--ink);
+    border-left: 0.5px solid var(--ink);
+  }
+  .tool-cell {
+    padding: 5mm 6mm;
+    border-right: 0.5px solid var(--ink);
+    border-bottom: 0.5px solid var(--ink);
+    display: flex; flex-direction: column;
+    background: var(--paper);
+    position: relative;
+  }
+  .tool-cell.flagship {
+    background: rgba(168,126,42,0.08);
+  }
+  .tool-cell.flagship::before {
+    content: 'Flagship';
+    position: absolute; right: 4mm; top: 3mm;
+    font-family: var(--sans);
+    font-size: 8px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+  }
+  .tool-num {
+    font-family: var(--sans);
+    font-size: 9px;
+    color: var(--ink-3);
+    letter-spacing: 0.12em;
+    font-weight: 600;
+    margin-bottom: 1mm;
+    font-variant-numeric: tabular-nums;
+  }
+  .tool-name {
+    font-family: var(--serif);
+    font-size: 14px;
+    color: var(--navy);
+    font-weight: 500;
+    letter-spacing: -0.005em;
+    margin-bottom: 2mm;
+    line-height: 1.15;
+  }
+  .tool-desc {
+    font-family: var(--serif);
+    font-size: 10.5px;
+    line-height: 1.45;
+    color: var(--ink-2);
+  }
+  .tool-desc strong { color: var(--navy); font-weight: 600; }
+
+  /* ============================================================
+     PIPELINE
+     ============================================================ */
+  .pipeline {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0;
+    position: relative;
+    margin: 6mm 0 8mm;
+  }
+  .pipeline-step {
+    padding: 5mm 5mm 5mm 8mm;
+    border-left: 1px solid var(--rule);
+    position: relative;
+  }
+  .pipeline-step:first-child { border-left: 1px solid var(--gold); }
+  .pipeline-step::before {
+    content: '';
+    position: absolute;
+    left: -5px; top: 5mm;
+    width: 9px; height: 9px;
+    background: var(--paper);
+    border: 1px solid var(--gold);
+    border-radius: 50%;
+  }
+  .pipeline-step.active::before { background: var(--gold); }
+  .ps-num {
+    font-family: var(--sans);
+    font-size: 8.5px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 2mm;
+  }
+  .ps-name {
+    font-family: var(--serif);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--navy);
+    letter-spacing: -0.005em;
+    margin-bottom: 2mm;
+    line-height: 1.15;
+  }
+  .ps-desc {
+    font-family: var(--serif);
+    font-size: 10.5px;
+    line-height: 1.45;
+    color: var(--ink-2);
+  }
+
+  /* ============================================================
+     PRICING TIERS
+     ============================================================ */
+  .price-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border-top: 0.5px solid var(--ink);
+    border-bottom: 0.5px solid var(--ink);
+  }
+  .price-tier {
+    padding: 6mm;
+    border-right: 0.5px solid var(--rule);
+    display: flex; flex-direction: column;
+  }
+  .price-tier:last-child { border-right: none; background: var(--navy); color: #fff; }
+  .price-tier:last-child .pt-name { color: var(--gold-2); }
+  .price-tier:last-child .pt-amount { color: #fff; }
+  .price-tier:last-child .pt-unit { color: rgba(255,255,255,0.5); }
+  .price-tier:last-child .pt-desc { color: rgba(255,255,255,0.78); }
+  .pt-name {
+    font-family: var(--sans);
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 3mm;
+  }
+  .pt-amount {
+    font-family: var(--serif);
+    font-size: 36px;
+    color: var(--navy);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    margin-bottom: 1mm;
+    font-variant-numeric: tabular-nums;
+  }
+  .pt-unit {
+    font-family: var(--sans);
+    font-size: 9.5px;
+    letter-spacing: 0.08em;
+    color: var(--ink-3);
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 4mm;
+  }
+  .pt-desc {
+    font-family: var(--serif);
+    font-size: 11px;
+    line-height: 1.5;
+    color: var(--ink-2);
+    flex: 1;
+  }
+
+  /* ============================================================
+     PERSONA / USE CASE CARDS
+     ============================================================ */
+  .persona-card {
+    border: 0.5px solid var(--rule);
+    padding: 5mm;
+    background: rgba(255,255,255,0.3);
+  }
+  .persona-card .pc-eyebrow {
+    font-family: var(--sans);
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 2mm;
+  }
+  .persona-card .pc-name {
+    font-family: var(--serif);
+    font-size: 15px;
+    color: var(--navy);
+    font-weight: 500;
+    margin-bottom: 3mm;
+    letter-spacing: -0.005em;
+  }
+  .persona-card ul.queries {
+    list-style: none; padding: 0;
+  }
+  .persona-card ul.queries li {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 10.5px;
+    line-height: 1.5;
+    color: var(--ink-2);
+    padding: 2mm 0 2mm 5mm;
+    border-bottom: 0.5px solid var(--rule-soft);
+    position: relative;
+  }
+  .persona-card ul.queries li:last-child { border-bottom: none; }
+  .persona-card ul.queries li::before {
+    content: '\201C';
+    position: absolute; left: 0; top: 2mm;
+    color: var(--gold);
+    font-size: 14px;
+    font-style: normal;
+  }
+
+  /* ============================================================
+     CLOSE / TRY IT
+     ============================================================ */
+  .close-page {
+    background: var(--navy);
+    color: #fff;
+    position: relative;
+  }
+  .close-page .running-head .wm,
+  .close-page .running-foot,
+  .close-page .running-foot .pgnum { color: rgba(255,255,255,0.6); }
+  .close-page .running-rule,
+  .close-page .running-foot-rule { background: rgba(255,255,255,0.18); }
+  .close-arc-1 {
+    position: absolute; right: -100mm; top: -100mm;
+    width: 220mm; height: 220mm; border-radius: 50%;
+    border: 0.5px solid var(--gold-2); opacity: 0.4;
+  }
+  .close-arc-2 {
+    position: absolute; right: -60mm; top: -60mm;
+    width: 140mm; height: 140mm; border-radius: 50%;
+    border: 0.5px solid rgba(255,255,255,0.15);
+  }
+  .close-eyebrow {
+    font-family: var(--sans);
+    font-size: 10.5px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--gold-2);
+    font-weight: 600;
+    margin-bottom: 12mm;
+  }
+  .close-title {
+    font-family: var(--serif);
+    font-size: 56px;
+    line-height: 1.0;
+    letter-spacing: -0.022em;
+    color: #fff;
+    font-weight: 400;
+    margin-bottom: 10mm;
+    max-width: 150mm;
+  }
+  .close-title em { color: var(--gold-2); font-style: italic; }
+  .close-body {
+    font-family: var(--serif);
+    font-size: 14px;
+    line-height: 1.55;
+    color: rgba(255,255,255,0.75);
+    max-width: 140mm;
+    font-style: italic;
+    margin-bottom: 14mm;
+  }
+  .close-cta {
+    display: flex; gap: 5mm; align-items: center;
+    margin: 6mm 0;
+  }
+  .close-cta a {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 4mm 8mm;
+    border: 0.5px solid #fff;
+    color: #fff;
+    transition: background 0.15s, color 0.15s;
+  }
+  .close-cta a.primary {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: #fff;
+  }
+  .close-cta a:hover { background: #fff; color: var(--navy); }
+  .close-cta a.primary:hover { background: var(--gold-2); border-color: var(--gold-2); color: #fff; }
+
+  /* ============================================================
+     FLOATING TOC NAV (screen only)
+     ============================================================ */
+  .toc-fab {
+    position: fixed;
+    right: 24px; top: 24px;
+    background: var(--paper);
+    color: var(--ink);
+    border: 0.5px solid var(--ink);
+    padding: 10px 18px;
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    cursor: pointer;
+    z-index: 100;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+    transition: background 0.15s, color 0.15s;
+  }
+  .toc-fab:hover { background: var(--ink); color: var(--paper); }
+  .toc-overlay {
+    position: fixed; inset: 0;
+    background: rgba(20,17,12,0.75);
+    backdrop-filter: blur(6px);
+    display: none; align-items: center; justify-content: center;
+    z-index: 200;
+  }
+  .toc-overlay.open { display: flex; }
+  .toc-overlay-inner {
+    background: var(--paper);
+    width: 90%; max-width: 580px;
+    max-height: 85vh;
+    overflow-y: auto;
+    padding: 30px 40px 36px;
+    box-shadow: var(--shadow);
+    position: relative;
+  }
+  .toc-overlay-inner h2 {
+    font-family: var(--serif);
+    font-size: 28px;
+    color: var(--navy);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    margin-bottom: 4px;
+  }
+  .toc-overlay-inner .toc-sub {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 12px;
+    color: var(--ink-3);
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+    border-bottom: 0.5px solid var(--ink);
+  }
+  .toc-overlay-inner .toc-link {
+    display: grid;
+    grid-template-columns: 28px 1fr 30px;
+    align-items: baseline;
+    padding: 8px 0;
+    border-bottom: 0.5px solid var(--rule-soft);
+    font-family: var(--serif);
+    font-size: 13px;
+    color: var(--ink);
+    cursor: pointer;
+    transition: color 0.12s;
+    gap: 8px;
+  }
+  .toc-overlay-inner .toc-link:hover { color: var(--gold); }
+  .toc-overlay-inner .toc-link .lnum {
+    font-family: var(--sans);
+    font-size: 10px;
+    color: var(--gold);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    font-variant-numeric: tabular-nums;
+  }
+  .toc-overlay-inner .toc-link .lpg {
+    font-family: var(--sans);
+    font-size: 10px;
+    color: var(--ink-3);
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+  }
+  .toc-overlay-inner .toc-close {
+    position: absolute; top: 14px; right: 18px;
+    width: 28px; height: 28px;
+    background: none; border: 0.5px solid var(--ink);
+    cursor: pointer;
+    font-family: var(--sans); font-size: 14px;
+    color: var(--ink);
+  }
+
+  @media print {
+    body { background: #fff; padding: 0; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .book { gap: 0; transform: none !important; }
+    .page { box-shadow: none; page-break-after: always; break-after: page; break-inside: avoid; min-height: 297mm; }
+    .page:last-child { page-break-after: auto; break-after: auto; }
+    .toc-fab, .toc-overlay { display: none !important; }
+    @page { size: A4 portrait; margin: 0; }
+  }
+  @media (max-width: 900px) {
+    body { padding: 24px 0 60px; }
+    .book { transform: scale(0.7); transform-origin: top center; }
+  }
+
+  /* Phone: collapse fixed A4 page height to content so there are no blank trailing pages */
+  @media (max-width: 640px) {
+    body { padding: 16px 0 48px; }
+    .book { transform: scale(0.42); transform-origin: top center; gap: 14px; }
+    .page {
+      min-height: 0;
+      box-shadow: 0 1px 0 rgba(0,0,0,0.05);
+    }
+    .toc-fab { font-size: 12px; padding: 8px 12px; }
+  }
+</style>
+</head>
+<body>
+
+<button class="toc-fab" id="tocFab">Contents</button>
+
+<div class="toc-overlay" id="tocOverlay">
+  <div class="toc-overlay-inner">
+    <button class="toc-close" id="tocClose">×</button>
+    <h2>ADAMftd Product Book</h2>
+    <div class="toc-sub">The MVP · Live since end of March 2026</div>
+    <a class="toc-link" data-target="p-cover"><span class="lnum">i</span><span class="lname">Cover</span><span class="lpg">i</span></a>
+    <a class="toc-link" data-target="p-conf"><span class="lnum">ii</span><span class="lname">Confidentiality &amp; Disclaimer</span><span class="lpg">ii</span></a>
+    <a class="toc-link" data-target="p-contents"><span class="lnum">iii</span><span class="lname">Contents</span><span class="lpg">iii</span></a>
+    <a class="toc-link" data-target="p-exec"><span class="lnum">01</span><span class="lname">Executive Summary</span><span class="lpg">1</span></a>
+    <a class="toc-link" data-target="p-what-mvp"><span class="lnum">02</span><span class="lname">What the MVP Is</span><span class="lpg">2</span></a>
+    <a class="toc-link" data-target="p-layers"><span class="lnum">03</span><span class="lname">Five Intelligence Layers</span><span class="lpg">3</span></a>
+    <a class="toc-link" data-target="p-tools"><span class="lnum">04</span><span class="lname">The 13 Tools</span><span class="lpg">4</span></a>
+    <a class="toc-link" data-target="p-grounded"><span class="lnum">05</span><span class="lname">Grounded AI at Scale</span><span class="lpg">5</span></a>
+    <a class="toc-link" data-target="p-hormuz"><span class="lnum">06</span><span class="lname">Flagship · Hormuz Simulator</span><span class="lpg">6</span></a>
+    <a class="toc-link" data-target="p-market-analysis"><span class="lnum">07</span><span class="lname">Market Analysis Suite</span><span class="lpg">7</span></a>
+    <a class="toc-link" data-target="p-usecases"><span class="lnum">08</span><span class="lname">Use Cases</span><span class="lpg">8</span></a>
+    <a class="toc-link" data-target="p-pricing"><span class="lnum">09</span><span class="lname">Pricing</span><span class="lpg">9</span></a>
+    <a class="toc-link" data-target="p-crm"><span class="lnum">10</span><span class="lname">CRM &amp; AI Document Generator</span><span class="lpg">10</span></a>
+    <a class="toc-link" data-target="p-cert"><span class="lnum">10B</span><span class="lname">Certification Courses</span><span class="lpg">10B</span></a>
+    <a class="toc-link" data-target="p-roadmap"><span class="lnum">11</span><span class="lname">Live Now · What's Next</span><span class="lpg">11</span></a>
+    <a class="toc-link" data-target="p-close"><span class="lnum">12</span><span class="lname">Try It</span><span class="lpg">12</span></a>
+  </div>
+</div>
+
+<div class="book" id="book">
+
+<!-- ============================================================
+     PAGE i · COVER
+     ============================================================ -->
+<section class="page cover" id="p-cover" data-screen-label="Cover">
+  <div class="cover-mark">
+    <div class="cover-brand">ADAM<span>ftd</span></div>
+    <div class="cover-rt">
+      A platform of<strong>International Centre for Trade Transparency Ltd · UK</strong>
+    </div>
+  </div>
+
+  <div class="cover-body">
+    <div class="mvp-stamp">
+      <div class="mvp-label">MVP · Live</div>
+      <div class="mvp-date">End of March 2026</div>
+      <div class="mvp-sub">Two months. Over a thousand users. 30+ countries.</div>
+    </div>
+
+    <div class="cover-eyebrow">Product Book · 2026</div>
+    <h1 class="cover-title">
+      A grounded AI<br>
+      for <em>international</em><br>
+      <span class="navy">trade.</span>
+    </h1>
+    <p class="cover-sub">
+      The Minimum Viable Product launched at the end of March 2026. Thirteen tools, 97 capabilities across 24 categories, five intelligence layers, seven billion verified records · built grounded from day one, priced for the mid‑market. This book walks through what the MVP does, who uses it, and what comes next.
+    </p>
+
+    <div class="cover-meta-grid">
+      <div class="cover-meta-cell">
+        <div class="cover-meta-lbl">MVP Live</div>
+        <div class="cover-meta-val">End Mar 2026</div>
+      </div>
+      <div class="cover-meta-cell">
+        <div class="cover-meta-lbl">Tools</div>
+        <div class="cover-meta-val">13</div>
+      </div>
+      <div class="cover-meta-cell">
+        <div class="cover-meta-lbl">Capabilities</div>
+        <div class="cover-meta-val">97</div>
+      </div>
+      <div class="cover-meta-cell">
+        <div class="cover-meta-lbl">Records</div>
+        <div class="cover-meta-val"><em>7B+</em></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PAGE ii · CONFIDENTIALITY
+     ============================================================ -->
+<section class="page" id="p-conf" data-screen-label="Confidentiality">
+  <div class="running-head">
+    <div class="wm">ADAM<span>ftd</span></div>
+    <div>Product Book · 2026</div>
+  </div>
+  <div class="running-rule"></div>
+
+  <div class="pad">
+    <div class="conf-stamp">
+      <div class="stamp-eyebrow">Notice</div>
+      <div class="stamp-title">Strictly Confidential</div>
+      <div class="stamp-sub">Product information for prospective customers, partners, and investors.</div>
+    </div>
+
+    <div class="conf-body" style="max-width:160mm;margin:0 auto">
+      <p>This document has been prepared by <strong>International Centre for Trade Transparency Ltd</strong>, a company incorporated in the United Kingdom (the "Company"), operator of the <strong>ADAMftd</strong> platform. It describes the Minimum Viable Product as live at the time of publication and is intended for prospective customers, partners, and investors evaluating the platform.</p>
+
+      <h4>MVP status</h4>
+      <p>The platform described herein is the <strong>Minimum Viable Product</strong>. It went live at the end of <strong>March 2026</strong>. All capabilities described are operational. Roadmap items beyond the MVP are clearly marked and are subject to change.</p>
+
+      <h4>Forward‑looking statements</h4>
+      <p>Statements regarding future capabilities, roadmap, and customer plans are forward‑looking and based on current expectations. Actual delivery may differ. Pricing, credit allocations, and integration timelines are illustrative as of publication and may change.</p>
+
+      <h4>Data sources</h4>
+      <p>Coverage figures (records, tools, capabilities, countries, ports, vessels, tenders) reflect the platform as of 29 May 2026. Third‑party context (Bloomberg pricing, market sizing, geopolitical references) is drawn from publicly available sources and is provided for context only.</p>
+    </div>
+  </div>
+
+  <div class="running-foot-rule"></div>
+  <div class="running-foot">
+    <div>International Centre for Trade Transparency Ltd · United Kingdom</div>
+    <div class="pgnum">ii</div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PAGE iii · CONTENTS
+     ============================================================ -->
+<section class="page" id="p-contents" data-screen-label="Contents">
+  <div class="running-head">
+    <div class="wm">ADAM<span>ftd</span></div>
+    <div>Product Book · 2026</div>
+  </div>
+  <div class="running-rule"></div>
+
+  <div class="pad">
+    <div class="eyebrow eyebrow-navy">Contents</div>
+    <h2 class="section" style="margin-top:3mm">The Product Book</h2>
+    <div class="section-deck">An ordered walk through the Minimum Viable Product as it stands today: what it is, what it does, who uses it, what it costs, and what comes next.</div>
+
+    <div class="toc-grid">
+      <div>
+        <div class="toc-row section-head">
+          <div class="toc-num">I.</div>
+          <div class="toc-title">Front Matter</div>
+          <div class="toc-pg"></div>
+        </div>
+        <div class="toc-row"><div class="toc-num">01</div><div class="toc-title" onclick="jumpTo('p-cover')">Cover<span class="sub">The MVP, in one stamp.</span></div><div class="toc-pg">i</div></div>
+        <div class="toc-row"><div class="toc-num">02</div><div class="toc-title" onclick="jumpTo('p-conf')">Confidentiality &amp; Disclaimer<span class="sub">Use, MVP status, data sources.</span></div><div class="toc-pg">ii</div></div>
+
+        <div class="toc-row section-head">
+          <div class="toc-num">II.</div>
+          <div class="toc-title">The MVP</div>
+          <div class="toc-pg"></div>
+        </div>
+        <div class="toc-row"><div class="toc-num">01</div><div class="toc-title" onclick="jumpTo('p-exec')">Executive Summary<span class="sub">The product in one page.</span></div><div class="toc-pg">1</div></div>
+        <div class="toc-row"><div class="toc-num">02</div><div class="toc-title" onclick="jumpTo('p-what-mvp')">What the MVP Is<span class="sub">Date stamp, scope, and what 'minimum viable' means here.</span></div><div class="toc-pg">2</div></div>
+        <div class="toc-row"><div class="toc-num">03</div><div class="toc-title" onclick="jumpTo('p-layers')">Five Intelligence Layers<span class="sub">Trade, tariffs, sanctions, tenders, vessels.</span></div><div class="toc-pg">3</div></div>
+        <div class="toc-row"><div class="toc-num">04</div><div class="toc-title" onclick="jumpTo('p-tools')">The 13 Tools<span class="sub">One workspace, no tab switching.</span></div><div class="toc-pg">4</div></div>
+      </div>
+      <div>
+        <div class="toc-row section-head">
+          <div class="toc-num">III.</div>
+          <div class="toc-title">Under the Hood</div>
+          <div class="toc-pg"></div>
+        </div>
+        <div class="toc-row"><div class="toc-num">05</div><div class="toc-title" onclick="jumpTo('p-grounded')">Grounded AI at Scale<span class="sub">Five‑step verification pipeline.</span></div><div class="toc-pg">5</div></div>
+        <div class="toc-row"><div class="toc-num">06</div><div class="toc-title" onclick="jumpTo('p-hormuz')">Flagship · Hormuz Simulator<span class="sub">The world's only HS‑6 oil shock engine.</span></div><div class="toc-pg">6</div></div>
+        <div class="toc-row"><div class="toc-num">07</div><div class="toc-title" onclick="jumpTo('p-market-analysis')">Market Analysis Suite<span class="sub">Eleven functions, two bands.</span></div><div class="toc-pg">7</div></div>
+
+        <div class="toc-row section-head">
+          <div class="toc-num">IV.</div>
+          <div class="toc-title">Buying It</div>
+          <div class="toc-pg"></div>
+        </div>
+        <div class="toc-row"><div class="toc-num">08</div><div class="toc-title" onclick="jumpTo('p-usecases')">Use Cases<span class="sub">Six buyer profiles, real queries.</span></div><div class="toc-pg">8</div></div>
+        <div class="toc-row"><div class="toc-num">09</div><div class="toc-title" onclick="jumpTo('p-pricing')">Pricing<span class="sub">Credit‑based, not seat‑based.</span></div><div class="toc-pg">9</div></div>
+        <div class="toc-row"><div class="toc-num">10</div><div class="toc-title" onclick="jumpTo('p-crm')">CRM &amp; AI Documents<span class="sub">Deal management built in.</span></div><div class="toc-pg">10</div></div>
+        <div class="toc-row"><div class="toc-num">10B</div><div class="toc-title" onclick="jumpTo('p-cert')">Certification Courses<span class="sub">Ten courses, free to all users.</span></div><div class="toc-pg">10B</div></div>
+        <div class="toc-row"><div class="toc-num">11</div><div class="toc-title" onclick="jumpTo('p-roadmap')">Live Now · What's Next<span class="sub">MVP scorecard and the next twelve months.</span></div><div class="toc-pg">11</div></div>
+        <div class="toc-row"><div class="toc-num">12</div><div class="toc-title" onclick="jumpTo('p-close')">Try It<span class="sub">Ask it anything, right now.</span></div><div class="toc-pg">12</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="running-foot-rule"></div>
+  <div class="running-foot">
+    <div>Contents</div>
+    <div class="pgnum">iii</div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PAGE 1 · EXECUTIVE SUMMARY
+     ============================================================ -->
+<section class="page" id="p-exec" data-screen-label="Executive Summary">
+  <div class="running-head">
+    <div class="wm">ADAM<span>ftd</span></div>
+    <div>01 · Executive Summary</div>
+  </div>
+  <div class="running-rule"></div>
+
+  <div class="pad">
+    <div class="eyebrow eyebrow-navy">Chapter One · The Product</div>
+    <h2 class="section" style="margin-top:3mm">The MVP, in One Page</h2>
+    <div class="section-deck">A grounded AI workspace for international trade. Five intelligence layers. Thirteen tools. 97 capabilities across 24 categories. One natural‑language interface. Live since end of March 2026.</div>
+
+    <div class="grid grid-4" style="margin-bottom:8mm">
+      <div class="metric"><div class="num">End Mar<br>2026</div><div class="lbl">MVP Live</div><div class="note">Two months in production at publication.</div></div>
+      <div class="metric"><div class="num">5</div><div class="lbl">Intelligence Layers</div><div class="note">Trade · Tariffs · Sanctions · Tenders · Vessels.</div></div>
+      <div class="metric"><div class="num">13</div><div class="lbl">Tools</div><div class="note">All in one workspace, no tab switching.</div></div>
+      <div class="metric"><div class="num gold">97</div><div class="lbl">Capabilities</div><div class="note">Natural‑language, every answer cited. 24 categories.</div></div>
+    </div>
+
+    <div class="grid grid-2" style="gap:8mm; margin-bottom:8mm">
+      <div>
+        <h3 class="smallcaps"><span class="num">01</span>What it is</h3>
+        <p class="lede"><span class="drop">A</span>DAMftd is the world's first <strong style="color:var(--navy);font-weight:600">grounded AI</strong> for international trade. The MVP launched at the end of March 2026 and covers the five intelligence layers a trade decision requires · trade data, tariffs, sanctions, tenders, vessels · in a single natural‑language workspace. Every answer cites its source.</p>
+      </div>
+      <div>
+        <h3 class="smallcaps"><span class="num">02</span>Who it is for</h3>
+        <p>SME exporters and importers; customs brokers; freight forwarders; commodity traders; trade finance banks; consultancies; export credit agencies; chambers and trade bodies. Mid‑market pricing from $100/month. Enterprise from $20k/year. A live free tier with 25 starter credits.</p>
+        <p>Six buyer profiles, one platform. Every query is different · the data and the AI adapt.</p>
+      </div>
+    </div>
+
+    <div class="quote-box">
+      <div class="qt">The MVP is live. Five layers, thirteen tools, every answer <em>grounded and cited</em>.</div>
+      <div class="qt-attr">Product memo · ADAMftd · May 2026</div>
+    </div>
+  </div>
+
+  <div class="running-foot-rule"></div>
+  <div class="running-foot">
+    <div>Executive Summary</div>
+    <div class="pgnum">1</div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PAGE 2 · WHAT THE MVP IS
+     ============================================================ -->
+<section class="page" id="p-what-mvp" data-screen-label="What the MVP Is">
+  <div class="running-head">
+    <div class="wm">ADAM<span>ftd</span></div>
+    <div>02 · The MVP, Plainly Stated</div>
+  </div>
+  <div class="running-rule"></div>
+
+  <div class="pad">
+    <div class="eyebrow eyebrow-navy">Chapter Two · MVP</div>
+    <h2 class="section" style="margin-top:3mm">The MVP, Plainly Stated</h2>
+    <div class="section-deck">The platform described in this book is a Minimum Viable Product. It went live at the end of March 2026. It is in production. It is what over a thousand users in 30+ countries are using today.</div>
+
+    <div class="grid grid-3" style="margin-bottom:10mm">
+      <div class="card-ed">
+        <div class="card-eyebrow">What 'MVP' means here</div>
+        <h3 style="font-size:17px;margin-bottom:3mm">A working product, not a prototype</h3>
+        <p style="font-size:11.5px">All thirteen tools and 97 capabilities across 24 categories are operational. The AI is in production. Real users are running real trade queries against real data. The product works end‑to‑end.</p>
+      </div>
+      <div class="card-ed">
+        <div class="card-eyebrow">What is deliberately out of scope</div>
+        <h3 style="font-size:17px;margin-bottom:3mm">Polish, not capability</h3>
+        <p style="font-size:11.5px">The MVP scope was: prove the grounded AI thesis at scale. UX refinement, onboarding flow, mobile responsiveness, and Market Reports templates are scheduled · they are not the question the MVP needed to answer.</p>
+      </div>
+      <div class="card-ed">
+        <div class="card-eyebrow">Why we shipped it now</div>
+        <h3 style="font-size:17px;margin-bottom:3mm">The window does not wait</h3>
+        <p style="font-size:11.5px">Geopolitics is making trade intelligence existential. The market expects AI for complex queries. Shipping the MVP at end of March 2026 captured the moment. Two months in, the validation answer is clear: people find it, log in, and use it.</p>
+      </div>
+    </div>
+
+    <h3 class="smallcaps"><span class="num">02.1</span>What 'MVP' is not</h3>
+    <div class="twocol">
+      <p>The word minimum viable product is, in 2026, often a euphemism for "early demo." That is not what is described in this book. The ADAMftd MVP is a production system, deployed and operated by a senior engineering bench, hosted on funded infrastructure (NVIDIA $1M compute credit award), and used daily by people who arrived without being told to.</p>
+      <p>What makes it <em>minimum</em> is the deliberate narrowness of the polish layer. The data pipeline is complete. The AI is grounded. The five intelligence layers are wired through. Every tool answers the question it was built to answer, cites its source, and refuses to invent. What it does not yet do is hold the hand of a brand‑new user through their first ten minutes · that is the next sprint, post‑seed.</p>
+      <p>What makes it <em>viable</em> is that, in two months and with no marketing budget, over a thousand users from 30+ countries chose to register and use it. Sixty‑four of them consumed every starter credit available. That is what viability looks like, in product terms.</p>
+    </div>
+
+    <div class="pull" style="margin-top:auto">
+      MVP, not demo. A real product, in production, used by real people, with no marketing. <em>Two months in.</em>
+      <div class="pull-attr">CTO note · April 2026</div>
+    </div>
+  </div>
+
+  <div class="running-foot-rule"></div>
+  <div class="running-foot">
+    <div>The MVP, Plainly Stated</div>
+    <div class="pgnum">2</div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PAGE 3 · FIVE INTELLIGENCE LAYERS
+     ============================================================ -->
+<section class="page" id="p-layers" data-screen-label="Five Intelligence Layers">
+  <div class="running-head">
+    <div class="wm">ADAM<span>ftd</span></div>
+    <div>03 · Five Intelligence Layers</div>
+  </div>
+  <div class="running-rule"></div>
+
+  <div class="pad">
+    <div class="eyebrow eyebrow-navy">Chapter Three · Layers</div>
+    <h2 class="section" style="margin-top:3mm">One Workspace. Five Intelligence Layers.</h2>
+    <div class="section-deck">A trade decision requires five distinct types of intelligence. No other platform integrates all five. The ADAMftd MVP does · in a single natural‑language interface.</div>
+
+    <div class="grid grid-5" style="gap:4mm;margin-bottom:8mm">
+      <div class="layer-card">
+        <div class="lc-num">Layer 01</div>
+        <div class="lc-name">Trade Data</div>
+        <div class="lc-desc">Bilateral flows, top exporters and importers, corridor analysis at HS‑6 granularity.</div>
+        <div class="lc-divider"></div>
+        <div class="lc-stat"><strong>7B+</strong> records · <strong>199</strong> countries</div>
+      </div>
+      <div class="layer-card">
+        <div class="lc-num">Layer 02</div>
+        <div class="lc-name">HS Codes &amp; Tariffs</div>
+        <div class="lc-desc">Classification, duty rates, landed cost calculator across major trading jurisdictions.</div>
+        <div class="lc-divider"></div>
+        <div class="lc-stat"><strong>199</strong> countries covered</div>
+      </div>
+      <div class="layer-card">
+        <div class="lc-num">Layer 03</div>
+        <div class="lc-name">Sanctions</div>
+        <div class="lc-desc">Real‑time screening across all major lists: entity, vessel, country. OFAC, EU, UN, UK and national lists.</div>
+        <div class="lc-divider"></div>
+        <div class="lc-stat"><strong>199</strong> countries screened</div>
+      </div>
+      <div class="layer-card">
+        <div class="lc-num">Layer 04</div>
+        <div class="lc-name">Tenders</div>
+        <div class="lc-desc">Live government procurement opportunities surfaced by sector, country, value, and deadline.</div>
+        <div class="lc-divider"></div>
+        <div class="lc-stat"><strong>Thousands</strong> of live tenders · across multiple countries</div>
+      </div>
+      <div class="layer-card featured">
+        <div class="lc-num">Layer 05</div>
+        <div class="lc-name">Vessels &amp; Ports</div>
+        <div class="lc-desc">Live mapping of global maritime shipping. Vessel movement, port congestion, sanctioned‑vessel flags.</div>
+        <div class="lc-divider"></div>
+        <div class="lc-stat"><strong>Thousands</strong> of vessels · <strong>thousands</strong> of ports</div>
+      </div>
+    </div>
+
+    <div class="grid grid-2" style="gap:8mm">
+      <div class="card-ed">
+        <div class="card-eyebrow">What makes it grounded</div>
+        <ul class="editorial tight">
+          <li><strong>Four‑source verification</strong> · every data point cross‑checked across four independent official sources.</li>
+          <li><strong>Conflict resolution</strong> · when sources disagree, outlier detection and Monte Carlo modelling identify the most likely correct answer.</li>
+          <li><strong>Every answer cites its source.</strong> The AI does not invent. It does not guess.</li>
+          <li><strong>Audit trail</strong> · every query, every answer, every source reference is logged.</li>
+        </ul>
+      </div>
+      <div class="card-ed dark">
+        <div class="card-eyebrow">What makes it AI‑native</div>
+        <ul class="editorial tight">
+          <li>Built around AI from day one · <strong>not a database with a chatbot added later</strong>.</li>
+          <li>Natural‑language queries in any language · get a structured, cited answer.</li>
+          <li>Conversational today, <strong>agentic next</strong>: proactive alerts, scheduled workflows, autonomous monitoring.</li>
+          <li>Multiple frontier models with independent math cross‑check.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="running-foot-rule"></div>
+  <div class="running-foot">
+    <div>Five Intelligence Layers</div>
+    <div class="pgnum">3</div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PAGE 4 · THE 13 TOOLS
+     ============================================================ -->
+<section class="page" id="p-tools" data-screen-label="The 13 Tools">
+  <div class="running-head">
+    <div class="wm">ADAM<span>ftd</span></div>
+    <div>04 · The 13 Tools</div>
+  </div>
+  <div class="running-rule"></div>
+
+  <div class="pad">
+    <div class="eyebrow eyebrow-navy">Chapter Four · Tools</div>
+    <h2 class="section" style="margin-top:3mm">13 Tools. 2 Modules. 97 Capabilities. One Workspace.</h2>
+    <div class="section-deck">Everything a trader, exporter, importer, or trade analyst needs · without switching tabs, subscribing to multiple services, or losing context. All thirteen tools and both workspace modules are live in the MVP today.</div>
+
+    <div class="tool-grid">
+      <div class="tool-cell"><div class="tool-num">Tool 01</div><div class="tool-name">Trade Data</div><div class="tool-desc">Bilateral flows, top markets, exporters and importers. <strong>7B+ records.</strong> Plain‑language trade volume queries.</div></div>
+      <div class="tool-cell"><div class="tool-num">Tool 02</div><div class="tool-name">HS Codes, Tariffs &amp; Landed Costs</div><div class="tool-desc">Classification, duty rates, <strong>landed cost calculator</strong>. 199 countries covered.</div></div>
+      <div class="tool-cell"><div class="tool-num">Tool 03</div><div class="tool-name">Sanctions</div><div class="tool-desc">Entity, vessel, country screening across all major lists in real time.</div></div>
+      <div class="tool-cell"><div class="tool-num">Tool 04</div><div class="tool-name">Tenders</div><div class="tool-desc">Thousands of live government tenders across multiple countries. Never miss an opportunity.</div></div>
+      <div class="tool-cell"><div class="tool-num">Tool 05</div><div class="tool-name">Vessels &amp; Ports</div><div class="tool-desc">Thousands of vessels, thousands of ports. Live maritime mapping.</div></div>
+      <div class="tool-cell"><div class="tool-num">Tool 06</div><div class="tool-name">Trade Companies</div><div class="tool-desc">Company‑level trade activity: who ships what, to where, in what volume.</div></div>
+      <div class="tool-cell"><div class="tool-num">Tool 07</div><div class="tool-name">Company Lookup</div><div class="tool-desc">Instant company profiles with trade activity, registration data, risk flags.</div></div>
+      <div class="tool-cell"><div class="tool-num">Tool 08</div><div class="tool-name">Countries</div><div class="tool-desc">Country trade profiles: top products, partners, tariff regimes, trade balance.</div></div>
+      <div class="tool-cell"><div class="tool-num">Tool 09</div><div class="tool-name">Market Reports</div><div class="tool-desc">Premium AI‑generated reports. $500 single · $1,000 global · 48h SLA.</div></div>
+      <div class="tool-cell flagship"><div class="tool-num">Tool 10</div><div class="tool-name">Market Analysis</div><div class="tool-desc"><strong>Eleven functions</strong>: Retail Snapshot, Market Size, Consumer Preferences, Sentiment, SWOT, Entry Barriers and more.</div></div>
+      <div class="tool-cell"><div class="tool-num">Tool 11</div><div class="tool-name">Enrichment</div><div class="tool-desc">Bulk data enrichment for company and corridor lists. Append trade intelligence to your own data.</div></div>
+      <div class="tool-cell flagship"><div class="tool-num">Tool 12</div><div class="tool-name">Hormuz Simulator</div><div class="tool-desc"><strong>4 conflict scenarios</strong> across 5,000+ HS‑6 codes. 25% of global seaborne oil. No equivalent exists.</div></div>
+      <div class="tool-cell"><div class="tool-num">Tool 13</div><div class="tool-name">Search History</div><div class="tool-desc">Resumable sessions and full query log. Every answer, every source, always retrievable.</div></div>
+    </div>
+
+    <p class="caption" style="margin-top:4mm">All thirteen tools are live in the MVP. The two <em>flagship</em> tools (Market Analysis and Hormuz Simulator) are covered in detail on chapters six and seven. The platform also includes two workspace modules: <strong>CRM Suite</strong> (8 modules plus AI Document Generator) and <strong>Certification Courses</strong> (10 courses, 3 live today, all free).</p>
+  </div>
+
+  <div class="running-foot-rule"></div>
+  <div class="running-foot">
+    <div>The 13 Tools</div>
+    <div class="pgnum">4</div>
+  </div>
+</section>
+<!-- ============================================================
+     PAGE 5 · GROUNDED AI AT SCALE
+     ============================================================ -->
+<section class="page" id="p-grounded" data-screen-label="Grounded AI">
+  <div class="running-head">
+    <div class="wm">ADAM<span>ftd</span></div>
+    <div>05 · Grounded AI at Scale</div>
+  </div>
+  <div class="running-rule"></div>
+
+  <div class="pad">
+    <div class="eyebrow eyebrow-navy">Chapter Five · Architecture</div>
+    <h2 class="section" style="margin-top:3mm">Under the Hood: Grounded AI at Scale</h2>
+    <div class="section-deck">Every answer follows a strict five‑step verification pipeline. The AI does not respond until it has cross‑referenced, conflict‑resolved, and cited its sources. This is what 'grounded' means in practice.</div>
+
+    <div class="figure-num"><span>Fig. 05.1</span> · The five‑step pipeline</div>
+    <div class="hairline" style="margin:2mm 0 0"></div>
+
+    <div class="pipeline">
+      <div class="pipeline-step active">
+        <div class="ps-num">Step 01</div>
+        <div class="ps-name">User Query</div>
+        <div class="ps-desc">Natural‑language question entered. Any language. Any trade topic. The AI parses intent and identifies the data domains required.</div>
+      </div>
+      <div class="pipeline-step active">
+        <div class="ps-num">Step 02</div>
+        <div class="ps-name">Four‑Source Pull</div>
+        <div class="ps-desc">Data pulled from four independent official sources simultaneously · UN Comtrade, customs registries, official tariff databases, sanctions lists, port authorities.</div>
+      </div>
+      <div class="pipeline-step active">
+        <div class="ps-num">Step 03</div>
+        <div class="ps-name">Conflict Detection</div>
+        <div class="ps-desc">Sources compared. Outliers identified. When sources disagree, the conflict is flagged · not silently resolved. Transparency first.</div>
+      </div>
+      <div class="pipeline-step active">
+        <div class="ps-num">Step 04</div>
+        <div class="ps-name">Monte Carlo Resolution</div>
+        <div class="ps-desc">Our proprietary models plus Monte Carlo simulation calculate the most likely correct answer when sources conflict. The math is shown.</div>
+      </div>
+      <div class="pipeline-step active">
+        <div class="ps-num">Step 05</div>
+        <div class="ps-name">Cited Answer</div>
+        <div class="ps-desc">The answer is returned with every source cited. The user sees not just the answer but where it came from and how confident the system is.</div>
+      </div>
+    </div>
+
+    <div class="grid grid-2" style="gap:8mm">
+      <div class="card-ed dark">
+        <div class="card-eyebrow">The Methodology Disclaimer · Canonical</div>
+        <p style="font-style:italic;color:rgba(255,255,255,0.9);font-size:12.5px;line-height:1.6">"ADAMftd verifies against multiple official sources, but occasionally these sources may conflict with one another. In such instances we identify outlying data first, and then run Monte Carlo models alongside our own proprietary models to calculate the most likely outcome. AI can make mistakes."</p>
+        <p style="color:var(--gold-2);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;font-style:normal;font-weight:600;margin-top:4mm">Shown to the user · every session</p>
+      </div>
+      <div>
+        <h3 class="smallcaps"><span class="num">05.1</span>What this means for users</h3>
+        <ul class="editorial tight">
+          <li>You never get a hallucinated answer without knowing it is uncertain.</li>
+          <li>Every claim has a source you can verify independently.</li>
+          <li>Conflicts are disclosed · the AI <strong>earns trust</strong> by being honest about uncertainty.</li>
+          <li>Multiple frontier models run in parallel with an independent math cross‑check.</li>
+          <li>The audit trail is complete and exportable.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="running-foot-rule"></div>
+  <div class="running-foot">
+    <div>Grounded AI at Scale</div>
+    <div class="pgnum">5</div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PAGE 6 · HORMUZ SIMULATOR
+     ============================================================ -->
+<section class="page" id="p-hormuz" data-screen-label="Hormuz Simulator">
+  <div class="running-head">
+    <div class="wm">ADAM<span>ftd</span></div>
+    <div>06 · Hormuz Simulator</div>
+  </div>
+  <div class="running-rule"></div>
+
+  <div class="pad">
+    <div class="eyebrow eyebrow-navy">Chapter Six · Flagship</div>
+    <h2 class="section" style="margin-top:3mm">The Hormuz Simulator</h2>
+    <div class="section-deck">The world's only HS‑6 oil shock scenario engine. Models the impact of a Strait of Hormuz disruption · full, partial, or negotiated · across thousands of commodity codes and every affected trade corridor.</div>
+
+    <div class="card-ed dark" style="padding:7mm 8mm;margin-bottom:8mm">
+      <div class="card-eyebrow">Why this exists</div>
+      <p style="color:rgba(255,255,255,0.9);font-size:13px;line-height:1.6">The Strait of Hormuz carries <strong style="color:var(--gold-2)">twenty million barrels of oil per day</strong> · roughly twenty‑five percent of global seaborne oil. A disruption is not theoretical risk. It is recurring policy reality. Commodity traders, banks, insurance underwriters, and government agencies need a way to model exposure quantitatively, by commodity, by corridor, by counterparty.</p>
+      <p style="color:rgba(255,255,255,0.9);font-size:13px;line-height:1.6;margin-top:4mm">Before ADAMftd, this required bespoke consulting engagements. The Hormuz Simulator industrialises it.</p>
+    </div>
+
+    <div class="grid grid-4" style="margin-bottom:8mm">
+      <div class="metric"><div class="num">4</div><div class="lbl">Conflict Scenarios</div><div class="note">Full closure · partial · negotiated · status quo</div></div>
+      <div class="metric"><div class="num">5,000+</div><div class="lbl">HS‑6 Codes Modelled</div><div class="note">Granular, commodity‑level exposure</div></div>
+      <div class="metric"><div class="num gold">20Mb/d</div><div class="lbl">Oil at Risk</div><div class="note">25% of global seaborne oil flow</div></div>
+      <div class="metric"><div class="num sm">Batch</div><div class="lbl">Compare Modes</div><div class="note">Batch · intel · methodology view</div></div>
+    </div>
+
+    <h3 class="smallcaps"><span class="num">06.1</span>Who uses it</h3>
+    <div class="grid grid-3" style="gap:6mm;margin-bottom:6mm">
+      <div class="card-ed">
+        <div class="card-eyebrow">Commodity Traders</div>
+        <p style="font-size:11.5px">Model the impact of a closure on their specific commodity codes. Vitol, Trafigura, Glencore tier buyers.</p>
+      </div>
+      <div class="card-ed">
+        <div class="card-eyebrow">Trade Finance Banks</div>
+        <p style="font-size:11.5px">Quantify corridor exposure before issuing letters of credit. HSBC, Standard Chartered, Citi tier buyers.</p>
+      </div>
+      <div class="card-ed">
+        <div class="card-eyebrow">Insurance &amp; Government</div>
+        <p style="font-size:11.5px">Price marine and trade credit risk on specific routes; brief policy and sovereign‑risk teams.</p>
+      </div>
+    </div>
+
+    <div class="pull">
+      No competitor has built this. We did, because the data, the AI, and the institutional context already lived in the platform. <em>Hormuz was a flagship use case for the architecture, not a separate product.</em>
+      <div class="pull-attr">Product memo · April 2026</div>
+    </div>
+  </div>
+
+  <div class="running-foot-rule"></div>
+  <div class="running-foot">
+    <div>Hormuz Simulator</div>
+    <div class="pgnum">6</div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PAGE 7 · MARKET ANALYSIS SUITE
+     ============================================================ -->
+<section class="page" id="p-market-analysis" data-screen-label="Market Analysis">
+  <div class="running-head">
+    <div class="wm">ADAM<span>ftd</span></div>
+    <div>07 · Market Analysis Suite</div>
+  </div>
+  <div class="running-rule"></div>
+
+  <div class="pad">
+    <div class="eyebrow eyebrow-navy">Chapter Seven · Flagship</div>
+    <h2 class="section" style="margin-top:3mm">Market Analysis · Eleven Functions, Two Bands</h2>
+    <div class="section-deck">The only natural‑language trade readiness assessment suite at this depth and this price. Two analysis bands · Market Overview and Trade Readiness · at two credits per query.</div>
+
+    <div class="grid grid-2" style="gap:8mm;margin-bottom:8mm">
+      <div class="card-ed">
+        <div class="card-eyebrow" style="color:var(--navy);border-bottom-color:var(--navy)">Band One · Market Overview</div>
+        <p style="font-size:11.5px;margin-bottom:5mm;color:var(--ink-3);font-style:italic">Understand the destination market before you ship anything.</p>
+        <ul class="editorial tight">
+          <li><strong>Retail Snapshot</strong> · channel mix, price points, leading retailers in the destination.</li>
+          <li><strong>Market Size &amp; Demand</strong> · addressable volume and value, trajectory, segments.</li>
+          <li><strong>Consumer Preferences</strong> · what the local buyer actually wants and why.</li>
+          <li><strong>Sentiment Analysis</strong> · pulse of buyer attitude in your category.</li>
+          <li><strong>Seasonal Intelligence</strong> · when demand peaks, troughs, and shifts.</li>
+          <li><strong>Local Production</strong> · domestic supply, capacity, competitive pricing.</li>
+        </ul>
+      </div>
+      <div class="card-ed">
+        <div class="card-eyebrow">Band Two · Trade Readiness</div>
+        <p style="font-size:11.5px;margin-bottom:5mm;color:var(--ink-3);font-style:italic">Determine whether you are actually ready to enter · and how to win.</p>
+        <ul class="editorial tight">
+          <li><strong>Substitutes &amp; Competitors</strong> · what you are fighting against on shelf and online.</li>
+          <li><strong>SWOT Analysis</strong> · structured strategic positioning vs the market.</li>
+          <li><strong>Market Entry Barriers</strong> · regulatory, tariff, distribution, cultural.</li>
+          <li><strong>Packaging &amp; Labelling</strong> · compliance and presentation requirements.</li>
+          <li><strong>Quality &amp; Certifications</strong> · what your product must carry to clear customs.</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 class="smallcaps"><span class="num">07.1</span>What makes it different</h3>
+    <div class="twocol">
+      <p>Market Analysis platforms exist. Bloomberg has them, Wood Mackenzie has them, the Big Four sell them as consulting engagements. What does not exist at this price point is a natural‑language interface that runs all eleven functions in seconds against grounded data, with every claim cited.</p>
+      <p>A user can ask "Is my olive oil ready for the Brazilian market" and receive a complete trade readiness assessment · substitutes, SWOT, entry barriers, packaging, quality requirements · in a single response, at two credits ($1 at reference rate). The same work runs five figures and weeks of analyst time anywhere else.</p>
+    </div>
+
+    <p class="caption" style="margin-top:6mm"><strong>Pricing:</strong> 2 credits per Market Analysis function · $1 at reference rate · Pro tier includes 1,200 credits/month. Market Reports (premium long‑form): $500 single market, $1,000 global, 48h SLA.</p>
+  </div>
+
+  <div class="running-foot-rule"></div>
+  <div class="running-foot">
+    <div>Market Analysis Suite</div>
+    <div class="pgnum">7</div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PAGE 8 · USE CASES
+     ============================================================ -->
+<section class="page" id="p-usecases" data-screen-label="Use Cases">
+  <div class="running-head">
+    <div class="wm">ADAM<span>ftd</span></div>
+    <div>08 · Use Cases</div>
+  </div>
+  <div class="running-rule"></div>
+
+  <div class="pad">
+    <div class="eyebrow eyebrow-navy">Chapter Eight · Buyers</div>
+    <h2 class="section" style="margin-top:3mm">Who Uses ADAMftd and How</h2>
+    <div class="section-deck">Six buyer profiles. One platform. Every query is different · the data and the AI adapt. Below: representative queries from real cohorts using the MVP today.</div>
+
+    <div class="grid grid-3" style="gap:5mm">
+      <div class="persona-card">
+        <div class="pc-eyebrow">Profile 01</div>
+        <div class="pc-name">Exporter / Importer</div>
+        <ul class="queries">
+          <li>What is the HS code for my product and what tariff will I pay entering Brazil?</li>
+          <li>Show me the top 10 buyers of Italian olive oil in Asia.</li>
+          <li>Is my counterparty on any sanctions list?</li>
+          <li>What tenders are open in West Africa for construction equipment?</li>
+        </ul>
+      </div>
+      <div class="persona-card">
+        <div class="pc-eyebrow">Profile 02</div>
+        <div class="pc-name">Trade Finance Bank</div>
+        <ul class="queries">
+          <li>Screen this vessel and this company against all sanctions lists before we issue the LC.</li>
+          <li>What is the trade exposure of this corridor to a Hormuz partial closure?</li>
+          <li>Give me market size and growth data for this commodity in this country.</li>
+          <li>API integration into credit and compliance workflows.</li>
+        </ul>
+      </div>
+      <div class="persona-card">
+        <div class="pc-eyebrow">Profile 03</div>
+        <div class="pc-name">Export Credit Agency</div>
+        <ul class="queries">
+          <li>White‑label ADAMftd as the intelligence layer for the SME exporter portal.</li>
+          <li>Market readiness assessments for clients considering new destinations.</li>
+          <li>Corridor risk analysis for sovereign guarantee decisions.</li>
+          <li>Country and counterparty sanctions screening at volume.</li>
+        </ul>
+      </div>
+      <div class="persona-card">
+        <div class="pc-eyebrow">Profile 04</div>
+        <div class="pc-name">Consultancy / Advisory</div>
+        <ul class="queries">
+          <li>Rapid market entry analysis for client engagements.</li>
+          <li>Supply‑chain rerouting after a geopolitical event (Hormuz, Red Sea).</li>
+          <li>Competitor benchmarking using trade flow data.</li>
+          <li>Embed ADAMftd via API in client‑facing advisory tools.</li>
+        </ul>
+      </div>
+      <div class="persona-card">
+        <div class="pc-eyebrow">Profile 05</div>
+        <div class="pc-name">Commodity Trader</div>
+        <ul class="queries">
+          <li>Model the impact of a Hormuz closure on my specific commodity codes.</li>
+          <li>Real‑time vessel and port monitoring for exposure management.</li>
+          <li>Sanctions screening at speed before a trade execution.</li>
+          <li>Corridor intelligence for risk pricing.</li>
+        </ul>
+      </div>
+      <div class="persona-card">
+        <div class="pc-eyebrow">Profile 06</div>
+        <div class="pc-name">Customs Broker / Forwarder</div>
+        <ul class="queries">
+          <li>Instant HS code classification and duty rate lookup.</li>
+          <li>Landed cost calculation across multiple destination markets.</li>
+          <li>Sanctions pre‑check before submitting customs declarations.</li>
+          <li>Tender monitoring for clients in specific sectors.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="running-foot-rule"></div>
+  <div class="running-foot">
+    <div>Use Cases</div>
+    <div class="pgnum">8</div>
+  </div>
+</section>
+<!-- ============================================================
+     PAGE 9 · PRICING
+     ============================================================ -->
+<section class="page" id="p-pricing" data-screen-label="Pricing">
+  <div class="running-head">
+    <div class="wm">ADAM<span>ftd</span></div>
+    <div>09 · Pricing</div>
+  </div>
+  <div class="running-rule"></div>
+
+  <div class="pad">
+    <div class="eyebrow eyebrow-navy">Chapter Nine · Pricing</div>
+    <h2 class="section" style="margin-top:3mm">Priced for the Mid‑Market. Scalable to Enterprise.</h2>
+    <div class="section-deck">Credit‑based, not seat‑based. Every tier scales with usage, not headcount. Try free · pay when you need more.</div>
+
+    <div class="price-grid" style="margin-bottom:8mm">
+      <div class="price-tier">
+        <div class="pt-name">Starter</div>
+        <div class="pt-amount">Free</div>
+        <div class="pt-unit">To Register</div>
+        <div class="pt-desc">25 credits at signup. Up to 75 earnable. No card required. No rollover.</div>
+      </div>
+      <div class="price-tier">
+        <div class="pt-name">Growth</div>
+        <div class="pt-amount">$100<span style="font-size:14px;color:var(--ink-3);font-weight:400">/mo</span></div>
+        <div class="pt-unit">or $90 / mo billed annually · $1,080 / yr</div>
+        <div class="pt-desc">220 credits / month. SME traders, consultants, researchers. Cancel any time.</div>
+      </div>
+      <div class="price-tier">
+        <div class="pt-name">Pro</div>
+        <div class="pt-amount">$500<span style="font-size:14px;color:var(--ink-3);font-weight:400">/mo</span></div>
+        <div class="pt-unit">or $400 / mo billed annually · $4,800 / yr</div>
+        <div class="pt-desc">1,200 credits / month. Brokers, trade finance professionals, advisory teams.</div>
+      </div>
+      <div class="price-tier">
+        <div class="pt-name">Enterprise</div>
+        <div class="pt-amount">$20k+</div>
+        <div class="pt-unit">/ year · custom</div>
+        <div class="pt-desc">Custom credit pool. White‑glove onboarding. SLA‑backed. Banks, ECAs, corporates.</div>
+      </div>
+    </div>
+
+    <div class="grid grid-2" style="gap:8mm">
+      <div>
+        <h3 class="smallcaps"><span class="num">09.1</span>Credit packs · top up any time</h3>
+        <ul class="editorial">
+          <li><strong>$50</strong> · 100 credits · 1 year validity</li>
+          <li><strong>$100</strong> · 220 credits · 1 year validity</li>
+          <li><strong>$500</strong> · 1,200 credits · 1 year validity <span style="color:var(--gold);font-weight:600;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;margin-left:6px">Best Value</span></li>
+          <li>Reference rate: <strong>1 credit = $0.50</strong></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="smallcaps"><span class="num">09.2</span>Premium lanes</h3>
+        <ul class="editorial">
+          <li><strong>Market Reports</strong> · $500 single market · $1,000 global · 48h SLA · tokenised watermark.</li>
+          <li><strong>White‑label portal</strong> · $30k ARR per signed deployment. EPAs, chambers, trade bodies.</li>
+          <li><strong>API access</strong> · volume‑based, custom pricing. Fintechs, freight platforms, ERP integrators.</li>
+          <li><strong>Affiliate programme</strong> · tiered. Three levels with year‑1 / year‑2 / year‑3 commission rates: <strong>Manifest</strong> 15 / 10 / 5%, <strong>Charter</strong> 20 / 13 / 7%, <strong>Vanguard</strong> 30 / 20 / 10% (top tier, above $30k attributable revenue).</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="pull" style="margin-top:auto">
+      Credit‑based, not seat‑based. Revenue scales with usage, not headcount. A free starter tier means the platform proves itself before any commercial commitment.
+      <div class="pull-attr">Pricing memo · 2026</div>
+    </div>
+  </div>
+
+  <div class="running-foot-rule"></div>
+  <div class="running-foot">
+    <div>Pricing</div>
+    <div class="pgnum">9</div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PAGE 10 · CRM + AI DOCUMENT GENERATOR
+     ============================================================ -->
+<section class="page" id="p-crm" data-screen-label="CRM and Documents">
+  <div class="running-head">
+    <div class="wm">ADAM<span>ftd</span></div>
+    <div>10 · CRM &amp; AI Documents</div>
+  </div>
+  <div class="running-rule"></div>
+
+  <div class="pad">
+    <div class="eyebrow eyebrow-navy">Chapter Ten · CRM</div>
+    <h2 class="section" style="margin-top:3mm">Built‑in CRM and AI Document Generator</h2>
+    <div class="section-deck">Trade intelligence and deal management in one place. The AI Document Generator drafts trade documents from deal and contact context · no copy‑paste, no templates to maintain.</div>
+
+    <div class="grid grid-4" style="margin-bottom:8mm">
+      <div class="card-ed">
+        <div class="card-eyebrow">Dashboard</div>
+        <h3 style="font-size:15px;margin-bottom:2mm">CRM Overview</h3>
+        <p style="font-size:11px">Pipeline summary, AI Document Generator, activity feed. Full deal context at a glance.</p>
+      </div>
+      <div class="card-ed">
+        <div class="card-eyebrow">Pipeline</div>
+        <h3 style="font-size:15px;margin-bottom:2mm">Deals</h3>
+        <p style="font-size:11px">Trade deal tracking with stage, value, and contact linkage. ADAMftd data feeds directly into deal intelligence.</p>
+      </div>
+      <div class="card-ed">
+        <div class="card-eyebrow">Directory</div>
+        <h3 style="font-size:15px;margin-bottom:2mm">Contacts</h3>
+        <p style="font-size:11px">Counterparty management. Linked to trade activity, sanctions status, and company lookup.</p>
+      </div>
+      <div class="card-ed dark">
+        <div class="card-eyebrow">Generator</div>
+        <h3 style="font-size:15px;margin-bottom:2mm;color:#fff">AI Documents</h3>
+        <p style="font-size:11px;color:rgba(255,255,255,0.85)">Draft trade documents from deal and contact context. Sessions resumable. No blank‑page starts.</p>
+      </div>
+    </div>
+
+    <div class="grid grid-2" style="gap:8mm">
+      <div>
+        <h3 class="smallcaps"><span class="num">10.1</span>What the Generator produces</h3>
+        <ul class="editorial tight">
+          <li>Proforma invoices and commercial invoices.</li>
+          <li>Letters of intent, MoUs, trade term sheets.</li>
+          <li>Market entry briefs and country assessments.</li>
+          <li>Supplier qualification reports.</li>
+          <li>Custom output types based on deal context and counterparty data.</li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="smallcaps"><span class="num">10.2</span>Why this matters</h3>
+        <ul class="editorial tight">
+          <li>No other trade intelligence platform includes a CRM · users export data and do this manually elsewhere.</li>
+          <li><strong>Sessions are resumable</strong>: start a document on Monday, continue Thursday, all context intact.</li>
+          <li>Every document links back to <strong>live trade data</strong> · not static exports.</li>
+          <li>Built for the mid‑market trader who cannot afford a separate CRM subscription on top of intelligence.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="running-foot-rule"></div>
+  <div class="running-foot">
+    <div>CRM &amp; AI Document Generator</div>
+    <div class="pgnum">10</div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PAGE 10B · CERTIFICATION COURSES MODULE
+     ============================================================ -->
+<section class="page" id="p-cert" data-screen-label="Certification Courses">
+  <div class="running-head">
+    <div class="wm">ADAM<span>ftd</span></div>
+    <div>10B · Certification Courses</div>
+  </div>
+  <div class="running-rule"></div>
+
+  <div class="pad">
+    <div class="eyebrow eyebrow-navy">Workspace Module · Certification</div>
+    <h2 class="section" style="margin-top:3mm">Trade certification, free, built in.</h2>
+    <div class="section-deck">ADAMftd ships with a Certification Courses module covering Sanctions, Credit Control, Supply Chain, INCOTERMS, Trade Finance, Export Documentation, and Packaging &amp; Labelling. Ten courses, three live today, all free to platform users. Trade‑readiness is not just a query, it is a learning path.</div>
+
+    <div class="grid grid-4" style="margin-bottom:8mm">
+      <div class="metric"><div class="num">10</div><div class="lbl">Courses</div><div class="note">Full curriculum planned across seven trade disciplines.</div></div>
+      <div class="metric"><div class="num">3</div><div class="lbl">Published Today</div><div class="note">Live and available to all platform users now.</div></div>
+      <div class="metric"><div class="num gold">~130</div><div class="lbl">Hours Content</div><div class="note">Total curriculum length across all ten courses.</div></div>
+      <div class="metric"><div class="num">Free</div><div class="lbl">To All Users</div><div class="note">No additional charge. Included with every plan.</div></div>
+    </div>
+
+    <div class="grid grid-2" style="gap:8mm">
+      <div class="card-ed">
+        <div class="card-eyebrow">Courses Covered</div>
+        <ul class="editorial tight">
+          <li><strong>Sanctions</strong> · understanding compliance obligations and screening practice.</li>
+          <li><strong>Credit Control</strong> · trade credit, payment terms, risk assessment.</li>
+          <li><strong>Supply Chain</strong> · end‑to‑end logistics, resilience, sourcing.</li>
+          <li><strong>INCOTERMS</strong> · rules of delivery, risk transfer, responsibility.</li>
+          <li><strong>Trade Finance</strong> · letters of credit, guarantees, financing instruments.</li>
+          <li><strong>Export Documentation</strong> · certificates of origin, customs declarations.</li>
+          <li><strong>Packaging &amp; Labelling</strong> · compliance, market requirements, standards.</li>
+        </ul>
+      </div>
+      <div class="card-ed dark">
+        <div class="card-eyebrow">Why This Is Built In</div>
+        <ul class="editorial tight">
+          <li>Trade readiness is not just a query · it is a capability the user needs to build.</li>
+          <li>SME exporters frequently lack access to structured trade education.</li>
+          <li>Certification signals competence to buyers, banks, and regulators.</li>
+          <li>ADAMftd is the only platform that combines live intelligence with structured learning in a single workspace.</li>
+        </ul>
+        <div style="margin-top:5mm;padding-top:4mm;border-top:0.5px solid rgba(255,255,255,0.15)">
+          <div style="font-family:var(--sans);font-size:9.5px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold-2);font-weight:600;margin-bottom:2mm">Status</div>
+          <p style="color:rgba(255,255,255,0.85);font-size:11.5px">3 courses live today. Full curriculum of 10 courses in active development. All free to every plan tier, including Starter.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="running-foot-rule"></div>
+  <div class="running-foot">
+    <div>Certification Courses</div>
+    <div class="pgnum">10B</div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PAGE 11 · LIVE NOW · WHAT'S NEXT
+     ============================================================ -->
+<section class="page" id="p-roadmap" data-screen-label="Live Now and What's Next">
+  <div class="running-head">
+    <div class="wm">ADAM<span>ftd</span></div>
+    <div>11 · Live Now · What's Next</div>
+  </div>
+  <div class="running-rule"></div>
+
+  <div class="pad">
+    <div class="eyebrow eyebrow-navy">Chapter Eleven · Roadmap</div>
+    <h2 class="section" style="margin-top:3mm">Live Now. What Comes Next.</h2>
+    <div class="section-deck">The MVP scorecard, and the twelve‑month roadmap post‑seed. Live items are operational in production today. Roadmap items are scheduled and resourced subject to seed close.</div>
+
+    <div class="figure-num"><span>Tab. 11.1</span> · MVP scorecard · live since end of March 2026</div>
+    <div class="hairline" style="margin:2mm 0 4mm"></div>
+    <table class="editorial" style="margin-bottom:8mm">
+      <thead>
+        <tr><th style="width:40%">Capability</th><th style="width:14%">Status</th><th>Notes</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="b">5 intelligence layers wired through</td><td class="accent">Live</td><td>Trade, Tariffs, Sanctions, Tenders, Vessels · all in production.</td></tr>
+        <tr><td class="b">13 tools in one workspace</td><td class="accent">Live</td><td>All operational. 97 capabilities across 24 categories accessible via natural language.</td></tr>
+        <tr><td class="b">Grounded AI pipeline</td><td class="accent">Live</td><td>Four‑source verification, Monte Carlo conflict resolution, cited answers.</td></tr>
+        <tr><td class="b">Hormuz Simulator</td><td class="accent">Live</td><td>4 scenarios · 5,000+ HS‑6 codes. No equivalent exists.</td></tr>
+        <tr><td class="b">Market Analysis · 11 functions</td><td class="accent">Live</td><td>Two bands: Market Overview and Trade Readiness.</td></tr>
+        <tr><td class="b">CRM Suite · 8 modules + AI Documents</td><td class="accent">Live</td><td>Sessions resumable, deal context links to live trade data.</td></tr>
+        <tr><td class="b">Certification Courses module · 3 of 10 live</td><td class="accent">Live</td><td>Sanctions, Credit Control, Supply Chain live. 7 in development. All free to users.</td></tr>
+        <tr><td class="b">Affiliate programme (a growing programme spanning multiple countries)</td><td class="accent">Live</td><td>Tiered: Manifest, Charter, Vanguard. 90‑day cookie, 3‑year window.</td></tr>
+        <tr><td class="b">NVIDIA $1M compute infrastructure</td><td class="accent">Live</td><td>12 months funded at zero cash cost.</td></tr>
+      </tbody>
+    </table>
+
+    <div class="figure-num"><span>Tab. 11.2</span> · Post‑seed roadmap · next twelve months</div>
+    <div class="hairline" style="margin:2mm 0 4mm"></div>
+    <table class="editorial">
+      <thead>
+        <tr><th style="width:40%">Initiative</th><th style="width:14%">Timing</th><th>Outcome</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="b">UX / HCI redesign</td><td>Next</td><td>Reduce friction on first‑run; improve task completion rates.</td></tr>
+        <tr><td class="b">Market Reports template library</td><td>Next</td><td>Institutional‑grade scalable output. Premium revenue lane.</td></tr>
+        <tr><td class="b">HS / Tariff engine · coverage gap closure</td><td>Next</td><td>Accuracy and corridor depth expansion.</td></tr>
+        <tr><td class="b">Agentic workflows (proactive alerts, monitoring)</td><td>Following</td><td>Conversational today, agentic next. The AI starts initiating.</td></tr>
+        <tr><td class="b">First white‑label portal live</td><td>Following</td><td>EPA or chamber deployment at $30k ARR.</td></tr>
+        <tr><td class="b">API data layer · GA</td><td>Following</td><td>Volume‑metered API for fintechs, freight, ERP, customs software.</td></tr>
+        <tr><td class="b">Mobile responsive + iOS / Android wrap</td><td>Later</td><td>On‑the‑go access for traders in transit.</td></tr>
+      </tbody>
+    </table>
+
+    <p class="caption" style="margin-top:5mm">All roadmap phases assume seed close. Compute infrastructure funded by NVIDIA $1M credit award · not on this critical path.</p>
+  </div>
+
+  <div class="running-foot-rule"></div>
+  <div class="running-foot">
+    <div>Live Now · What's Next</div>
+    <div class="pgnum">11</div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PAGE 12 · CLOSE / TRY IT
+     ============================================================ -->
+<section class="page close-page" id="p-close" data-screen-label="Try It">
+  <div class="close-arc-1"></div>
+  <div class="close-arc-2"></div>
+
+  <div class="running-head">
+    <div class="wm" style="color:#fff">ADAM<span>ftd</span></div>
+    <div>12 · Try It</div>
+  </div>
+  <div class="running-rule"></div>
+
+  <div class="pad" style="position:relative">
+    <div class="close-eyebrow">Chapter Twelve · Try It</div>
+    <h2 class="close-title">
+      Ask it anything.<br>
+      <em>Right now.</em>
+    </h2>
+    <p class="close-body">
+      The world's first grounded AI for international trade. Twenty‑five credits at signup, no card required. Ask about tariffs, sanctions, trade flows, tenders, vessels, market analysis · or run a Hormuz scenario. The AI will answer. And it will cite every source.
+    </p>
+
+    <div class="close-cta">
+      <a class="primary" href="https://adamftd.com">Start Free at adamftd.com</a>
+      <a href="https://tidycal.com/gfunaro/book-a-call">Book a Demo Call</a>
+    </div>
+
+    <div style="margin-top:auto;display:grid;grid-template-columns:1fr 1fr;gap:8mm;padding-top:10mm;border-top:0.5px solid rgba(255,255,255,0.25)">
+      <div>
+        <div style="font-family:var(--sans);font-size:9.5px;letter-spacing:0.24em;text-transform:uppercase;color:var(--gold-2);font-weight:600;margin-bottom:3mm">The Conversation</div>
+        <div style="font-family:var(--serif);font-size:22px;color:#fff;font-weight:500;letter-spacing:-0.01em;line-height:1.15;margin-bottom:2mm">Giuseppe Funaro</div>
+        <div style="font-family:var(--serif);font-style:italic;font-size:13px;color:rgba(255,255,255,0.6)">Chief Executive Officer · International Centre for Trade Transparency Ltd</div>
+      </div>
+      <div>
+        <div style="font-family:var(--sans);font-size:9.5px;letter-spacing:0.24em;text-transform:uppercase;color:var(--gold-2);font-weight:600;margin-bottom:3mm">Reach the Team</div>
+        <div style="font-family:var(--serif);font-size:14px;color:#fff;margin-bottom:1.5mm">ceo@adamftd.com</div>
+        <div style="font-family:var(--serif);font-size:14px;color:#fff;margin-bottom:1.5mm">tidycal.com/gfunaro/book‑a‑call</div>
+        <div style="font-family:var(--serif);font-size:14px;color:var(--gold-2)">adamftd.com</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="running-foot-rule"></div>
+  <div class="running-foot">
+    <div>Try It · End of Book</div>
+    <div class="pgnum">12</div>
+  </div>
+</section>
+
+</div><!-- end book -->
+
+<script>
+  const fab = document.getElementById('tocFab');
+  const overlay = document.getElementById('tocOverlay');
+  const closeBtn = document.getElementById('tocClose');
+  fab.addEventListener('click', () => overlay.classList.add('open'));
+  closeBtn.addEventListener('click', () => overlay.classList.remove('open'));
+  overlay.addEventListener('click', (e) => { if (e.target === overlay) overlay.classList.remove('open'); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') overlay.classList.remove('open'); });
+  document.querySelectorAll('[data-target]').forEach(a => {
+    a.addEventListener('click', () => {
+      const id = a.dataset.target;
+      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      overlay.classList.remove('open');
+    });
+  });
+  function jumpTo(id) {
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+  window.jumpTo = jumpTo;
+</script>
+
+<script>
+  // Auto-print once fonts and layout are ready
+  (async function() {
+    try { if (document.fonts && document.fonts.ready) { await document.fonts.ready; } } catch (e) {}
+    if (document.readyState !== 'complete') {
+      await new Promise(r => window.addEventListener('load', r, { once: true }));
+    }
+    await new Promise(r => setTimeout(r, 500));
+    window.print();
+  })();
+</script>
+
+</body>
+</html>
