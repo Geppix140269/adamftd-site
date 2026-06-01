@@ -1,0 +1,2726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ADAMftd · Seed Round 2026 · Investor Book</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,300;8..60,400;8..60,500;8..60,600;8..60,700;8..60,800&family=Inter+Tight:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* ============================================================
+     ADAMftd · Investor Book
+     Editorial direction: ivory paper, navy ink, restrained gold.
+     Source Serif 4 for display + body; Inter Tight for UI/labels.
+     ============================================================ */
+
+  :root {
+    --paper: #FBF8F1;
+    --paper-2: #F5F1E6;
+    --ink: #14110C;
+    --ink-2: #3C3830;
+    --ink-3: #6B655B;
+    --rule: #C8BFA8;
+    --rule-soft: #E5DECB;
+    --navy: #14264A;
+    --navy-2: #243A65;
+    --gold: #A87E2A;
+    --gold-2: #C8A04A;
+    --gold-soft: #EFE3C2;
+    --green: #4F6B3E;
+    --red: #8E2D27;
+    --amber: #A85F1F;
+    --shadow: 0 24px 60px -20px rgba(20,17,12,0.25);
+
+    --serif: 'Source Serif 4', 'Iowan Old Style', Georgia, serif;
+    --sans: 'Inter Tight', -apple-system, BlinkMacSystemFont, sans-serif;
+    --mono: 'JetBrains Mono', ui-monospace, monospace;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    background: #2A2620;
+    color: var(--ink);
+    font-family: var(--serif);
+    font-feature-settings: "kern", "liga", "onum";
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body { padding: 56px 0 120px; }
+
+  /* ----- PAGE ----- */
+  .book { display: flex; flex-direction: column; align-items: center; gap: 28px; }
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    background: var(--paper);
+    position: relative;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+  }
+  /* Pages with decorative bleeds clip their overflow; height grows to fit content */
+  .page.cover, .page.close-page { overflow: hidden; }
+
+  .pad { padding: 22mm 22mm 18mm; flex: 1; display: flex; flex-direction: column; }
+  .pad-tight { padding: 16mm 22mm 14mm; }
+
+  /* ----- RUNNING HEADER / FOOTER ----- */
+  .running-head {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    padding: 12mm 22mm 0;
+    font-family: var(--sans);
+    font-size: 9.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+  .running-head .wm { color: var(--ink); font-weight: 600; letter-spacing: 0.18em; }
+  .running-head .wm span { color: var(--gold); }
+  .running-head .sec { color: var(--ink-3); }
+  .running-rule { height: 0.5px; background: var(--rule); margin: 4mm 22mm 0; }
+
+  .running-foot {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0 22mm 10mm;
+    font-family: var(--sans);
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+  .running-foot .pgnum { font-variant-numeric: tabular-nums; letter-spacing: 0.08em; }
+  .running-foot-rule { height: 0.5px; background: var(--rule); margin: 0 22mm 4mm; }
+
+  /* ----- TYPOGRAPHY ----- */
+  .eyebrow {
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+  .eyebrow-ink { color: var(--ink-3); }
+  .eyebrow-navy { color: var(--navy); }
+
+  h1.display {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: 72px;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  h1.display em { font-style: italic; color: var(--navy); font-weight: 400; }
+  h1.display .g { color: var(--gold); font-style: italic; font-weight: 400; }
+
+  h2.section {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 1.05;
+    letter-spacing: -0.018em;
+    color: var(--navy);
+    margin-bottom: 4mm;
+  }
+  h2.section em { font-style: italic; color: var(--gold); }
+  .section-deck {
+    font-family: var(--serif);
+    font-size: 16px;
+    line-height: 1.45;
+    color: var(--ink-2);
+    font-style: italic;
+    max-width: 150mm;
+    margin-bottom: 10mm;
+  }
+
+  h3 {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 17px;
+    color: var(--navy);
+    letter-spacing: -0.005em;
+    margin-bottom: 3mm;
+  }
+  h3.smallcaps {
+    font-family: var(--sans);
+    font-size: 10.5px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--ink-3);
+    margin-bottom: 4mm;
+    padding-bottom: 2mm;
+    border-bottom: 0.5px solid var(--rule);
+  }
+  h3.smallcaps .num { color: var(--gold); margin-right: 8px; font-variant-numeric: tabular-nums; }
+
+  p, .body-copy {
+    font-family: var(--serif);
+    font-size: 12.5px;
+    line-height: 1.55;
+    color: var(--ink-2);
+    text-wrap: pretty;
+  }
+  p + p { margin-top: 3mm; }
+  .lede {
+    font-size: 15px;
+    line-height: 1.5;
+    color: var(--ink);
+    font-weight: 400;
+  }
+  .lede .drop {
+    float: left;
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 52px;
+    line-height: 0.85;
+    color: var(--navy);
+    padding: 4px 8px 0 0;
+    font-style: normal;
+  }
+
+  /* ----- UI BITS ----- */
+  .hairline { height: 0.5px; background: var(--rule); }
+  .hairline-strong { height: 1px; background: var(--ink); }
+  .gold-rule { height: 1px; background: var(--gold); }
+  .pull-rule { width: 28mm; height: 1px; background: var(--gold); margin: 6mm 0; }
+  .double-rule { height: 4px; border-top: 0.5px solid var(--ink); border-bottom: 0.5px solid var(--ink); }
+
+  .label-tag {
+    font-family: var(--sans);
+    display: inline-block;
+    font-size: 9.5px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold);
+    padding: 3px 0;
+    border-top: 0.5px solid var(--gold);
+    border-bottom: 0.5px solid var(--gold);
+  }
+
+  .figure-num {
+    font-family: var(--sans);
+    font-size: 9.5px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+  .figure-num span { color: var(--gold); }
+  .caption {
+    font-family: var(--sans);
+    font-size: 9.5px;
+    line-height: 1.5;
+    color: var(--ink-3);
+    font-style: italic;
+  }
+
+  /* ----- METRIC ----- */
+  .metric { display: flex; flex-direction: column; gap: 2px; }
+  .metric .num {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 44px;
+    line-height: 0.95;
+    color: var(--navy);
+    letter-spacing: -0.02em;
+    font-variant-numeric: tabular-nums lining-nums;
+  }
+  .metric .num.gold { color: var(--gold); }
+  .metric .num.sm { font-size: 32px; }
+  .metric .num.lg { font-size: 60px; }
+  .metric .lbl {
+    font-family: var(--sans);
+    font-size: 9.5px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin-top: 2mm;
+  }
+  .metric .note {
+    font-family: var(--serif);
+    font-size: 11px;
+    line-height: 1.45;
+    color: var(--ink-2);
+    font-style: italic;
+    margin-top: 1mm;
+  }
+
+  /* ----- TABLES ----- */
+  table.editorial {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--sans);
+    font-size: 11px;
+    color: var(--ink-2);
+  }
+  table.editorial thead th {
+    text-align: left;
+    font-weight: 600;
+    font-size: 9.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    padding: 6px 8px 6px 0;
+    border-top: 1px solid var(--ink);
+    border-bottom: 0.5px solid var(--ink);
+  }
+  table.editorial tbody td {
+    padding: 7px 8px 7px 0;
+    border-bottom: 0.5px solid var(--rule-soft);
+    vertical-align: top;
+    line-height: 1.45;
+  }
+  table.editorial tbody tr:last-child td { border-bottom: 0.5px solid var(--ink); }
+  table.editorial td.num,
+  table.editorial th.num { text-align: right; font-variant-numeric: tabular-nums lining-nums; }
+  table.editorial td.b { color: var(--navy); font-weight: 600; }
+  table.editorial td.accent { color: var(--gold); font-weight: 600; }
+
+  /* ----- BLOCKQUOTE / PULL ----- */
+  .pull {
+    font-family: var(--serif);
+    font-size: 22px;
+    line-height: 1.25;
+    color: var(--navy);
+    font-weight: 400;
+    letter-spacing: -0.012em;
+    padding: 6mm 0 6mm 8mm;
+    border-left: 1px solid var(--gold);
+    font-style: italic;
+  }
+  .pull em { color: var(--gold); font-style: italic; }
+  .pull-attr {
+    font-family: var(--sans);
+    font-size: 9.5px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin-top: 3mm;
+    font-style: normal;
+  }
+
+  /* ----- LIST ----- */
+  ul.editorial { list-style: none; padding: 0; }
+  ul.editorial li {
+    font-family: var(--serif);
+    font-size: 12px;
+    line-height: 1.55;
+    color: var(--ink-2);
+    padding: 2.5mm 0 2.5mm 8mm;
+    position: relative;
+    border-bottom: 0.5px solid var(--rule-soft);
+  }
+  ul.editorial li:last-child { border-bottom: none; }
+  ul.editorial li::before {
+    content: '';
+    position: absolute; left: 0; top: 5mm;
+    width: 4mm; height: 0.5px; background: var(--gold);
+  }
+  ul.editorial li strong { color: var(--navy); font-weight: 600; }
+  ul.tight li { padding: 1.5mm 0 1.5mm 8mm; font-size: 11.5px; }
+  ul.tight li::before { top: 4mm; }
+
+  /* ----- CARD ----- */
+  .card-ed {
+    border: 0.5px solid var(--rule);
+    background: rgba(255,255,255,0.4);
+    padding: 8mm;
+    display: flex;
+    flex-direction: column;
+  }
+  .card-ed .card-eyebrow {
+    font-family: var(--sans);
+    font-size: 9.5px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    padding-bottom: 3mm;
+    border-bottom: 0.5px solid var(--gold);
+    margin-bottom: 4mm;
+  }
+  .card-ed.dark {
+    background: var(--navy);
+    border-color: var(--navy);
+    color: rgba(255,255,255,0.85);
+  }
+  .card-ed.dark .card-eyebrow { color: var(--gold-2); border-bottom-color: var(--gold-2); }
+  .card-ed.dark p,
+  .card-ed.dark .body-copy { color: rgba(255,255,255,0.82); }
+  .card-ed.dark h3 { color: #fff; }
+  .card-ed.dark ul.editorial li { color: rgba(255,255,255,0.78); border-color: rgba(255,255,255,0.1); }
+  .card-ed.dark ul.editorial li strong { color: var(--gold-2); }
+  .card-ed.dark ul.editorial li::before { background: var(--gold-2); }
+
+  /* ----- GRID ----- */
+  .grid { display: grid; gap: 6mm; }
+  .grid-2 { grid-template-columns: 1fr 1fr; }
+  .grid-3 { grid-template-columns: repeat(3, 1fr); }
+  .grid-4 { grid-template-columns: repeat(4, 1fr); }
+  .grid-2-narrow { grid-template-columns: 2fr 3fr; }
+  .grid-2-wide { grid-template-columns: 3fr 2fr; }
+  .col-gap-lg { gap: 10mm; }
+
+  /* ----- COLUMNS (editorial body) ----- */
+  .twocol {
+    column-count: 2;
+    column-gap: 8mm;
+    column-rule: 0.5px solid var(--rule-soft);
+  }
+  .twocol p { font-size: 12px; line-height: 1.55; }
+  .twocol p + p { margin-top: 2mm; }
+
+  /* ----- BAR CHART ----- */
+  .bar-row {
+    display: grid;
+    grid-template-columns: 44mm 1fr 18mm;
+    align-items: center;
+    gap: 4mm;
+    padding: 2mm 0;
+    border-bottom: 0.5px solid var(--rule-soft);
+  }
+  .bar-row:last-child { border-bottom: none; }
+  .bar-lbl {
+    font-family: var(--sans); font-size: 10.5px; color: var(--ink-2);
+    font-weight: 500;
+  }
+  .bar-track {
+    height: 12px;
+    background: var(--paper-2);
+    position: relative;
+  }
+  .bar-fill {
+    height: 100%;
+    background: var(--navy);
+    position: relative;
+  }
+  .bar-fill.gold { background: var(--gold); }
+  .bar-fill.muted { background: var(--ink-3); }
+  .bar-val {
+    font-family: var(--sans);
+    font-size: 10.5px;
+    font-weight: 600;
+    color: var(--navy);
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+  }
+  .bar-val.gold { color: var(--gold); }
+
+  /* ============================================================
+     COVER PAGE
+     ============================================================ */
+  .cover {
+    background: var(--paper);
+    position: relative;
+    overflow: hidden;
+    padding: 22mm;
+    display: flex;
+    flex-direction: column;
+  }
+  .cover-mark {
+    display: flex; justify-content: space-between; align-items: center;
+    border-top: 0.5px solid var(--ink);
+    border-bottom: 0.5px solid var(--ink);
+    padding: 4mm 0;
+  }
+  .cover-brand {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 22px;
+    color: var(--ink);
+    letter-spacing: 0.04em;
+  }
+  .cover-brand span { color: var(--gold); font-style: italic; }
+  .cover-rt {
+    font-family: var(--sans);
+    font-size: 9.5px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    text-align: right;
+  }
+  .cover-rt strong { color: var(--ink); display: block; font-weight: 600; margin-top: 2mm; }
+
+  .cover-body { flex: 1; display: flex; flex-direction: column; justify-content: center; position: relative; }
+  .cover-eyebrow {
+    font-family: var(--sans);
+    font-size: 10.5px;
+    letter-spacing: 0.34em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 10mm;
+  }
+  .cover-title {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: 76px;
+    line-height: 0.92;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    margin-bottom: 10mm;
+  }
+  .cover-title em { font-style: italic; color: var(--gold); font-weight: 400; }
+  .cover-title .navy { color: var(--navy); }
+  .cover-sub {
+    font-family: var(--serif);
+    font-size: 15px;
+    line-height: 1.5;
+    color: var(--ink-2);
+    font-style: italic;
+    max-width: 130mm;
+    margin-bottom: 12mm;
+  }
+  .cover-meta-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-top: 0.5px solid var(--ink);
+    border-bottom: 0.5px solid var(--ink);
+  }
+  .cover-meta-cell {
+    padding: 5mm 0;
+    border-right: 0.5px solid var(--rule);
+    padding-right: 5mm;
+  }
+  .cover-meta-cell:last-child { border-right: none; padding-right: 0; padding-left: 5mm; }
+  .cover-meta-cell:nth-child(2) { padding-left: 5mm; }
+  .cover-meta-lbl {
+    font-family: var(--sans);
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    font-weight: 600;
+    margin-bottom: 2mm;
+  }
+  .cover-meta-val {
+    font-family: var(--serif);
+    font-size: 22px;
+    color: var(--navy);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    font-variant-numeric: tabular-nums;
+  }
+  .cover-meta-val em { color: var(--gold); font-style: italic; }
+
+  .cover-foot {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    margin-top: 10mm;
+    padding-top: 4mm;
+    border-top: 0.5px solid var(--ink);
+  }
+  .cover-foot .cf-lt {
+    font-family: var(--sans);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+  .cover-foot .cf-lt strong { color: var(--ink); display: block; font-weight: 600; margin-bottom: 1mm; }
+  .cover-foot .cf-rt {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 13px;
+    color: var(--ink-3);
+    text-align: right;
+  }
+
+  /* Decorative arc */
+  .cover-arc {
+    position: absolute;
+    right: -120mm; bottom: -120mm;
+    width: 280mm; height: 280mm;
+    border-radius: 50%;
+    border: 0.5px solid var(--gold);
+    opacity: 0.45;
+    pointer-events: none;
+  }
+  .cover-arc-2 {
+    position: absolute;
+    right: -80mm; bottom: -80mm;
+    width: 200mm; height: 200mm;
+    border-radius: 50%;
+    border: 0.5px solid var(--rule);
+    pointer-events: none;
+  }
+  .cover-glyph {
+    position: absolute; right: 0; top: 40mm;
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: 300px;
+    line-height: 1;
+    color: var(--gold);
+    opacity: 0.06;
+    pointer-events: none;
+    letter-spacing: -0.05em;
+  }
+
+  /* ============================================================
+     SPECIFIC PAGE BLOCKS
+     ============================================================ */
+
+  /* Confidentiality */
+  .conf-stamp {
+    border: 0.5px solid var(--ink);
+    padding: 6mm 8mm;
+    text-align: center;
+    margin: 30mm auto;
+    max-width: 140mm;
+  }
+  .conf-stamp .stamp-eyebrow {
+    font-family: var(--sans);
+    font-size: 10px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 3mm;
+  }
+  .conf-stamp .stamp-title {
+    font-family: var(--serif);
+    font-size: 28px;
+    color: var(--navy);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    margin-bottom: 3mm;
+  }
+  .conf-stamp .stamp-sub {
+    font-family: var(--serif);
+    font-size: 12px;
+    color: var(--ink-2);
+    font-style: italic;
+  }
+  .conf-body p {
+    font-size: 11.5px;
+    color: var(--ink-2);
+    line-height: 1.6;
+    margin-bottom: 3mm;
+  }
+  .conf-body h4 {
+    font-family: var(--sans);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--navy);
+    font-weight: 600;
+    margin: 8mm 0 3mm;
+    padding-bottom: 2mm;
+    border-bottom: 0.5px solid var(--rule);
+  }
+
+  /* Contents */
+  .toc-list { list-style: none; padding: 0; margin-top: 6mm; }
+  .toc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 10mm;
+    margin-top: 6mm;
+  }
+  .toc-row {
+    display: grid;
+    grid-template-columns: 10mm 1fr 10mm;
+    align-items: baseline;
+    padding: 2.5mm 0;
+    border-bottom: 0.5px solid var(--rule-soft);
+    gap: 3mm;
+  }
+  .toc-row.section-head { border-bottom: 0.5px solid var(--ink); padding: 4mm 0 2mm; border-top: 0.5px solid var(--ink); margin-top: 4mm; }
+  .toc-row.section-head:first-child { margin-top: 0; }
+  .toc-row.section-head .toc-num,
+  .toc-row.section-head .toc-pg { color: var(--ink); }
+  .toc-row.section-head .toc-title {
+    font-family: var(--sans);
+    font-size: 9.5px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+  }
+  .toc-num {
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--gold);
+    letter-spacing: 0.06em;
+    font-variant-numeric: tabular-nums;
+  }
+  .toc-title {
+    font-family: var(--serif);
+    font-size: 12.5px;
+    color: var(--ink);
+    font-weight: 400;
+    cursor: pointer;
+    transition: color 0.15s;
+    line-height: 1.25;
+  }
+  .toc-title:hover { color: var(--gold); }
+  .toc-title .sub {
+    display: block;
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 10px;
+    color: var(--ink-3);
+    margin-top: 0.5mm;
+    line-height: 1.3;
+  }
+  .toc-pg {
+    font-family: var(--sans);
+    font-size: 10px;
+    color: var(--ink);
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Stage panels */
+  .stage-panel {
+    border: 0.5px solid var(--rule);
+    padding: 6mm;
+    background: rgba(255,255,255,0.3);
+    display: flex; flex-direction: column;
+    position: relative;
+  }
+  .stage-panel.proven { border-color: var(--green); }
+  .stage-panel.proven::before { background: var(--green); }
+  .stage-panel.prerev { border-color: var(--amber); }
+  .stage-panel.prerev::before { background: var(--amber); }
+  .stage-panel::before {
+    content: ''; position: absolute; left: 0; top: 0; height: 100%; width: 2px;
+    background: var(--navy);
+  }
+  .stage-panel .sp-eyebrow {
+    font-family: var(--sans);
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--ink-3);
+    margin-bottom: 3mm;
+  }
+  .stage-panel .sp-title {
+    font-family: var(--serif);
+    font-size: 22px;
+    line-height: 1.05;
+    color: var(--navy);
+    margin-bottom: 3mm;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+  .stage-panel.proven .sp-title { color: var(--green); }
+  .stage-panel.prerev .sp-title { color: var(--amber); }
+  .stage-panel .sp-body {
+    font-family: var(--serif);
+    font-size: 11.5px;
+    line-height: 1.55;
+    color: var(--ink-2);
+    flex: 1;
+  }
+
+  /* Quote box */
+  .quote-box {
+    background: var(--navy);
+    color: #fff;
+    padding: 10mm 12mm;
+    text-align: center;
+    position: relative;
+  }
+  .quote-box::before, .quote-box::after {
+    content: ''; position: absolute; left: 8mm; right: 8mm; height: 0.5px;
+    background: var(--gold-2);
+  }
+  .quote-box::before { top: 4mm; }
+  .quote-box::after { bottom: 4mm; }
+  .quote-box .qt {
+    font-family: var(--serif);
+    font-size: 24px;
+    line-height: 1.3;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    color: #fff;
+    font-style: italic;
+  }
+  .quote-box .qt em { color: var(--gold-2); font-style: italic; }
+  .quote-box .qt-attr {
+    font-family: var(--sans);
+    font-size: 9.5px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    margin-top: 5mm;
+  }
+
+  /* Letter from CEO */
+  .letter { padding: 6mm 0; }
+  .letter .salute {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 14px;
+    color: var(--ink-2);
+    margin-bottom: 5mm;
+  }
+  .letter p {
+    font-family: var(--serif);
+    font-size: 12.5px;
+    line-height: 1.65;
+    color: var(--ink-2);
+    margin-bottom: 4mm;
+    text-wrap: pretty;
+  }
+  .letter p strong { color: var(--navy); font-weight: 600; }
+  .letter p em { color: var(--gold); font-style: italic; }
+  .signature {
+    margin-top: 8mm;
+    border-top: 0.5px solid var(--rule);
+    padding-top: 4mm;
+  }
+  .sig-script {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 26px;
+    color: var(--navy);
+    margin-bottom: 2mm;
+    letter-spacing: -0.01em;
+  }
+  .sig-line {
+    font-family: var(--sans);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+  .sig-line strong { color: var(--ink); }
+
+  /* Funnel for validation page */
+  .funnel-row {
+    display: grid;
+    grid-template-columns: 52mm 1fr 22mm;
+    align-items: center;
+    padding: 2.5mm 0;
+    border-bottom: 0.5px solid var(--rule-soft);
+    gap: 4mm;
+  }
+  .funnel-row:last-of-type { border-bottom: 0.5px solid var(--ink); }
+  .funnel-lbl {
+    font-family: var(--serif); font-size: 12px; color: var(--ink); font-weight: 500;
+  }
+  .funnel-lbl .sub {
+    display: block;
+    font-family: var(--sans); font-size: 9.5px;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--ink-3); margin-top: 0.5mm; font-weight: 500;
+  }
+  .funnel-track {
+    height: 18px;
+    background: var(--paper-2);
+    position: relative;
+    border: 0.5px solid var(--rule-soft);
+  }
+  .funnel-fill {
+    height: 100%;
+    background: var(--navy);
+    display: flex; align-items: center;
+    padding-left: 3mm;
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 600;
+    color: #fff;
+    font-variant-numeric: tabular-nums;
+  }
+  .funnel-pct {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--navy);
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Segment grid for enterprise targets */
+  .seg-card {
+    border: 0.5px solid var(--rule);
+    padding: 5mm;
+    background: rgba(255,255,255,0.3);
+    position: relative;
+  }
+  .seg-card.featured { background: var(--navy); border-color: var(--navy); }
+  .seg-card.featured .seg-name { color: #fff; }
+  .seg-card.featured .seg-tam { color: var(--gold-2); }
+  .seg-card.featured .seg-desc,
+  .seg-card.featured .seg-meta { color: rgba(255,255,255,0.78); }
+  .seg-card.featured .seg-meta strong { color: var(--gold-2); }
+  .seg-card.featured .seg-eyebrow { color: var(--gold-2); }
+  .seg-card .seg-eyebrow {
+    font-family: var(--sans);
+    font-size: 8.5px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 2mm;
+  }
+  .seg-card .seg-name {
+    font-family: var(--serif);
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--navy);
+    letter-spacing: -0.005em;
+    line-height: 1.15;
+    margin-bottom: 2mm;
+  }
+  .seg-card .seg-tam {
+    font-family: var(--serif);
+    font-size: 22px;
+    color: var(--gold);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+    margin-bottom: 3mm;
+  }
+  .seg-card .seg-tam .tam-sub {
+    display: block;
+    font-family: var(--sans);
+    font-size: 8.5px;
+    color: var(--ink-3);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-top: 1mm;
+  }
+  .seg-card.featured .seg-tam .tam-sub { color: rgba(255,255,255,0.55); }
+  .seg-card .seg-desc {
+    font-family: var(--serif);
+    font-size: 11px;
+    line-height: 1.55;
+    color: var(--ink-2);
+    margin-bottom: 3mm;
+  }
+  .seg-card .seg-meta {
+    font-family: var(--sans);
+    font-size: 9.5px;
+    color: var(--ink-3);
+    line-height: 1.5;
+    padding-top: 2mm;
+    border-top: 0.5px solid var(--rule-soft);
+  }
+  .seg-card.featured .seg-meta { border-top-color: rgba(255,255,255,0.15); }
+  .seg-card .seg-meta strong { color: var(--navy); font-weight: 600; }
+
+  /* Use of funds donut substitute */
+  .funds-bar {
+    display: flex;
+    min-height: 36mm;
+    border: 0.5px solid var(--ink);
+    overflow: hidden;
+  }
+  .funds-segment {
+    display: flex; flex-direction: column;
+    justify-content: space-between;
+    padding: 4mm;
+    border-right: 0.5px solid var(--rule-soft);
+    color: #fff;
+    gap: 3mm;
+  }
+  .funds-segment:last-child { border-right: none; }
+  .funds-segment.s1 { background: var(--navy); flex: 60; }
+  .funds-segment.s2 { background: var(--gold); flex: 25; }
+  .funds-segment.s3 { background: var(--ink-2); flex: 15; }
+  .funds-segment .fs-pct {
+    font-family: var(--serif);
+    font-size: 28px;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: -0.01em;
+    font-variant-numeric: tabular-nums;
+  }
+  .funds-segment .fs-lbl {
+    font-family: var(--sans);
+    font-size: 9.5px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  /* Forecast chart */
+  .forecast-chart {
+    height: 70mm;
+    position: relative;
+    border-bottom: 0.5px solid var(--ink);
+    border-left: 0.5px solid var(--rule);
+    padding: 4mm 0;
+  }
+  .forecast-grid-line {
+    position: absolute; left: 0; right: 0; height: 0.5px;
+    background: var(--rule-soft);
+  }
+  .forecast-grid-lbl {
+    position: absolute; left: -18mm;
+    font-family: var(--sans);
+    font-size: 9px;
+    color: var(--ink-3);
+    letter-spacing: 0.08em;
+    font-variant-numeric: tabular-nums;
+    transform: translateY(-50%);
+    text-align: right;
+    width: 16mm;
+  }
+  .forecast-bars {
+    display: flex; height: 100%; align-items: flex-end;
+    padding: 0 4mm;
+    gap: 8mm;
+    position: relative; z-index: 2;
+  }
+  .forecast-bar-group {
+    flex: 1;
+    display: flex; align-items: flex-end; gap: 3mm;
+    height: 100%;
+  }
+  .forecast-bar {
+    flex: 1; background: var(--navy);
+    position: relative;
+  }
+  .forecast-bar.alt { background: var(--gold); }
+  .forecast-bar-label {
+    position: absolute; top: -6mm; left: 0; right: 0;
+    text-align: center;
+    font-family: var(--sans);
+    font-size: 9.5px;
+    font-weight: 600;
+    color: var(--navy);
+    font-variant-numeric: tabular-nums;
+  }
+  .forecast-bar.alt .forecast-bar-label { color: var(--gold); }
+  .forecast-x-labels {
+    display: flex; padding: 3mm 4mm 0;
+    gap: 8mm;
+  }
+  .forecast-x-labels > div {
+    flex: 1; text-align: center;
+    font-family: var(--sans);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    font-weight: 600;
+  }
+
+  /* Team grid */
+  .team-card {
+    display: grid;
+    grid-template-columns: 30mm 1fr;
+    gap: 6mm;
+    padding: 6mm 0;
+    border-bottom: 0.5px solid var(--rule);
+  }
+  .team-card:last-child { border-bottom: none; }
+  .team-photo {
+    width: 30mm; height: 30mm;
+    border: 0.5px solid var(--ink);
+    background:
+      radial-gradient(circle at 50% 35%, #d8d0bb 0%, #b8ad94 70%, #9e9279 100%);
+    position: relative;
+    overflow: hidden;
+    display: flex; align-items: flex-end; justify-content: center;
+  }
+  .team-photo::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 70%; height: 50%;
+    background: radial-gradient(ellipse at 50% 100%, #a09277 0%, transparent 70%);
+  }
+  .team-photo .initials {
+    font-family: var(--serif);
+    font-size: 32px;
+    color: rgba(20,38,74,0.4);
+    font-style: italic;
+    font-weight: 500;
+    z-index: 2;
+    position: absolute;
+    top: 50%; left: 50%; transform: translate(-50%, -50%);
+  }
+  .team-name {
+    font-family: var(--serif);
+    font-size: 20px;
+    color: var(--navy);
+    font-weight: 500;
+    letter-spacing: -0.005em;
+    margin-bottom: 1mm;
+  }
+  .team-role {
+    font-family: var(--sans);
+    font-size: 10px;
+    color: var(--gold);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 3mm;
+  }
+  .team-bio {
+    font-family: var(--serif);
+    font-size: 11.5px;
+    line-height: 1.55;
+    color: var(--ink-2);
+  }
+  .team-bio strong { color: var(--navy); font-weight: 600; }
+
+  /* Risk grid */
+  .risk-card {
+    border-top: 0.5px solid var(--ink);
+    padding: 4mm 0 5mm;
+  }
+  .risk-card .risk-eyebrow {
+    font-family: var(--sans);
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--red);
+    font-weight: 600;
+    margin-bottom: 2mm;
+  }
+  .risk-card .risk-name {
+    font-family: var(--serif);
+    font-size: 15px;
+    color: var(--navy);
+    font-weight: 500;
+    margin-bottom: 2mm;
+  }
+  .risk-card .risk-body {
+    font-family: var(--serif);
+    font-size: 11px;
+    line-height: 1.55;
+    color: var(--ink-2);
+    margin-bottom: 3mm;
+  }
+  .risk-card .risk-mitigation {
+    font-family: var(--sans);
+    font-size: 9.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--green);
+    font-weight: 600;
+    padding-top: 2mm;
+    border-top: 0.5px solid var(--rule-soft);
+  }
+  .risk-card .risk-mitigation .mit-body {
+    display: block;
+    font-family: var(--serif);
+    font-size: 11px;
+    color: var(--ink-2);
+    text-transform: none;
+    letter-spacing: 0;
+    font-weight: 400;
+    margin-top: 1.5mm;
+    line-height: 1.55;
+  }
+
+  /* FAQ */
+  .faq-item {
+    border-bottom: 0.5px solid var(--rule);
+    padding: 5mm 0;
+  }
+  .faq-item:first-child { border-top: 0.5px solid var(--ink); padding-top: 5mm; }
+  .faq-q {
+    font-family: var(--serif);
+    font-size: 14px;
+    color: var(--navy);
+    font-weight: 500;
+    margin-bottom: 2mm;
+    letter-spacing: -0.005em;
+  }
+  .faq-q::before {
+    content: 'Q.';
+    font-family: var(--serif);
+    color: var(--gold);
+    margin-right: 6px;
+    font-style: italic;
+  }
+  .faq-a {
+    font-family: var(--serif);
+    font-size: 11.5px;
+    line-height: 1.55;
+    color: var(--ink-2);
+    padding-left: 8mm;
+    position: relative;
+  }
+  .faq-a::before {
+    content: 'A.';
+    position: absolute; left: 0;
+    font-family: var(--serif);
+    font-style: italic;
+    color: var(--gold);
+    font-size: 14px;
+  }
+  .faq-a strong { color: var(--navy); font-weight: 600; }
+
+  /* Closing page */
+  .close-page {
+    background: var(--navy);
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+  }
+  .close-page .running-head .wm,
+  .close-page .running-head .sec,
+  .close-page .running-foot,
+  .close-page .running-foot .pgnum { color: rgba(255,255,255,0.6); }
+  .close-page .running-rule,
+  .close-page .running-foot-rule { background: rgba(255,255,255,0.18); }
+  .close-arc-1 {
+    position: absolute; right: -100mm; top: -100mm;
+    width: 220mm; height: 220mm; border-radius: 50%;
+    border: 0.5px solid var(--gold-2); opacity: 0.4;
+  }
+  .close-arc-2 {
+    position: absolute; right: -60mm; top: -60mm;
+    width: 140mm; height: 140mm; border-radius: 50%;
+    border: 0.5px solid rgba(255,255,255,0.15);
+  }
+  .close-eyebrow {
+    font-family: var(--sans);
+    font-size: 10.5px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--gold-2);
+    font-weight: 600;
+    margin-bottom: 12mm;
+  }
+  .close-title {
+    font-family: var(--serif);
+    font-size: 56px;
+    line-height: 1.0;
+    letter-spacing: -0.022em;
+    color: #fff;
+    font-weight: 400;
+    margin-bottom: 10mm;
+    max-width: 150mm;
+  }
+  .close-title em { color: var(--gold-2); font-style: italic; }
+  .close-body {
+    font-family: var(--serif);
+    font-size: 14px;
+    line-height: 1.55;
+    color: rgba(255,255,255,0.75);
+    max-width: 140mm;
+    font-style: italic;
+    margin-bottom: 14mm;
+  }
+  .close-contact {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6mm;
+    padding: 5mm 0;
+    border-top: 0.5px solid rgba(255,255,255,0.25);
+    border-bottom: 0.5px solid rgba(255,255,255,0.25);
+  }
+  .close-contact-cell .ce-lbl {
+    font-family: var(--sans);
+    font-size: 9px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--gold-2);
+    font-weight: 600;
+    margin-bottom: 2mm;
+  }
+  .close-contact-cell .ce-val {
+    font-family: var(--serif);
+    font-size: 16px;
+    color: #fff;
+    font-weight: 500;
+    letter-spacing: -0.005em;
+  }
+  .close-contact-cell .ce-val.sm { font-size: 13px; }
+
+  /* ============================================================
+     FLOATING TOC NAV (screen only)
+     ============================================================ */
+  .toc-fab {
+    position: fixed;
+    right: 24px; top: 24px;
+    background: var(--paper);
+    color: var(--ink);
+    border: 0.5px solid var(--ink);
+    padding: 10px 18px;
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    cursor: pointer;
+    z-index: 100;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+    transition: background 0.15s, color 0.15s;
+  }
+  .toc-fab:hover { background: var(--ink); color: var(--paper); }
+  .toc-overlay {
+    position: fixed; inset: 0;
+    background: rgba(20,17,12,0.75);
+    backdrop-filter: blur(6px);
+    display: none; align-items: center; justify-content: center;
+    z-index: 200;
+  }
+  .toc-overlay.open { display: flex; }
+  .toc-overlay-inner {
+    background: var(--paper);
+    width: 90%; max-width: 580px;
+    max-height: 85vh;
+    overflow-y: auto;
+    padding: 30px 40px 36px;
+    box-shadow: var(--shadow);
+    position: relative;
+  }
+  .toc-overlay-inner h2 {
+    font-family: var(--serif);
+    font-size: 28px;
+    color: var(--navy);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    margin-bottom: 4px;
+  }
+  .toc-overlay-inner .toc-sub {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 12px;
+    color: var(--ink-3);
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+    border-bottom: 0.5px solid var(--ink);
+  }
+  .toc-overlay-inner .toc-link {
+    display: grid;
+    grid-template-columns: 28px 1fr 30px;
+    align-items: baseline;
+    padding: 8px 0;
+    border-bottom: 0.5px solid var(--rule-soft);
+    font-family: var(--serif);
+    font-size: 13px;
+    color: var(--ink);
+    cursor: pointer;
+    transition: color 0.12s;
+    gap: 8px;
+  }
+  .toc-overlay-inner .toc-link:hover { color: var(--gold); }
+  .toc-overlay-inner .toc-link .lnum {
+    font-family: var(--sans);
+    font-size: 10px;
+    color: var(--gold);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    font-variant-numeric: tabular-nums;
+  }
+  .toc-overlay-inner .toc-link .lpg {
+    font-family: var(--sans);
+    font-size: 10px;
+    color: var(--ink-3);
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+  }
+  .toc-overlay-inner .toc-link.is-section {
+    border-bottom: 0.5px solid var(--ink);
+    padding-top: 16px;
+  }
+  .toc-overlay-inner .toc-link.is-section .lname {
+    font-family: var(--sans);
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+  }
+  .toc-overlay-inner .toc-close {
+    position: absolute; top: 14px; right: 18px;
+    width: 28px; height: 28px;
+    background: none; border: 0.5px solid var(--ink);
+    cursor: pointer;
+    font-family: var(--sans); font-size: 14px;
+    color: var(--ink);
+  }
+
+  /* Print */
+  @media print {
+    body { background: #fff; padding: 0; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .book { gap: 0; transform: none !important; }
+    .page { box-shadow: none; page-break-after: always; break-after: page; break-inside: avoid; min-height: 297mm; }
+    .page:last-child { page-break-after: auto; break-after: auto; }
+    .toc-fab, .toc-overlay { display: none !important; }
+    @page { size: A4 portrait; margin: 0; }
+  }
+
+  /* Screen scaling for small viewports */
+  @media (max-width: 900px) {
+    body { padding: 24px 0 60px; }
+    .book { transform: scale(0.7); transform-origin: top center; }
+  }
+
+  /* Phone: collapse fixed A4 page height to content so there are no blank trailing pages */
+  @media (max-width: 640px) {
+    body { padding: 16px 0 48px; }
+    .book { transform: scale(0.42); transform-origin: top center; gap: 14px; }
+    .page {
+      min-height: 0;
+      box-shadow: 0 1px 0 rgba(0,0,0,0.05);
+    }
+    .toc-fab { font-size: 12px; padding: 8px 12px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOC FAB -->
+<button class="toc-fab" id="tocFab">Contents</button>
+
+<!-- TOC OVERLAY -->
+<div class="toc-overlay" id="tocOverlay">
+  <div class="toc-overlay-inner">
+    <button class="toc-close" id="tocClose">×</button>
+    <h2>ADAMftd Investor Book</h2>
+    <div class="toc-sub">Seed Round 2026 · Strictly Confidential</div>
+    <div class="toc-link is-section"><span class="lnum">i</span><span class="lname">Front Matter</span><span class="lpg"></span></div>
+    <a class="toc-link" data-target="p-cover"><span class="lnum">i</span><span class="lname">Cover</span><span class="lpg">i</span></a>
+    <a class="toc-link" data-target="p-conf"><span class="lnum">ii</span><span class="lname">Confidentiality &amp; Disclaimer</span><span class="lpg">ii</span></a>
+    <a class="toc-link" data-target="p-contents"><span class="lnum">iii</span><span class="lname">Contents</span><span class="lpg">iii</span></a>
+    <div class="toc-link is-section"><span class="lnum">01</span><span class="lname">The Story</span><span class="lpg"></span></div>
+    <a class="toc-link" data-target="p-exec"><span class="lnum">01</span><span class="lname">Executive Summary</span><span class="lpg">1</span></a>
+    <a class="toc-link" data-target="p-letter"><span class="lnum">02</span><span class="lname">Letter from the Chairman</span><span class="lpg">2</span></a>
+    <a class="toc-link" data-target="p-stage"><span class="lnum">03</span><span class="lname">Where We Sit Today</span><span class="lpg">3</span></a>
+    <a class="toc-link" data-target="p-problem"><span class="lnum">04</span><span class="lname">The Problem</span><span class="lpg">4</span></a>
+    <a class="toc-link" data-target="p-solution"><span class="lnum">05</span><span class="lname">The Solution</span><span class="lpg">5</span></a>
+    <a class="toc-link" data-target="p-validation"><span class="lnum">06</span><span class="lname">Validation &amp; Traction</span><span class="lpg">6</span></a>
+    <a class="toc-link" data-target="p-market"><span class="lnum">07</span><span class="lname">Market Opportunity</span><span class="lpg">7</span></a>
+    <a class="toc-link" data-target="p-revenue"><span class="lnum">08</span><span class="lname">Revenue Model</span><span class="lpg">8</span></a>
+    <a class="toc-link" data-target="p-segments"><span class="lnum">09</span><span class="lname">Enterprise Targets</span><span class="lpg">9</span></a>
+    <div class="toc-link is-section"><span class="lnum">02</span><span class="lname">The Numbers</span><span class="lpg"></span></div>
+    <a class="toc-link" data-target="p-funds"><span class="lnum">10</span><span class="lname">Use of Funds</span><span class="lpg">10</span></a>
+    <a class="toc-link" data-target="p-forecast"><span class="lnum">11</span><span class="lname">Three‑Year Revenue Scenario</span><span class="lpg">11</span></a>
+    <a class="toc-link" data-target="p-unit-econ"><span class="lnum">12</span><span class="lname">Unit Economics &amp; P&amp;L</span><span class="lpg">12</span></a>
+    <a class="toc-link" data-target="p-risks"><span class="lnum">13</span><span class="lname">Risk Factors</span><span class="lpg">13</span></a>
+    <a class="toc-link" data-target="p-terms"><span class="lnum">14</span><span class="lname">The Investment</span><span class="lpg">14</span></a>
+    <a class="toc-link" data-target="p-faq"><span class="lnum">15</span><span class="lname">FAQ for Investors</span><span class="lpg">15</span></a>
+    <a class="toc-link" data-target="p-close"><span class="lnum">16</span><span class="lname">Next Steps</span><span class="lpg">16</span></a>
+  </div>
+</div>
+
+<div class="book" id="book">
+
+<!-- ============================================================
+     PAGE i · COVER
+     ============================================================ -->
+<section class="page cover" id="p-cover" data-screen-label="Cover">
+  <div class="cover-arc"></div>
+  <div class="cover-arc-2"></div>
+  <div class="cover-glyph">A</div>
+
+  <div class="cover-mark">
+    <div class="cover-brand">ADAM<span>ftd</span></div>
+    <div class="cover-rt">
+      A platform of<strong>Int'l Centre for Trade Transparency Ltd · UK</strong>
+    </div>
+  </div>
+
+  <div class="cover-body">
+    <div class="cover-eyebrow">Seed Financing Round · 2026 · Investor Book</div>
+    <h1 class="cover-title">
+      MVP Live.<br>
+      <em>Two Months.</em><br>
+      <span class="navy">967 Users Found Us.</span>
+    </h1>
+    <p class="cover-sub">
+      The world's first grounded AI for international trade. The Minimum Viable Product went live at the end of March 2026. In two months, nine hundred and sixty‑seven users in thirty‑plus countries found it on their own. This book sets out why now is the moment to engineer the revenue layer.
+    </p>
+
+    <div class="cover-meta-grid">
+      <div class="cover-meta-cell">
+        <div class="cover-meta-lbl">The Raise</div>
+        <div class="cover-meta-val">$2.5M · $4M</div>
+      </div>
+      <div class="cover-meta-cell">
+        <div class="cover-meta-lbl">Pre‑Money</div>
+        <div class="cover-meta-val">$20M <em>anchor</em></div>
+      </div>
+      <div class="cover-meta-cell">
+        <div class="cover-meta-lbl">Instrument</div>
+        <div class="cover-meta-val">SAFE</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PAGE ii · CONFIDENTIALITY
+     ============================================================ -->
+<section class="page" id="p-conf" data-screen-label="Confidentiality">
+  <div class="running-head">
+    <div class="wm">ADAM<span>ftd</span></div>
+    <div class="sec">Seed Round 2026 · Investor Book</div>
+  </div>
+  <div class="running-rule"></div>
+
+  <div class="pad">
+    <div class="conf-stamp">
+      <div class="stamp-eyebrow">Notice</div>
+      <div class="stamp-title">Strictly Confidential</div>
+      <div class="stamp-sub">Not for distribution. Intended solely for the addressed recipient.</div>
+    </div>
+
+    <div class="conf-body" style="max-width:160mm;margin:0 auto">
+      <p>This document has been prepared by <strong>International Centre for Trade Transparency Ltd</strong>, a company incorporated in the United Kingdom (the "Company"), operator of the <strong>ADAMftd</strong> platform, for the sole purpose of providing prospective investors with information about a proposed seed financing round. The investment described herein is in the share capital of International Centre for Trade Transparency Ltd. By accepting this Investor Book the recipient agrees to keep its contents confidential and not to reproduce, distribute, or otherwise disclose any part of it without the prior written consent of the Company.</p>
+
+      <h4>No offer</h4>
+      <p>This document does not constitute an offer to sell, or a solicitation of an offer to buy, any securities. Any such offer or solicitation will be made only by means of a definitive offering document and the subscription agreements executed in connection with it. Nothing herein should be construed as legal, tax, accounting, regulatory, or investment advice.</p>
+
+      <h4>Forward‑looking statements</h4>
+      <p>Statements in this book that are not historical facts are forward‑looking statements based on current expectations, estimates, and assumptions. They involve known and unknown risks, uncertainties, and other factors that may cause actual results to differ materially. Market sizes, segment targets, and revenue scenarios are illustrative and reflect management's good‑faith view of the opportunity, not contractual commitments.</p>
+
+      <h4>Data sources</h4>
+      <p>Operating metrics (users, login rate, query rate, credit consumption) reflect live platform telemetry as of 29 May 2026. Third‑party market data is drawn from publicly available sources including WTO, Berne Union, NCBFAA, IBISWorld, and Allied Market Research; figures are management estimates and have not been independently verified.</p>
+
+      <h4>No reliance</h4>
+      <p>No representation or warranty, express or implied, is made as to the accuracy, completeness, or fairness of the information contained in this book. Recipients should conduct their own independent investigation and analysis. The Company expressly disclaims any liability arising from reliance on this document.</p>
+    </div>
+  </div>
+
+  <div class="running-foot-rule"></div>
+  <div class="running-foot">
+    <div>International Centre for Trade Transparency Ltd · United Kingdom</div>
+    <div class="pgnum">ii</div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PAGE iii · CONTENTS
+     ============================================================ -->
+<section class="page" id="p-contents" data-screen-label="Contents">
+  <div class="running-head">
+    <div class="wm">ADAM<span>ftd</span></div>
+    <div class="sec">Seed Round 2026 · Investor Book</div>
+  </div>
+  <div class="running-rule"></div>
+
+  <div class="pad">
+    <div class="eyebrow eyebrow-navy">Contents</div>
+    <h2 class="section" style="margin-top:3mm">The Investor Book</h2>
+    <div class="section-deck">An ordered walk through stage, market, product, traction, terms, and the path from a validated platform to a funded commercial engine.</div>
+
+    <div class="toc-grid">
+      <div>
+        <div class="toc-row section-head">
+          <div class="toc-num">I.</div>
+          <div class="toc-title">Front Matter</div>
+          <div class="toc-pg"></div>
+        </div>
+        <div class="toc-row"><div class="toc-num">01</div><div class="toc-title" onclick="jumpTo('p-cover')">Cover<span class="sub">Seed Financing Round, 2026.</span></div><div class="toc-pg">i</div></div>
+        <div class="toc-row"><div class="toc-num">02</div><div class="toc-title" onclick="jumpTo('p-conf')">Confidentiality &amp; Disclaimer<span class="sub">Use and forward‑looking statements.</span></div><div class="toc-pg">ii</div></div>
+
+        <div class="toc-row section-head">
+          <div class="toc-num">II.</div>
+          <div class="toc-title">The Story</div>
+          <div class="toc-pg"></div>
+        </div>
+        <div class="toc-row"><div class="toc-num">01</div><div class="toc-title" onclick="jumpTo('p-exec')">Executive Summary<span class="sub">The thesis in one page.</span></div><div class="toc-pg">1</div></div>
+        <div class="toc-row"><div class="toc-num">02</div><div class="toc-title" onclick="jumpTo('p-letter')">Letter from the Chairman<span class="sub">Why we are raising, and why now.</span></div><div class="toc-pg">2</div></div>
+        <div class="toc-row"><div class="toc-num">03</div><div class="toc-title" onclick="jumpTo('p-stage')">Where We Sit Today<span class="sub">A precise stage matters.</span></div><div class="toc-pg">3</div></div>
+        <div class="toc-row"><div class="toc-num">04</div><div class="toc-title" onclick="jumpTo('p-problem')">The Problem<span class="sub">A $25T market on broken plumbing.</span></div><div class="toc-pg">4</div></div>
+        <div class="toc-row"><div class="toc-num">05</div><div class="toc-title" onclick="jumpTo('p-solution')">The Solution<span class="sub">Grounded AI, five layers, one workspace.</span></div><div class="toc-pg">5</div></div>
+      </div>
+      <div>
+        <div class="toc-row section-head">
+          <div class="toc-num">II.</div>
+          <div class="toc-title">The Story · continued</div>
+          <div class="toc-pg"></div>
+        </div>
+        <div class="toc-row"><div class="toc-num">06</div><div class="toc-title" onclick="jumpTo('p-validation')">Validation &amp; Traction<span class="sub">967 users. No marketing budget.</span></div><div class="toc-pg">6</div></div>
+        <div class="toc-row"><div class="toc-num">07</div><div class="toc-title" onclick="jumpTo('p-market')">Market Opportunity<span class="sub">Three forces converging now.</span></div><div class="toc-pg">7</div></div>
+        <div class="toc-row"><div class="toc-num">08</div><div class="toc-title" onclick="jumpTo('p-revenue')">Revenue Model<span class="sub">Credits, SaaS, white‑label, API.</span></div><div class="toc-pg">8</div></div>
+        <div class="toc-row"><div class="toc-num">09</div><div class="toc-title" onclick="jumpTo('p-segments')">Enterprise Targets<span class="sub">Eight segments. Clear sizing.</span></div><div class="toc-pg">9</div></div>
+
+        <div class="toc-row section-head">
+          <div class="toc-num">III.</div>
+          <div class="toc-title">The Numbers &amp; The Ask</div>
+          <div class="toc-pg"></div>
+        </div>
+        <div class="toc-row"><div class="toc-num">10</div><div class="toc-title" onclick="jumpTo('p-funds')">Use of Funds<span class="sub">85% to growth and product.</span></div><div class="toc-pg">10</div></div>
+        <div class="toc-row"><div class="toc-num">11</div><div class="toc-title" onclick="jumpTo('p-forecast')">Three‑Year Revenue Scenario<span class="sub">MRR build and ARR = MRR × 12.</span></div><div class="toc-pg">11</div></div>
+        <div class="toc-row"><div class="toc-num">12</div><div class="toc-title" onclick="jumpTo('p-unit-econ')">Unit Economics &amp; P&amp;L<span class="sub">EBITDA on confirmed unit economics.</span></div><div class="toc-pg">12</div></div>
+        <div class="toc-row"><div class="toc-num">13</div><div class="toc-title" onclick="jumpTo('p-risks')">Risk Factors<span class="sub">What can go wrong · and what we do.</span></div><div class="toc-pg">13</div></div>
+        <div class="toc-row"><div class="toc-num">14</div><div class="toc-title" onclick="jumpTo('p-terms')">The Investment<span class="sub">Terms, equity, Series A path.</span></div><div class="toc-pg">14</div></div>
+        <div class="toc-row"><div class="toc-num">15</div><div class="toc-title" onclick="jumpTo('p-faq')">FAQ for Investors<span class="sub">The questions we hear most.</span></div><div class="toc-pg">15</div></div>
+        <div class="toc-row"><div class="toc-num">16</div><div class="toc-title" onclick="jumpTo('p-close')">Next Steps<span class="sub">Closing window and contact.</span></div><div class="toc-pg">16</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="running-foot-rule"></div>
+  <div class="running-foot">
+    <div>Contents</div>
+    <div class="pgnum">iii</div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PAGE 1 · EXECUTIVE SUMMARY
+     ============================================================ -->
+<section class="page" id="p-exec" data-screen-label="Executive Summary">
+  <div class="running-head">
+    <div class="wm">ADAM<span>ftd</span></div>
+    <div class="sec">01 · Executive Summary</div>
+  </div>
+  <div class="running-rule"></div>
+
+  <div class="pad">
+    <div class="eyebrow eyebrow-navy">Chapter One · The Thesis</div>
+    <h2 class="section" style="margin-top:3mm">The Investment, in One Page</h2>
+    <div class="section-deck">MVP live since end of March 2026. Two months. Nine hundred and sixty‑seven organic users in thirty‑plus countries. Seed capital is the bridge to a Series A at three to five times this valuation.</div>
+
+    <div class="grid grid-4" style="margin-bottom:8mm">
+      <div class="metric"><div class="num">967</div><div class="lbl">Users in 2 Months</div><div class="note">30+ countries since MVP live, end of March 2026.</div></div>
+      <div class="metric"><div class="num">7B+</div><div class="lbl">Trade Records</div><div class="note">Verified, multi‑source, grounded.</div></div>
+      <div class="metric"><div class="num gold">$1M</div><div class="lbl">NVIDIA Credits</div><div class="note">12 months of compute, fully funded.</div></div>
+      <div class="metric"><div class="num">$20M</div><div class="lbl">Pre‑Money Anchor</div><div class="note">Clean, defensible, post‑MVP.</div></div>
+    </div>
+
+    <div class="grid grid-2" style="margin-bottom:8mm; gap: 8mm;">
+      <div>
+        <h3 class="smallcaps"><span class="num">01</span>The thesis</h3>
+        <p class="lede"><span class="drop">A</span>DAMftd has built the world's first grounded AI for international trade · a unified workspace covering five intelligence layers (trade data, sanctions, tariffs, tenders, vessels) at mid‑market pricing. <strong style="color:var(--navy);font-weight:600">The Minimum Viable Product went live at the end of March 2026.</strong> In two months, 967 users have arrived without a marketing budget. What is missing is not the product. It is the commercialisation engine that turns organic pull into paid revenue.</p>
+      </div>
+      <div>
+        <h3 class="smallcaps"><span class="num">02</span>The ask</h3>
+        <p>We are raising <strong style="color:var(--navy);font-weight:600">$2.5M to $4M</strong> on a SAFE at a $20M post‑money cap, with a $20M pre‑money anchor. Minimum check $250,000; lead investor preferred at $500k to $1M with pro‑rata rights.</p>
+        <p class="caption" style="margin-top:-2mm"><strong style="color:var(--navy)">SAFE</strong> · <em>Simple Agreement for Future Equity</em>. A standard early‑stage instrument from Y Combinator: investors wire cash now and convert into shares automatically at the next priced round (Series A), at the agreed valuation cap. No interest, no maturity, no negotiation of share terms today. Used in the majority of US seed rounds.</p>
+        <p>Eighty‑five percent of the raise goes to growth and product. The remaining fifteen percent covers a fixed cost base of $25,000 per month for the full Vietnam team, infrastructure, and tooling. AI compute is funded by NVIDIA.</p>
+        <p>Targeted close: <strong style="color:var(--navy);font-weight:600">60 to 90 days</strong> from first investor conversation.</p>
+      </div>
+    </div>
+
+      <div class="quote-box">
+        <div class="qt">The MVP is <em>live</em>. The revenue is <em>not yet engineered</em>. Seed capital is the bridge between proof‑of‑product and proof‑of‑revenue.</div>
+        <div class="qt-attr">The core thesis · ADAMftd Seed Round 2026</div>
+      </div>
+  </div>
+
+  <div class="running-foot-rule"></div>
+  <div class="running-foot">
+    <div>Executive Summary</div>
+    <div class="pgnum">1</div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PAGE 2 · LETTER FROM CHAIRMAN
+     ============================================================ -->
+<section class="page" id="p-letter" data-screen-label="Letter from the Chairman">
+  <div class="running-head">
+    <div class="wm">ADAM<span>ftd</span></div>
+    <div class="sec">02 · Letter from the Chairman of the Board</div>
+  </div>
+  <div class="running-rule"></div>
+
+  <div class="pad">
+    <div class="eyebrow eyebrow-navy">Chapter Two · Why Now</div>
+    <h2 class="section" style="margin-top:3mm">A Letter from the Chairman of the Board</h2>
+    <div class="section-deck">A note from the Hon. David Wells on the institutional context for this round, the team executing against it, and what the Board is asking of investors who join.</div>
+
+    <div class="letter">
+      <div class="salute">To prospective investors ·</div>
+
+      <p>It is unusual for the Chairman of a seed‑stage company to write the opening letter. I am writing this one because the case for ADAMftd does not rest on a single individual or a single product moment. It rests on a category that is being defined right now, in front of us, with material consequences for global trade · and on a team that has built the right thing, at the right time, at remarkable capital efficiency.</p>
+
+      <p>I have spent my career adjacent to international trade policy, trade finance, and the institutions that govern cross‑border commerce. The structural problem the company addresses is genuine: a twenty‑five trillion dollar market is being run on tooling designed for compliance teams at money‑centre banks, while the other ninety‑five percent of participants · exporters, importers, customs brokers, mid‑market traders, even export credit agencies serving SMEs · have nothing comparable available at a price they can afford.</p>
+
+      <p>What the team has built is, in plain terms, the first credible answer to that problem. <strong>The Minimum Viable Product went live at the end of March 2026.</strong> Thirteen integrated tools, eighty‑seven capabilities, seven billion verified records, a grounded AI architecture that cites its sources and refuses to invent. <strong>In the two months since the MVP launched, nine hundred and sixty‑seven users have signed up from thirty‑plus countries with no marketing spend.</strong> Sixty‑four of them consumed every starter credit available to them. That is not a vanity metric. It is a queue.</p>
+
+      <p>The reason the Board is bringing this round to market now, rather than after revenue, is straightforward governance. Three things are simultaneously true: the geopolitical moment · Hormuz, Suez, sanctions cascades, tariff escalation · is making trade intelligence existential rather than discretionary; the market expects AI as the native interface to complex data; and <em>NVIDIA has awarded the company one million dollars of compute credits</em>, funding twelve months of infrastructure at zero cash cost. The window to define this category is open. <strong>It will not stay open.</strong></p>
+
+      <p>The capital being raised · two and a half to four million dollars on a SAFE at a twenty million dollar cap · funds one thing: the deliberate construction of a commercial engine on top of a validated product. Eighty‑five percent goes to growth and product. The operating base is sized lean by design and audited at twenty‑five thousand dollars per month, all‑in. The Board is satisfied that this is the lowest valuation point at which this company will be available to investors.</p>
+
+      <p>I am asking you to read the rest of this book with the question a Board director would ask: <em>is the risk that remains worth the entry price.</em> I believe it is. The product risk has been retired. The institutional access is in place. What remains is execution on commercialisation · the risk seed capital is designed to retire · and a clear path to a Series A at three to five times this valuation.</p>
+
+      <p>I would welcome the conversation that follows.</p>
+
+      <div class="signature">
+        <div class="sig-script">David Wells</div>
+        <div class="sig-line"><strong>Hon. David Wells</strong> · Chairman of the Board · International Centre for Trade Transparency Ltd · United Kingdom</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="running-foot-rule"></div>
+  <div class="running-foot">
+    <div>Letter from the Chairman of the Board</div>
+    <div class="pgnum">2</div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PAGE 3 · WHERE WE SIT TODAY
+     ============================================================ -->
+<section class="page" id="p-stage" data-screen-label="Where We Sit Today">
+  <div class="running-head">
+    <div class="wm">ADAM<span>ftd</span></div>
+    <div class="sec">03 · The Stage</div>
+  </div>
+  <div class="running-rule"></div>
+
+  <div class="pad">
+    <div class="eyebrow eyebrow-navy">Chapter Three · Stage</div>
+    <h2 class="section" style="margin-top:3mm">Where ADAMftd Sits Today</h2>
+    <div class="section-deck">A precise stage matters to investors. Here is ours, with no varnish: the MVP went live at the end of March 2026, two months ago. It works. It has not yet been commercialised because the commercial engine has not been funded.</div>
+
+    <div class="grid grid-3" style="margin-bottom:10mm">
+      <div class="stage-panel">
+        <div class="sp-eyebrow">Stage</div>
+        <div class="sp-title">MVP Live</div>
+        <div class="sp-body">The Minimum Viable Product launched at the end of <strong>March 2026</strong>. Thirteen tools, eighty‑seven capabilities, seven billion verified trade records. Grounded AI responding to natural‑language trade queries in seconds · in production, today.</div>
+      </div>
+      <div class="stage-panel prerev">
+        <div class="sp-eyebrow">Revenue</div>
+        <div class="sp-title">Pre‑Revenue</div>
+        <div class="sp-body">The MVP works. The commercial engine around it has not been built or funded yet. Zero paid conversions is not a product problem · it is a commercialisation funding problem.</div>
+      </div>
+      <div class="stage-panel proven">
+        <div class="sp-eyebrow">Validation</div>
+        <div class="sp-title">Proven in 2 Months</div>
+        <div class="sp-body">Nine hundred and sixty‑seven users registered organically across thirty‑plus countries in the two months since launch. No paid marketing. No press. No partnerships. People find it, log in, and use it.</div>
+      </div>
+    </div>
+
+    <h3 class="smallcaps"><span class="num">03.1</span>Read the situation honestly</h3>
+    <div class="twocol">
+      <p>Investors get told a lot of stories about stage. We want to tell ours plainly. ADAMftd is not an idea looking for product. It is not a prototype hoping for validation. It is also not a revenue‑generating SaaS business with a fundable growth motor. It sits, with deliberate clarity, in the most under‑priced spot on the spectrum: a real product, with real users, that has not yet been engineered for revenue.</p>
+      <p>The mistake an investor can make here is to read pre‑revenue as pre‑risk. The risk that matters at our stage is not "will anyone want this." We already have nine hundred and sixty‑seven answers to that question. The risk that matters is execution risk on commercialisation: can we convert known intent into recurring revenue inside twelve months. That is the risk seed capital is sized to retire.</p>
+      <p>It is the lowest valuation point in the journey for that reason. Series A pricing requires fifty paying customers and demonstrated CAC. We will get there. Seed pricing is the discount investors take for arriving before the proof is in.</p>
+    </div>
+
+    <div class="pull-rule"></div>
+
+    <div class="quote-box" style="margin-top:auto">
+      <div class="qt">Pre‑revenue is not pre‑risk. The risk has already been retired on demand. What remains is the deliberate engineering of revenue.</div>
+      <div class="qt-attr">Stage Memo · May 2026</div>
+    </div>
+  </div>
+
+  <div class="running-foot-rule"></div>
+  <div class="running-foot">
+    <div>Where We Sit Today</div>
+    <div class="pgnum">3</div>
+  </div>
+</section>
+<!-- ============================================================
+     PAGE 4 · THE PROBLEM
+     ============================================================ -->
+<section class="page" id="p-problem" data-screen-label="The Problem">
+  <div class="running-head">
+    <div class="wm">ADAM<span>ftd</span></div>
+    <div class="sec">04 · The Problem</div>
+  </div>
+  <div class="running-rule"></div>
+
+  <div class="pad">
+    <div class="eyebrow eyebrow-navy">Chapter Four · The Problem</div>
+    <h2 class="section" style="margin-top:3mm">International Trade Intelligence Is Broken</h2>
+    <div class="section-deck">A twenty‑five trillion dollar market runs on spreadsheets, subscriptions most cannot afford, and fragmented systems that do not talk to each other. Below the institutional tier, there is no product at all.</div>
+
+    <div class="grid grid-3" style="margin-bottom:8mm">
+      <div class="metric"><div class="num lg">$25T</div><div class="lbl">Global Trade Value</div><div class="note">Annual cross‑border goods and services.</div></div>
+      <div class="metric"><div class="num gold lg">95%</div><div class="lbl">Underserved Market</div><div class="note">SMEs and mid‑market firms locked out of institutional‑grade intelligence at any price.</div></div>
+      <div class="metric"><div class="num lg">~$36B</div><div class="lbl">Addressable TAM</div><div class="note">Trade intelligence, compliance, and tender market.</div></div>
+    </div>
+
+    <div class="grid grid-2" style="gap:8mm">
+      <div>
+        <h3 class="smallcaps"><span class="num">04.1</span>What traders deal with today</h3>
+        <ul class="editorial">
+          <li>Five to seven disconnected systems for one trade decision.</li>
+          <li>Sanctions checked in one tab, tariffs in another, tenders missed entirely.</li>
+          <li><strong>Incumbent institutional terminals cost $25k+ per year</strong> · enterprise only.</li>
+          <li>Ninety‑five percent of traders have no access to institutional‑grade intelligence.</li>
+          <li>Geopolitical disruption · Hormuz, tariff wars, sanctions cascades · makes wrong decisions catastrophic.</li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="smallcaps"><span class="num">04.2</span>The market is underserved by design</h3>
+        <ul class="editorial">
+          <li><strong>Enterprise tools:</strong> too expensive, too complex, built for bank compliance teams.</li>
+          <li><strong>Free tools:</strong> no grounding, no verification, AI that invents data.</li>
+          <li><strong>Mid‑market:</strong> entirely ignored. No product exists at this price point with this depth.</li>
+          <li>The market structure mirrors financial information services in the 1990s · a single high‑end incumbent and a long tail of unmet demand.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="pull" style="margin-top:auto">
+      Sanctions in one tab, tariffs in another, tenders missed entirely. <em>That is the current state of the art</em> · and it costs twenty‑five thousand dollars a year.
+      <div class="pull-attr">Field interview, mid‑market exporter · 2025</div>
+    </div>
+  </div>
+
+  <div class="running-foot-rule"></div>
+  <div class="running-foot">
+    <div>The Problem</div>
+    <div class="pgnum">4</div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PAGE 5 · THE SOLUTION
+     ============================================================ -->
+<section class="page" id="p-solution" data-screen-label="The Solution">
+  <div class="running-head">
+    <div class="wm">ADAM<span>ftd</span></div>
+    <div class="sec">05 · The Solution</div>
+  </div>
+  <div class="running-rule"></div>
+
+  <div class="pad">
+    <div class="eyebrow eyebrow-navy">Chapter Five · Product</div>
+    <h2 class="section" style="margin-top:3mm">A Grounded AI for International Trade</h2>
+    <div class="section-deck">Not a chatbot. Not a database with a search bar. A grounded AI built from the data up · every answer verified, every claim cited, five intelligence layers in one workspace.</div>
+
+    <div class="grid grid-4" style="margin-bottom:8mm">
+      <div class="metric"><div class="num">13</div><div class="lbl">Platform Tools</div><div class="note">Trade Data, Tariffs, Sanctions, Tenders, Vessels, Hormuz Simulator, CRM and more.</div></div>
+      <div class="metric"><div class="num">87</div><div class="lbl">Capabilities</div><div class="note">One natural‑language interface. All sources cited.</div></div>
+      <div class="metric"><div class="num gold">7B+</div><div class="lbl">Trade Records</div><div class="note">Multi‑source, conflict‑resolved via Monte Carlo modelling.</div></div>
+      <div class="metric"><div class="num">5</div><div class="lbl">Intelligence Layers</div><div class="note">Trade · Sanctions · Tariffs · Tenders · Vessels.</div></div>
+    </div>
+
+    <div class="grid grid-2" style="gap:8mm; margin-bottom:8mm">
+      <div>
+        <h3 class="smallcaps"><span class="num">05.1</span>What makes it different</h3>
+        <ul class="editorial">
+          <li><strong>Grounded AI:</strong> every answer cites its source · it does not invent, it does not guess.</li>
+          <li><strong>Five layers in one workspace</strong> · no competitor integrates all of them.</li>
+          <li><strong>Hormuz Simulator:</strong> four geopolitical scenarios across 5,000+ HS‑6 codes. No equivalent exists.</li>
+          <li><strong>Priced for the mid‑market</strong> at $100 to $500/month versus institutional terminals at $25k+ per year.</li>
+          <li><strong>Conversational by design</strong> · natural language from day one, not retrofitted.</li>
+        </ul>
+      </div>
+      <div class="card-ed dark">
+        <div class="card-eyebrow">The Competitive Wedge</div>
+        <ul class="editorial">
+          <li><strong>Large institutional data &amp; analysis suppliers:</strong> enterprise only, $25k+/yr. No tender or tariff depth.</li>
+          <li><strong>Panjiva · ImportGenius:</strong> trade data only. No sanctions, tariffs, or tenders.</li>
+          <li><strong>OEC · Volza · Export Genius:</strong> data feeds only. No workspace, no AI reasoning.</li>
+          <li><strong>ADAMftd:</strong> all five intelligence layers, one workspace, mid‑market price, ICTTM institutional heritage.</li>
+        </ul>
+        <p style="margin-top:5mm;font-size:11px;color:var(--gold-2);font-style:italic">No competitor covers all five intelligence layers at mid‑market pricing. That is the unclaimed position.</p>
+      </div>
+    </div>
+
+    <div class="figure-num"><span>Fig. 05.1</span> · Coverage at a glance</div>
+    <div class="hairline" style="margin:2mm 0 4mm"></div>
+    <table class="editorial">
+      <thead>
+        <tr><th>Coverage</th><th class="num">Volume</th><th>Notes</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="b">Countries with trade data</td><td class="num">200+</td><td>Complete cross‑border coverage</td></tr>
+        <tr><td class="b">Ports tracked</td><td class="num">8,000+</td><td>Live vessel and shipment movement</td></tr>
+        <tr><td class="b">Vessels in database</td><td class="num">7,300+</td><td>Sanctioned‑vessel screening integrated</td></tr>
+        <tr><td class="b">Live tenders</td><td class="num">20,000+</td><td>Across 84 countries</td></tr>
+        <tr><td class="b">Sanctions screening countries</td><td class="num">199</td><td>OFAC, EU, UN, UK, plus national lists</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="running-foot-rule"></div>
+  <div class="running-foot">
+    <div>The Solution</div>
+    <div class="pgnum">5</div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PAGE 6 · VALIDATION
+     ============================================================ -->
+<section class="page" id="p-validation" data-screen-label="Validation">
+  <div class="running-head">
+    <div class="wm">ADAM<span>ftd</span></div>
+    <div class="sec">06 · Validation</div>
+  </div>
+  <div class="running-rule"></div>
+
+  <div class="pad">
+    <div class="eyebrow eyebrow-navy">Chapter Six · Traction</div>
+    <h2 class="section" style="margin-top:3mm">967 Users in Two Months. No Marketing.</h2>
+    <div class="section-deck">The MVP went live at the end of March 2026. In the two months since, 967 users have registered organically across thirty‑plus countries. Sixty‑four hit the credit ceiling · the highest‑intent cohort, ready to pay, first to convert.</div>
+
+    <div class="grid grid-4" style="margin-bottom:8mm">
+      <div class="metric"><div class="num">967</div><div class="lbl">Registered Users</div><div class="note">Organic only · 30+ countries · 2 months</div></div>
+      <div class="metric"><div class="num">97%</div><div class="lbl">Login Rate</div><div class="note">938 returned at least once</div></div>
+      <div class="metric"><div class="num">58%</div><div class="lbl">AI Query Rate</div><div class="note">562 ran an AI‑powered trade query</div></div>
+      <div class="metric"><div class="num gold">64</div><div class="lbl">Credits Exhausted</div><div class="note">The highest‑intent cohort</div></div>
+    </div>
+
+    <div class="figure-num"><span>Fig. 06.1</span> · Conversion funnel · live data, 29 May 2026 · MVP live 2 months</div>
+    <div class="hairline" style="margin:2mm 0 4mm"></div>
+
+    <div style="margin-bottom:8mm">
+      <div class="funnel-row">
+        <div class="funnel-lbl">Registered <span class="sub">Top of funnel · organic</span></div>
+        <div class="funnel-track"><div class="funnel-fill" style="width:100%">967</div></div>
+        <div class="funnel-pct">100%</div>
+      </div>
+      <div class="funnel-row">
+        <div class="funnel-lbl">Logged in at least once</div>
+        <div class="funnel-track"><div class="funnel-fill" style="width:97%;background:var(--navy-2)">938</div></div>
+        <div class="funnel-pct">97%</div>
+      </div>
+      <div class="funnel-row">
+        <div class="funnel-lbl">Ran an AI query</div>
+        <div class="funnel-track"><div class="funnel-fill" style="width:58%;background:var(--ink-3)">562</div></div>
+        <div class="funnel-pct">58%</div>
+      </div>
+      <div class="funnel-row">
+        <div class="funnel-lbl">Meaningful use (10+ credits)</div>
+        <div class="funnel-track"><div class="funnel-fill" style="width:23%;background:var(--amber)">220</div></div>
+        <div class="funnel-pct">23%</div>
+      </div>
+      <div class="funnel-row">
+        <div class="funnel-lbl">All credits consumed <span class="sub">Highest‑intent cohort</span></div>
+        <div class="funnel-track"><div class="funnel-fill" style="width:6.6%;background:var(--gold);min-width:32mm">64 · ready to convert</div></div>
+        <div class="funnel-pct" style="color:var(--gold)">6.6%</div>
+      </div>
+    </div>
+
+    <div class="grid grid-2" style="gap:8mm">
+      <div>
+        <h3 class="smallcaps"><span class="num">06.1</span>What this proves</h3>
+        <ul class="editorial tight">
+          <li>Strong top‑of‑funnel pull · organic, global, growing without a marketing budget.</li>
+          <li>Real product engagement: 58% ran AI queries, 23% used 10+ credits meaningfully.</li>
+          <li>Sixty‑four users hit the credit ceiling · <strong>ready to pay, first to convert.</strong></li>
+          <li>NVIDIA $1M compute award · independent tier‑one validation of the platform.</li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="smallcaps"><span class="num">06.2</span>What seed capital turns this into</h3>
+        <ul class="editorial tight">
+          <li>Nine hundred and sixty‑seven users arrived with no marketing. Seed funds the engine that converts pull into paid revenue.</li>
+          <li>The 64 power users are not a lost cohort · they are the first 64 conversations. We know exactly who they are.</li>
+          <li>This is not a product problem. It is a funded commercialisation opportunity with an identified pipeline.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="running-foot-rule"></div>
+  <div class="running-foot">
+    <div>Validation &amp; Traction</div>
+    <div class="pgnum">6</div>
+  </div>
+</section>
+<!-- ============================================================
+     PAGE 7 · MARKET OPPORTUNITY
+     ============================================================ -->
+<section class="page" id="p-market" data-screen-label="Market Opportunity">
+  <div class="running-head">
+    <div class="wm">ADAM<span>ftd</span></div>
+    <div class="sec">07 · Market Opportunity</div>
+  </div>
+  <div class="running-rule"></div>
+
+  <div class="pad">
+    <div class="eyebrow eyebrow-navy">Chapter Seven · The Window</div>
+    <h2 class="section" style="margin-top:3mm">Enormous Market. Perfect Timing. Unclaimed Position.</h2>
+    <div class="section-deck">Three forces are converging right now: a violent shift in trade routes, a market expectation that AI handles complex queries, and a fully funded compute base. The category is being defined now and will not stay open.</div>
+
+    <div class="grid grid-3" style="margin-bottom:8mm">
+      <div class="card-ed">
+        <div class="card-eyebrow">Force One · Geopolitics</div>
+        <h3 style="font-size:18px;margin-bottom:3mm">War on Trade Routes</h3>
+        <p style="font-size:11px">Hormuz disruption, Red Sea and Suez re‑routing, tariff escalation, sanctions cascades, supply‑chain fragmentation. Every exporter and importer is re‑routing, re‑pricing, and re‑qualifying counterparties. The need for real‑time trade intelligence has never been greater.</p>
+      </div>
+      <div class="card-ed">
+        <div class="card-eyebrow">Force Two · AI Moment</div>
+        <h3 style="font-size:18px;margin-bottom:3mm">Market Expects AI</h3>
+        <p style="font-size:11px">The market now expects natural language for complex data queries. ADAMftd was built this way from day one · not retrofitted. We are not catching up to the trend. In trade intelligence, we are ahead of it.</p>
+      </div>
+      <div class="card-ed">
+        <div class="card-eyebrow">Force Three · Infrastructure</div>
+        <h3 style="font-size:18px;margin-bottom:3mm">NVIDIA $1M Credit Award</h3>
+        <p style="font-size:11px">NVIDIA awarded ADAMftd $1M in AI compute credits · twelve months of high‑performance infrastructure at zero cash cost. The infrastructure problem is solved. Seed capital goes entirely to growth.</p>
+      </div>
+    </div>
+
+    <div class="grid grid-2" style="gap:8mm; margin-bottom:8mm">
+      <div>
+        <h3 class="smallcaps"><span class="num">07.1</span>The market size</h3>
+        <ul class="editorial">
+          <li><strong>TAM ~$36B</strong> · global trade intelligence, compliance, and tender market.</li>
+          <li><strong>SAM</strong> · SMEs, mid‑market exporters, EPAs, chambers, trade bodies: the underserved 95%.</li>
+          <li><strong>Beachhead</strong> · 200+ countries, 8,000+ ports, 7,300+ vessels, 20k+ tenders across 84 countries, 199 countries in sanctions screening.</li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="smallcaps"><span class="num">07.2</span>Why the window is open now</h3>
+        <ul class="editorial">
+          <li>No competitor has built the five‑layer integrated workspace at mid‑market pricing.</li>
+          <li>ICTTM heritage gives credibility with EPAs and chambers that no start‑up can buy.</li>
+          <li>SACE · the Italian export credit agency, ~60k companies, 200+ markets · in active institutional engagement.</li>
+          <li><strong>This window will narrow</strong> as incumbents respond. The category is being defined now.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="pull" style="margin-top:auto">
+      The category is being defined <em>now</em>. Incumbents will respond. The premium accrues to whoever owns the position when the dust settles.
+      <div class="pull-attr">Market memo · Q2 2026</div>
+    </div>
+  </div>
+
+  <div class="running-foot-rule"></div>
+  <div class="running-foot">
+    <div>Market Opportunity</div>
+    <div class="pgnum">7</div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PAGE 8 · REVENUE MODEL
+     ============================================================ -->
+<section class="page" id="p-revenue" data-screen-label="Revenue Model">
+  <div class="running-head">
+    <div class="wm">ADAM<span>ftd</span></div>
+    <div class="sec">08 · Revenue Model</div>
+  </div>
+  <div class="running-rule"></div>
+
+  <div class="pad">
+    <div class="eyebrow eyebrow-navy">Chapter Eight · Revenue Model</div>
+    <h2 class="section" style="margin-top:3mm">Multiple Streams. One Platform.</h2>
+    <div class="section-deck">Credit‑based, not seat‑based. Free‑to‑try through $20k+ institutional, plus a usage‑metered API layer for data integrators and fintechs.</div>
+
+    <div class="grid" style="grid-template-columns:3fr 2fr; gap:8mm">
+      <div>
+        <div class="figure-num"><span>Tab. 08.1</span> · Revenue streams</div>
+        <div class="hairline" style="margin:2mm 0 4mm"></div>
+        <table class="editorial">
+          <thead>
+            <tr><th>Stream</th><th>Price</th><th>Target</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="b">Starter (free‑to‑try)</td><td>25 credits at signup</td><td>SME discovery</td></tr>
+            <tr><td class="b">Growth</td><td>$100/mo · or $90/mo billed annually ($1,080/yr)</td><td>Active SME traders</td></tr>
+            <tr><td class="b">Pro</td><td>$500/mo · or $400/mo billed annually ($4,800/yr)</td><td>Brokers, consultants</td></tr>
+            <tr><td class="b">Enterprise</td><td>From $20k/yr, custom</td><td>Corporates, banks</td></tr>
+            <tr><td class="b">Credit packs</td><td>$50 · $100 · $500</td><td>Top‑up, one‑time</td></tr>
+            <tr><td class="b">Market Reports</td><td>$500 single · $1,000 global</td><td>Research buyers</td></tr>
+            <tr><td class="b">White‑label portal</td><td>$30k ARR per portal</td><td>EPAs, chambers</td></tr>
+            <tr><td class="b accent">API access</td><td>Volume‑based custom</td><td>Developers, fintechs, ERPs</td></tr>
+          </tbody>
+        </table>
+        <p class="caption" style="margin-top:3mm">Credit rate: $0.50 per credit. Affiliate programme is tiered: <strong style="color:var(--navy)">Manifest</strong> 15/10/5%, <strong style="color:var(--navy)">Charter</strong> 20/13/7%, <strong style="color:var(--navy)">Vanguard</strong> 30/20/10% (top tier, above $30k attributable revenue) across years 1, 2, 3. 25 partners in 11 countries. 90‑day cookie. 3‑year window.</p>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:6mm">
+        <div class="card-ed dark">
+          <div class="card-eyebrow">Near‑term ARR potential</div>
+          <p style="color:rgba(255,255,255,0.85)">If SACE, three white‑label portals, and the first fifty enterprise/SaaS conversions activate within twelve months of funded commercialisation:</p>
+          <div style="font-family:var(--serif);font-size:36px;color:var(--gold-2);font-weight:500;letter-spacing:-0.01em;margin-top:5mm;line-height:1">
+            $3.0M · $4.2M <span style="font-size:14px;color:rgba(255,255,255,0.5);font-style:italic">ARR by year‑one exit</span>
+          </div>
+          <div style="font-size:11px;color:rgba(255,255,255,0.6);font-style:italic;margin-top:2mm">Conservative → base case (MRR $250k – $350k × 12)</div>
+        </div>
+        <div class="card-ed">
+          <div class="card-eyebrow">Unit Economics</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:4mm;margin-top:2mm">
+            <div class="metric"><div class="num sm">$30k</div><div class="lbl">ARR · White‑label</div></div>
+            <div class="metric"><div class="num sm gold">$0.50</div><div class="lbl">Per Credit</div></div>
+          </div>
+          <p style="font-size:11px;margin-top:4mm;font-style:italic;color:var(--ink-3)">Usage‑based: revenue scales with engagement, not headcount. Marginal cost per API call approaches zero.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="pull-rule"></div>
+
+    <h3 class="smallcaps"><span class="num">08.1</span>Why credits, not seats</h3>
+    <div class="twocol">
+      <p>Seat‑based pricing punishes the customers we want most: SME teams that consume intelligence in bursts, not in eight‑hour shifts on an enterprise data terminal. A trade analyst at a customs broker may run forty queries in a morning and none for three days. A compliance officer at a mid‑market exporter checks counterparties before each shipment. Both are heavy users by volume. Neither would buy a seat.</p>
+      <p>Credits map cleanly to that reality. They lower friction at the entry point (twenty‑five free credits, no card), and they scale with the value delivered. They also produce the metric Series A investors want: usage that grows independently of headcount, with margin that improves as the engine scales.</p>
+    </div>
+  </div>
+
+  <div class="running-foot-rule"></div>
+  <div class="running-foot">
+    <div>Revenue Model</div>
+    <div class="pgnum">8</div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PAGE 9 · ENTERPRISE TARGETS
+     ============================================================ -->
+<section class="page" id="p-segments" data-screen-label="Enterprise Targets">
+  <div class="running-head">
+    <div class="wm">ADAM<span>ftd</span></div>
+    <div class="sec">09 · Enterprise Targets</div>
+  </div>
+  <div class="running-rule"></div>
+
+  <div class="pad pad-tight">
+    <div class="eyebrow eyebrow-navy">Chapter Nine · Segments</div>
+    <h2 class="section" style="margin-top:3mm;font-size:30px">Eight Segments. Clear Sizing.</h2>
+    <div class="section-deck" style="margin-bottom:5mm">We are not selling to everyone. These eight segments have the budget, the pain, and the decision‑making power. The first two are the biggest prize; the last is the volume base.</div>
+
+    <div class="grid grid-2" style="gap:4mm; margin-bottom:4mm">
+      <div class="seg-card featured">
+        <div class="seg-eyebrow">Segment 01 · The biggest prize</div>
+        <div class="seg-name">Trade Finance Banks</div>
+        <div class="seg-tam">$100M+<span class="tam-sub">TAM across top 50 banks</span></div>
+        <div class="seg-desc">HSBC, Standard Chartered, Citi, JPMorgan, BNP Paribas. Each runs 100–500 trade finance analysts paying $28,320–$31,980 per enterprise terminal seat per year. ADAMftd replaces or supplements at a fraction · with tariff, tender, and sanctions depth Bloomberg lacks.</div>
+        <div class="seg-meta">Trade Finance market <strong>$52B → $84B</strong> by 2034. Banks hold 68% of it. <strong>Enterprise + API data layer.</strong></div>
+      </div>
+      <div class="seg-card" style="background:#EDF0E5;border-color:var(--green)">
+        <div class="seg-eyebrow" style="color:var(--green)">Segment 02 · Already in pipeline</div>
+        <div class="seg-name">Export Credit Agencies</div>
+        <div class="seg-tam" style="color:var(--green)">$2.6M+<span class="tam-sub">ARR if 30% of Berne Union signs</span></div>
+        <div class="seg-desc">86 Berne Union members across 67 countries cover $2.5T in trade payment protection per year. Each ECA serves thousands of exporters (SACE alone: ~60k). White‑label at $30k ARR per portal; their SME base then drives SaaS subscriptions on top.</div>
+        <div class="seg-meta"><strong>SACE in active engagement.</strong> ICTTM heritage gives access competitors cannot buy.</div>
+      </div>
+    </div>
+
+    <div class="grid grid-3" style="gap:4mm; margin-bottom:4mm">
+      <div class="seg-card">
+        <div class="seg-eyebrow">Segment 03 · High value per seat</div>
+        <div class="seg-name">Big Four &amp; Consultancies</div>
+        <div class="seg-tam">$8M+<span class="tam-sub">Embed via API</span></div>
+        <div class="seg-desc">Deloitte, PwC, EY, KPMG, McKinsey, Accenture, BCG, Oliver Wyman. Supply chain advisory: <strong>$24B+ market</strong>. They advise on market entry, trade corridors, sanctions compliance.</div>
+      </div>
+      <div class="seg-card">
+        <div class="seg-eyebrow">Segment 04 · Risk pricing engine</div>
+        <div class="seg-name">Insurance &amp; Underwriters</div>
+        <div class="seg-tam">$5M+<span class="tam-sub">API into underwriting</span></div>
+        <div class="seg-desc">Allianz Trade, Atradius, Coface, Lloyd's syndicates, Marsh. Marine $35B; trade credit $12B. They price risk on corridors, routes, counterparties. ADAMftd feeds underwriting and claims directly.</div>
+      </div>
+      <div class="seg-card">
+        <div class="seg-eyebrow">Segment 05 · Due diligence</div>
+        <div class="seg-name">VCs &amp; Private Equity</div>
+        <div class="seg-tam">$3M+<span class="tam-sub">Pro tier at $500/mo</span></div>
+        <div class="seg-desc">Firms with trade‑exposed portfolios (manufacturing, logistics, commodities). Market intelligence for deal DD, supply‑chain risk on portfolio companies, market sizing for new territory investments.</div>
+      </div>
+    </div>
+
+    <div class="grid grid-3" style="gap:4mm; margin-bottom:4mm">
+      <div class="seg-card">
+        <div class="seg-eyebrow">Segment 06 · Commodity urgency</div>
+        <div class="seg-name">Commodity Trading Houses</div>
+        <div class="seg-tam">$1M+<span class="tam-sub">20 firms × $50k enterprise</span></div>
+        <div class="seg-desc">Vitol, Trafigura, Glencore, Cargill, Louis Dreyfus, Gunvor. Trade through Hormuz, Suez, sanctioned corridors daily. The <strong>Hormuz Simulator</strong> is a direct sell. Very high willingness to pay.</div>
+      </div>
+      <div class="seg-card">
+        <div class="seg-eyebrow">Segment 07 · Volume play</div>
+        <div class="seg-name">Customs Brokers &amp; Forwarders</div>
+        <div class="seg-tam">$1.2M+<span class="tam-sub">1,000 × $100/mo</span></div>
+        <div class="seg-desc">US alone: 11,000 licensed brokers, 1,400+ NCBFAA firms handling 97% of US imports. Globally: ~40,000 forwarders. Daily HS, tariff, sanctions use.</div>
+      </div>
+      <div class="seg-card featured" style="background:var(--navy)">
+        <div class="seg-eyebrow">Segment 08 · The core market</div>
+        <div class="seg-name">Importers &amp; Exporters (SME)</div>
+        <div class="seg-tam">Millions<span class="tam-sub">Mass market via affiliates</span></div>
+        <div class="seg-desc">The 967 organic users mostly sit here. SMEs and mid‑market exporters with no enterprise‑tier access. Entry at $100/mo through affiliate programme and partner network.</div>
+        <div class="seg-meta"><strong>WTO: 500M+ SMEs</strong> globally in international trade.</div>
+      </div>
+    </div>
+
+    <div style="background:var(--ink);color:#fff;padding:5mm 7mm;display:flex;align-items:center;justify-content:space-between;gap:8mm;margin-top:auto">
+      <div style="font-family:var(--sans);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.6);font-weight:600">Conservative twelve‑month horizon · Segments 2 to 7</div>
+      <div style="font-family:var(--serif);font-size:18px;color:var(--gold-2);font-weight:500;letter-spacing:-0.005em">$3M – $4.2M ARR by year‑one exit · then Series A unlocks segments one &amp; four</div>
+    </div>
+  </div>
+
+  <div class="running-foot-rule"></div>
+  <div class="running-foot">
+    <div>Enterprise Targets</div>
+    <div class="pgnum">9</div>
+  </div>
+</section>
+<!-- ============================================================
+     PAGE 10 · USE OF FUNDS
+     ============================================================ -->
+<section class="page" id="p-funds" data-screen-label="Use of Funds">
+  <div class="running-head">
+    <div class="wm">ADAM<span>ftd</span></div>
+    <div class="sec">10 · Use of Funds</div>
+  </div>
+  <div class="running-rule"></div>
+
+  <div class="pad">
+    <div class="eyebrow eyebrow-navy">Chapter Ten · Use of Funds</div>
+    <h2 class="section" style="margin-top:3mm">Where the Money Goes</h2>
+    <div class="section-deck">Three buckets. One dominant priority: go to market and acquire customers. A lean operating base. Compute already funded by NVIDIA.</div>
+
+    <div class="card-ed dark" style="margin-bottom:8mm;padding:6mm 8mm">
+      <div style="display:grid;grid-template-columns:auto 1fr auto;gap:8mm;align-items:center">
+        <div class="metric" style="text-align:left">
+          <div class="num lg" style="color:var(--gold-2)">$25k</div>
+          <div class="lbl" style="color:rgba(255,255,255,0.6)">Per Month, All‑In</div>
+        </div>
+        <div style="border-left:0.5px solid rgba(255,255,255,0.15);border-right:0.5px solid rgba(255,255,255,0.15);padding:0 6mm">
+          <p style="color:rgba(255,255,255,0.85);font-size:12.5px;line-height:1.6">
+            <strong style="color:var(--gold-2)">Total fixed cost base: $25,000 per month.</strong> Covers the full Vietnam data and engineering team, all servers, AI infrastructure, domain, web stack, tools, and licences. Everything. For a $2M raise, twelve months of fixed costs is $300k · fifteen percent. The remaining $1.7M (eighty‑five percent) goes to growth and product.
+          </p>
+        </div>
+        <div class="metric" style="text-align:right">
+          <div class="num lg" style="color:var(--gold-2)">85%</div>
+          <div class="lbl" style="color:rgba(255,255,255,0.6)">To Growth &amp; Product</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="figure-num"><span>Fig. 10.1</span> · Use of funds allocation</div>
+    <div class="hairline" style="margin:2mm 0 4mm"></div>
+
+    <div class="funds-bar" style="margin-bottom:6mm">
+      <div class="funds-segment s1">
+        <div>
+          <div style="font-family:var(--sans);font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.6);font-weight:600;margin-bottom:1mm">Bucket 01</div>
+          <div style="font-family:var(--serif);font-size:14px;color:#fff;font-weight:500">Go‑To‑Market &amp; Customer Acquisition</div>
+        </div>
+        <div class="fs-pct">60%</div>
+      </div>
+      <div class="funds-segment s2">
+        <div>
+          <div style="font-family:var(--sans);font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.7);font-weight:600;margin-bottom:1mm">Bucket 02</div>
+          <div style="font-family:var(--serif);font-size:14px;color:#fff;font-weight:500">UX, HCI &amp; Data Quality</div>
+        </div>
+        <div class="fs-pct">25%</div>
+      </div>
+      <div class="funds-segment s3">
+        <div>
+          <div style="font-family:var(--sans);font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.55);font-weight:600;margin-bottom:1mm">Bucket 03</div>
+          <div style="font-family:var(--serif);font-size:13px;color:#fff;font-weight:500;line-height:1.15">Operating Base</div>
+        </div>
+        <div class="fs-pct">15%</div>
+      </div>
+    </div>
+
+    <div class="grid grid-3" style="gap:6mm">
+      <div>
+        <h3 class="smallcaps"><span class="num">10.1</span>Go‑to‑market · 60%</h3>
+        <ul class="editorial tight">
+          <li>Paid digital · LinkedIn, trade publications, sector advertising.</li>
+          <li>Professional video · demo, CEO story, use‑case explainers.</li>
+          <li>PR and earned media · trade press, CEO thought leadership.</li>
+          <li>Sector conferences · WTO Forum, ICC Banking, ExCred, Incoterms.</li>
+          <li>Travel for institutional closes · SACE in Rome, EPA network.</li>
+          <li>Training programme and Academy · structured onboarding, partner certification.</li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="smallcaps"><span class="num">10.2</span>Product quality · 25%</h3>
+        <ul class="editorial tight">
+          <li>Targeted UX/HCI redesign · reduce friction, improve task completion.</li>
+          <li>Data curation · quality, depth, corridor coverage expansion.</li>
+          <li>Market Reports template library · institutional‑grade output.</li>
+          <li>HS/Tariff engine accuracy and coverage gap resolution.</li>
+          <li>Not a rebuild · sharpening a working platform.</li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="smallcaps"><span class="num">10.3</span>Operating base · 15%</h3>
+        <ul class="editorial tight">
+          <li>Vietnam data and engineering team · developers, DevOps, data management.</li>
+          <li>Servers, web infrastructure, domain, tools, licences.</li>
+          <li><strong>AI infrastructure: fully covered by NVIDIA $1M credits. Not in this budget.</strong></li>
+          <li>Twelve months of lean‑by‑design operating runway.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="running-foot-rule"></div>
+  <div class="running-foot">
+    <div>Use of Funds</div>
+    <div class="pgnum">10</div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PAGE 11 · FINANCIAL PROJECTION (REVENUE)
+     ============================================================ -->
+<section class="page" id="p-forecast" data-screen-label="Financial Projection">
+  <div class="running-head">
+    <div class="wm">ADAM<span>ftd</span></div>
+    <div class="sec">11 · Three‑Year Revenue Scenario</div>
+  </div>
+  <div class="running-rule"></div>
+
+  <div class="pad">
+    <div class="eyebrow eyebrow-navy">Chapter Eleven · Revenue</div>
+    <h2 class="section" style="margin-top:3mm">Three‑Year Illustrative Revenue Scenario</h2>
+    <div class="section-deck">MRR is monthly recurring revenue at end of period. ARR is MRR × 12. Figures are illustrative management projections, not contractual revenue.</div>
+
+    <div class="figure-num"><span>Fig. 11.1</span> · ARR build, year 1 to year 3 (USD) · base case vs conservative</div>
+    <div class="hairline" style="margin:2mm 0 4mm"></div>
+
+    <div class="forecast-chart" style="margin-left:20mm;margin-bottom:2mm;height:62mm">
+      <div class="forecast-grid-line" style="bottom:0%"></div>
+      <div class="forecast-grid-line" style="bottom:25%"></div>
+      <div class="forecast-grid-line" style="bottom:50%"></div>
+      <div class="forecast-grid-line" style="bottom:75%"></div>
+      <div class="forecast-grid-line" style="bottom:100%"></div>
+      <div class="forecast-grid-lbl" style="bottom:0%">$0</div>
+      <div class="forecast-grid-lbl" style="bottom:25%">$17.5M</div>
+      <div class="forecast-grid-lbl" style="bottom:50%">$35M</div>
+      <div class="forecast-grid-lbl" style="bottom:75%">$52.5M</div>
+      <div class="forecast-grid-lbl" style="bottom:100%">$70M</div>
+
+      <div class="forecast-bars">
+        <div class="forecast-bar-group">
+          <div class="forecast-bar" style="height:6%"><div class="forecast-bar-label">$4.2M</div></div>
+          <div class="forecast-bar alt" style="height:4.3%"><div class="forecast-bar-label">$3.0M</div></div>
+        </div>
+        <div class="forecast-bar-group">
+          <div class="forecast-bar" style="height:33%"><div class="forecast-bar-label">$23.4M</div></div>
+          <div class="forecast-bar alt" style="height:24%"><div class="forecast-bar-label">$16.8M</div></div>
+        </div>
+        <div class="forecast-bar-group">
+          <div class="forecast-bar" style="height:87%"><div class="forecast-bar-label">$60.6M</div></div>
+          <div class="forecast-bar alt" style="height:60%"><div class="forecast-bar-label">$42.0M</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="forecast-x-labels" style="margin-left:20mm">
+      <div>Year 1 · seed period</div>
+      <div>Year 2 · post Series A</div>
+      <div>Year 3 · scale</div>
+    </div>
+    <p class="caption" style="margin:3mm 0 5mm"><span style="display:inline-block;width:8px;height:8px;background:var(--navy);vertical-align:middle;margin-right:5px"></span>Base case ARR &nbsp;&nbsp;<span style="display:inline-block;width:8px;height:8px;background:var(--gold);vertical-align:middle;margin:0 5px 0 8px"></span>Conservative ARR (50% SACE slippage, 30% SaaS slippage). Both scenarios produce a fundable Series A profile.</p>
+
+    <div class="figure-num"><span>Tab. 11.1</span> · Revenue build by segment · MRR (end of period) and ARR</div>
+    <div class="hairline" style="margin:2mm 0 4mm"></div>
+    <table class="editorial">
+      <thead>
+        <tr>
+          <th style="width:30%">Segment</th>
+          <th class="num">Y1 MRR</th>
+          <th class="num">Y2 MRR</th>
+          <th class="num">Y3 MRR</th>
+          <th>Driver</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="b">SaaS · Growth &amp; Pro tiers</td><td class="num">$120k</td><td class="num">$650k</td><td class="num">$1,600k</td><td>1,200 → 6,500 → 16,000 active subs</td></tr>
+        <tr><td class="b">White‑label portals (EPAs, chambers)</td><td class="num">$90k</td><td class="num">$450k</td><td class="num">$1,200k</td><td>3 → 15 → 40 portals @ $30k ARR</td></tr>
+        <tr><td class="b">Enterprise (commodity traders, banks)</td><td class="num">$80k</td><td class="num">$400k</td><td class="num">$1,000k</td><td>2 → 8 → 20 firms @ $50k+</td></tr>
+        <tr><td class="b">Market Reports &amp; credit packs</td><td class="num">$30k</td><td class="num">$200k</td><td class="num">$550k</td><td>One‑time and repeat purchase</td></tr>
+        <tr><td class="b accent">API data layer</td><td class="num">$30k</td><td class="num">$250k</td><td class="num">$700k</td><td>3 → 8 → 18 integrators</td></tr>
+        <tr style="background:var(--paper-2)"><td class="b"><strong>Total MRR (end of period)</strong></td><td class="num b">$350k</td><td class="num b">$1,950k</td><td class="num b">$5,050k</td><td>Monthly run rate</td></tr>
+        <tr style="background:var(--navy)"><td style="color:var(--gold-2);font-weight:700;padding:9px 8px 9px 0">ARR = MRR × 12</td><td class="num" style="color:var(--gold-2);font-weight:700;font-size:13px">$4.2M</td><td class="num" style="color:var(--gold-2);font-weight:700;font-size:13px">$23.4M</td><td class="num" style="color:var(--gold-2);font-weight:700;font-size:13px">$60.6M</td><td style="color:rgba(255,255,255,0.7)">Annualised recurring revenue</td></tr>
+      </tbody>
+    </table>
+
+    <p class="caption" style="margin-top:4mm">Gross margin assumptions: 78% SaaS, 70% white‑label, 72% enterprise, 85% reports, 92% API. Source: confirmed ADAMftd unit economics, April 2026 · see next page. Burn: $25k/mo Y1 → $80k/mo Y2 (Series A‑funded). Path to Series A profile (50+ paying customers, first white‑label live, anchor ECA contracted) reachable within 12 months of seed close.</p>
+  </div>
+
+  <div class="running-foot-rule"></div>
+  <div class="running-foot">
+    <div>Three‑Year Revenue Scenario</div>
+    <div class="pgnum">11</div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PAGE 12 · UNIT ECONOMICS & P&L
+     ============================================================ -->
+<section class="page" id="p-unit-econ" data-screen-label="Unit Economics &amp; P&amp;L">
+  <div class="running-head">
+    <div class="wm">ADAM<span>ftd</span></div>
+    <div class="sec">12 · Unit Economics &amp; P&amp;L</div>
+  </div>
+  <div class="running-rule"></div>
+
+  <div class="pad">
+    <div class="eyebrow eyebrow-navy">Chapter Twelve · P&amp;L</div>
+    <h2 class="section" style="margin-top:3mm">EBITDA Projection &amp; Confirmed Unit Economics</h2>
+    <div class="section-deck">Cost per query is confirmed at $0.30 · Gemini $0.11, server $0.04, SG&amp;A $0.15. Blended gross margin 75% to 77%. Source: ADAMftd Unit Economics, April 2026.</div>
+
+    <div class="card-ed dark" style="padding:6mm 8mm;margin-bottom:8mm">
+      <div style="display:grid;grid-template-columns:1fr auto auto;gap:8mm;align-items:center">
+        <div>
+          <div class="card-eyebrow" style="margin-bottom:3mm;padding:0;border:none">The investor headline</div>
+          <p style="color:rgba(255,255,255,0.9);font-size:12.5px;line-height:1.55">With $4.2M ARR in Year 1, <strong style="color:var(--gold-2)">gross profit already covers operating costs</strong>. EBITDA <strong style="color:var(--gold-2)">+$2M Y1, +$16.7M Y2, +$43.8M Y3</strong>. The model is structurally high‑margin from day one. Seed capital accelerates growth · it does not fund survival.</p>
+        </div>
+        <div class="metric" style="text-align:center">
+          <div class="num" style="color:var(--gold-2);font-size:32px">75%</div>
+          <div class="lbl" style="color:rgba(255,255,255,0.6)">Blended GM</div>
+        </div>
+        <div class="metric" style="text-align:center">
+          <div class="num" style="color:var(--gold-2);font-size:32px">$0.30</div>
+          <div class="lbl" style="color:rgba(255,255,255,0.6)">Cost / Query</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="figure-num"><span>Tab. 12.1</span> · Three‑year P&amp;L summary (USD thousands)</div>
+    <div class="hairline" style="margin:2mm 0 4mm"></div>
+    <table class="editorial" style="margin-bottom:6mm">
+      <thead>
+        <tr>
+          <th style="width:30%">P&amp;L Item</th>
+          <th class="num">Year 1<span style="display:block;font-weight:400;color:var(--ink-3);font-size:8.5px">Seed</span></th>
+          <th class="num">Year 2<span style="display:block;font-weight:400;color:var(--ink-3);font-size:8.5px">Post Series A</span></th>
+          <th class="num">Year 3<span style="display:block;font-weight:400;color:var(--ink-3);font-size:8.5px">Scale</span></th>
+          <th>Note</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="b">Revenue (ARR = MRR × 12)</td><td class="num">$4,200</td><td class="num">$23,400</td><td class="num">$60,600</td><td style="font-size:10px">MRR $350k / $1.95M / $5.05M × 12</td></tr>
+        <tr><td>COGS (@ $0.30/query, ~25% blended)</td><td class="num">−$1,037</td><td class="num">−$5,780</td><td class="num">−$14,968</td><td style="font-size:10px">Gemini $0.11 + Server $0.04 + SG&amp;A $0.15</td></tr>
+        <tr style="background:var(--paper-2)"><td class="b" style="color:var(--green)"><strong>Gross Profit</strong></td><td class="num" style="color:var(--green);font-weight:700">$3,163</td><td class="num" style="color:var(--green);font-weight:700">$17,620</td><td class="num" style="color:var(--green);font-weight:700">$45,632</td><td style="font-size:10px;color:var(--green)">75% blended GM (confirmed)</td></tr>
+        <tr><td>Fixed operating costs ($25k/mo → $80k/mo → $150k/mo)</td><td class="num">−$300</td><td class="num">−$960</td><td class="num">−$1,800</td><td style="font-size:10px">Vietnam team + infra + Series A hires</td></tr>
+        <tr><td>Seed GTM investment (marketing, presence)</td><td class="num" style="color:var(--amber)">−$600</td><td class="num" style="color:var(--ink-3)">·</td><td class="num" style="color:var(--ink-3)">·</td><td style="font-size:10px;color:var(--amber)">60% of $2M raise deployed in Y1</td></tr>
+        <tr><td>Seed product investment (UX/HCI, data quality)</td><td class="num" style="color:var(--amber)">−$250</td><td class="num" style="color:var(--ink-3)">·</td><td class="num" style="color:var(--ink-3)">·</td><td style="font-size:10px;color:var(--amber)">25% of $2M raise deployed in Y1</td></tr>
+        <tr style="background:var(--navy)"><td style="color:var(--gold-2);font-weight:700;padding:10px 8px 10px 0;font-size:13px">EBITDA</td><td class="num" style="color:var(--gold-2);font-weight:700;font-size:14px">+$2,013</td><td class="num" style="color:var(--gold-2);font-weight:700;font-size:14px">+$16,660</td><td class="num" style="color:var(--gold-2);font-weight:700;font-size:14px">+$43,832</td><td style="color:rgba(255,255,255,0.7);font-size:10px">+48% → +71% → +72% margin</td></tr>
+        <tr style="background:var(--navy-2)"><td style="color:rgba(255,255,255,0.7);font-style:italic;font-size:11px;padding:7px 8px 7px 0">EBITDA ex‑seed spend (operations only)</td><td class="num" style="color:var(--gold-2);font-size:12px">+$2,863</td><td class="num" style="color:rgba(255,255,255,0.45);font-size:11px">·</td><td class="num" style="color:rgba(255,255,255,0.45);font-size:11px">·</td><td style="color:var(--gold-2);font-size:10px">Nearly breakeven on ops alone</td></tr>
+      </tbody>
+    </table>
+
+    <div class="figure-num"><span>Fig. 12.1</span> · Gross margin by action · confirmed unit economics</div>
+    <div class="hairline" style="margin:2mm 0 4mm"></div>
+    <div class="grid grid-4" style="gap:4mm;margin-bottom:4mm">
+      <div class="metric"><div class="num sm">70%</div><div class="lbl">Chat Query</div></div>
+      <div class="metric"><div class="num sm">94%</div><div class="lbl">Deep Data · Page 2+</div></div>
+      <div class="metric"><div class="num sm">97%</div><div class="lbl">Full AI Trade Report</div></div>
+      <div class="metric"><div class="num sm gold">92%</div><div class="lbl">API Layer</div></div>
+    </div>
+    <p class="caption">Credit packs at 50% consumption: 64–77% GM. Margin improves further on OVH migration as the $0.04 server component reduces. Cost line is the only variable that compresses; gross profit dollars compound on the revenue side.</p>
+  </div>
+
+  <div class="running-foot-rule"></div>
+  <div class="running-foot">
+    <div>Unit Economics &amp; P&amp;L</div>
+    <div class="pgnum">12</div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PAGE 13 · RISK FACTORS
+     ============================================================ -->
+<section class="page" id="p-risks" data-screen-label="Risk Factors">
+  <div class="running-head">
+    <div class="wm">ADAM<span>ftd</span></div>
+    <div class="sec">13 · Risk Factors</div>
+  </div>
+  <div class="running-rule"></div>
+
+  <div class="pad">
+    <div class="eyebrow eyebrow-navy">Chapter Thirteen · Risks</div>
+    <h2 class="section" style="margin-top:3mm">What Can Go Wrong</h2>
+    <div class="section-deck">Honest disclosure of the risks an investor should price at this stage, and what the company is doing to mitigate each. This section is not exhaustive; recipients should conduct independent diligence.</div>
+
+    <div class="grid grid-2" style="gap:8mm">
+      <div>
+        <div class="risk-card">
+          <div class="risk-eyebrow">Risk 01 · Commercialisation execution</div>
+          <div class="risk-name">Funded GTM may not convert organic pull into paid revenue at the assumed rate.</div>
+          <div class="risk-body">Pre‑revenue companies routinely under‑convert. Even with 967 organic users, conversion to paid is a fresh muscle the team has not exercised at scale.</div>
+          <div class="risk-mitigation">Mitigation
+            <span class="mit-body">Identified power‑user cohort (64 credit‑exhausted users) provides a known first call list. Affiliate programme already operating in 11 countries. SACE pipeline gives an anchor institutional contract independent of SaaS conversion.</span>
+          </div>
+        </div>
+        <div class="risk-card">
+          <div class="risk-eyebrow">Risk 02 · Competitive response</div>
+          <div class="risk-name">An incumbent data major or a well‑capitalised entrant launches a mid‑market trade product.</div>
+          <div class="risk-body">Incumbents have data, distribution, and capital. A serious response would compress pricing power and elongate the path to category leadership.</div>
+          <div class="risk-mitigation">Mitigation
+            <span class="mit-body">Two‑year head start on the integrated five‑layer workspace; ICTTM institutional access; AI architecture built grounded from day one (incumbents must retrofit). The category is defined by speed of land‑grab, which seed capital funds.</span>
+          </div>
+        </div>
+        <div class="risk-card">
+          <div class="risk-eyebrow">Risk 03 · Key‑person dependency</div>
+          <div class="risk-name">The Chief Executive is the single point of execution across sales, marketing, and product direction.</div>
+          <div class="risk-body">Giuseppe Funaro, CEO, is 100% involved in every aspect of the business — particularly sales, marketing, product direction, and development. That breadth is an asset today but concentrates execution risk. (The International Trade Council shareholder relationship, by contrast, is held by Tristan Evans, CTO — that institutional access does not sit with the CEO.)</div>
+          <div class="risk-mitigation">Mitigation
+            <span class="mit-body">Post‑seed plan includes a VP Sales hire and a structured handover of the commercial motion to a dedicated revenue team. The International Trade Council shareholder relationship is corporate, not personal, and sits with the CTO.</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="risk-card">
+          <div class="risk-eyebrow">Risk 04 · Data quality &amp; trust</div>
+          <div class="risk-name">A grounded AI product fails if the underlying data is wrong.</div>
+          <div class="risk-body">Trade data is messy, multi‑source, and conflicting. A single high‑profile error in sanctions or tariff output erodes trust faster than feature debt.</div>
+          <div class="risk-mitigation">Mitigation
+            <span class="mit-body">Monte Carlo conflict‑resolution pipeline; every answer cites source; ongoing data curation is a named line in the use‑of‑funds. Continuous improvement is funded into the operating plan, not deferred.</span>
+          </div>
+        </div>
+        <div class="risk-card">
+          <div class="risk-eyebrow">Risk 05 · Geopolitical timing</div>
+          <div class="risk-name">A sharp reversal in trade tensions could compress urgency.</div>
+          <div class="risk-body">Some of the buying urgency rests on current geopolitical conditions (Hormuz, Suez, tariff escalations). A material de‑escalation would slow institutional buying cycles.</div>
+          <div class="risk-mitigation">Mitigation
+            <span class="mit-body">The underlying need · integrated multi‑layer trade intelligence at mid‑market pricing · exists with or without acute disruption. Sanctions screening and tariff complexity are structural, not cyclical.</span>
+          </div>
+        </div>
+        <div class="risk-card">
+          <div class="risk-eyebrow">Risk 06 · Capital runway</div>
+          <div class="risk-name">A delay between seed and Series A creates a financing gap.</div>
+          <div class="risk-body">If the 12‑to‑18 month Series A target slips, the company will need a bridge.</div>
+          <div class="risk-mitigation">Mitigation
+            <span class="mit-body">$25k/month operating base is among the lowest in comparable AI infrastructure companies. NVIDIA compute is funded for twelve months. The runway extension levers (pricing, headcount) are well understood and deliverable inside thirty days.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="running-foot-rule"></div>
+  <div class="running-foot">
+    <div>Risk Factors</div>
+    <div class="pgnum">13</div>
+  </div>
+</section>
+<!-- ============================================================
+     PAGE 14 · THE INVESTMENT
+     ============================================================ -->
+<section class="page" id="p-terms" data-screen-label="The Investment">
+  <div class="running-head">
+    <div class="wm">ADAM<span>ftd</span></div>
+    <div class="sec">14 · The Investment</div>
+  </div>
+  <div class="running-rule"></div>
+
+  <div class="pad">
+    <div class="eyebrow eyebrow-navy">Chapter Fourteen · Terms</div>
+    <h2 class="section" style="margin-top:3mm">What You Get for Your Investment</h2>
+    <div class="section-deck">Industry‑standard post‑money SAFE. Ownership is investment divided by post‑money valuation. Clean, simple, no board seat required at seed.</div>
+
+    <div class="grid" style="grid-template-columns:1fr 1fr; gap:8mm; margin-bottom:8mm">
+      <div>
+        <div class="figure-num"><span>Tab. 14.1</span> · Round structure</div>
+        <div class="hairline" style="margin:2mm 0 4mm"></div>
+        <table class="editorial">
+          <tbody>
+            <tr><td class="b">Round type</td><td>Seed</td></tr>
+            <tr><td class="b">Raise range</td><td>$2.5M to $4M</td></tr>
+            <tr><td class="b">Pre‑money valuation</td><td>$16M to $24M range</td></tr>
+            <tr><td class="b">Anchor pre‑money</td><td class="accent">$20M</td></tr>
+            <tr><td class="b">Instrument</td><td>SAFE (post‑money cap)</td></tr>
+            <tr><td class="b">Valuation cap</td><td>$20M post‑money</td></tr>
+            <tr><td class="b">Discount</td><td>Not applied · cap only</td></tr>
+            <tr><td class="b">Board seat</td><td>Observer (no formal seat)</td></tr>
+            <tr><td class="b">Minimum check</td><td>$250,000</td></tr>
+            <tr><td class="b">Pro‑rata rights</td><td>Investors $500k+</td></tr>
+            <tr><td class="b">Currency</td><td>USD</td></tr>
+            <tr><td class="b">Target close</td><td>60 to 90 days</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <div class="figure-num"><span>Tab. 14.2</span> · Equity at the anchor · SAFE conversion</div>
+        <div class="hairline" style="margin:2mm 0 4mm"></div>
+        <table class="editorial">
+          <thead>
+            <tr>
+              <th>Investment</th>
+              <th class="num">Post‑Money</th>
+              <th class="num">Equity</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class="b">$2,000,000</td><td class="num">$22.0M</td><td class="num accent">9.1%</td></tr>
+            <tr><td class="b">$2,500,000</td><td class="num">$22.5M</td><td class="num accent">11.1%</td></tr>
+            <tr><td class="b">$3,000,000</td><td class="num">$23.0M</td><td class="num accent">13.0%</td></tr>
+            <tr><td class="b">$4,000,000</td><td class="num">$24.0M</td><td class="num accent">16.7%</td></tr>
+          </tbody>
+        </table>
+        <p class="caption" style="margin-top:3mm">Series A target valuation: <strong style="color:var(--navy)">$60M to $100M</strong>, 12 to 18 months out. SAFE conversion gives seed investors equity at the seed cap · full benefit from the uplift. <strong style="color:var(--navy)">3x to 5x paper return</strong> on the seed position at Series A pricing.</p>
+
+        <div class="card-ed dark" style="margin-top:6mm;padding:5mm 6mm">
+          <div class="card-eyebrow">Why $20M is fair</div>
+          <p style="font-size:11.5px;color:rgba(255,255,255,0.85)">7B+ verified records · 87 capabilities · 967 organic users in 30+ countries · NVIDIA $1M compute backing · SACE institutional engagement · ICTTM heritage. <em style="color:var(--gold-2)">Post‑product. Not speculative.</em></p>
+        </div>
+      </div>
+    </div>
+
+    <div style="background:var(--ink);color:#fff;padding:5mm 7mm;display:flex;align-items:center;justify-content:space-between;gap:6mm">
+      <div style="font-family:var(--serif);font-size:13px;color:rgba(255,255,255,0.85)">
+        Lead investor preferred at <strong style="color:#fff">$500k to $1M</strong> with pro‑rata rights. Minimum check <strong style="color:#fff">$250,000</strong>. Target close <strong style="color:#fff">60 to 90 days</strong>.
+      </div>
+      <div class="label-tag" style="color:var(--gold-2);border-color:var(--gold-2);white-space:nowrap">SAFE · Post‑Money Cap $20M</div>
+    </div>
+  </div>
+
+  <div class="running-foot-rule"></div>
+  <div class="running-foot">
+    <div>The Investment</div>
+    <div class="pgnum">14</div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PAGE 15 · FAQ
+     ============================================================ -->
+<section class="page" id="p-faq" data-screen-label="FAQ">
+  <div class="running-head">
+    <div class="wm">ADAM<span>ftd</span></div>
+    <div class="sec">15 · FAQ for Investors</div>
+  </div>
+  <div class="running-rule"></div>
+
+  <div class="pad">
+    <div class="eyebrow eyebrow-navy">Chapter Fifteen · FAQ</div>
+    <h2 class="section" style="margin-top:3mm">Questions We Receive Most Often</h2>
+    <div class="section-deck">Short, direct answers to the questions that surface repeatedly in investor conversations. The longer answers live in the relevant chapters above.</div>
+
+    <div class="grid grid-2" style="gap:8mm">
+      <div>
+        <div class="faq-item">
+          <div class="faq-q">What is a SAFE, in plain English?</div>
+          <div class="faq-a"><strong>Simple Agreement for Future Equity</strong> · the standard Y Combinator seed instrument. You wire capital now; it converts to equity automatically at the next priced round (Series A), at the lower of the valuation cap ($20M post‑money) or the Series A price. No interest, no maturity date, no debt. It avoids the cost and complexity of negotiating share terms at seed and is used in the majority of US seed rounds.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Why pre‑revenue, when you have 967 users in 2 months?</div>
+          <div class="faq-a">The MVP only went live at the end of March 2026 · two months ago. We deliberately did not turn on the payment funnel during the initial validation window. Charging the first 967 users would have generated noise revenue and depleted goodwill in a community we want to retain. The conversion machinery exists; it has not been switched on.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Why is the operating cost so low?</div>
+          <div class="faq-a">The full engineering and data team is in Ho Chi Minh City · senior, retained, and delivering at roughly one‑fifth of US benchmark cost. AI infrastructure is funded by the <strong>NVIDIA $1M credit award</strong>. The $25k/month figure is real and audited.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">What if an incumbent data major launches a mid‑market product?</div>
+          <div class="faq-a">The economics of the large institutional suppliers depend on enterprise seat pricing at $25k+ per year. Down‑market launches would cannibalise their core revenue, so they are structurally disincentivised. Even if one moved, the five‑layer integration plus mid‑market price plus grounded‑native AI architecture is a 24‑month head start.</div>
+        </div>
+      </div>
+      <div>
+        <div class="faq-item">
+          <div class="faq-q">What is the path to Series A?</div>
+          <div class="faq-a">Three milestones inside 12 to 18 months: 50+ paying customers with measurable CAC/LTV, the first white‑label portal live, and an anchor ECA (SACE or equivalent) contracted. At that profile, Series A pricing of <strong>$60M to $100M</strong> is defensible.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Will you take a board seat?</div>
+          <div class="faq-a">Not required at seed. An <strong>observer seat</strong> is available on request. Governance is intentionally lean at this stage. Formal board structure will be put in place at Series A.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">What does the lead investor get?</div>
+          <div class="faq-a">A $500k to $1M lead gets <strong>pro‑rata rights</strong> through Series A, monthly investor letters, direct access to the CEO for strategic introductions, and the option of an observer seat. Lead is the most efficient seat in this round.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Why now, and not after revenue?</div>
+          <div class="faq-a">Seed is the lowest‑price entry in this company's fundraising journey. Revenue proof will lift Series A pricing to $60M+ · by definition, post‑revenue capital is 3x to 5x more expensive than seed capital. Investors who arrive now capture the entire step‑up.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="running-foot-rule"></div>
+  <div class="running-foot">
+    <div>FAQ for Investors</div>
+    <div class="pgnum">15</div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PAGE 16 · CLOSE / NEXT STEPS
+     ============================================================ -->
+<section class="page close-page" id="p-close" data-screen-label="Next Steps">
+  <div class="close-arc-1"></div>
+  <div class="close-arc-2"></div>
+
+  <div class="running-head">
+    <div class="wm" style="color:#fff">ADAM<span>ftd</span></div>
+    <div class="sec">16 · Next Steps</div>
+  </div>
+  <div class="running-rule"></div>
+
+  <div class="pad" style="position:relative">
+    <div class="close-eyebrow">Chapter Sixteen · Next Steps</div>
+    <h2 class="close-title">
+      MVP live two months.<br>
+      <em>Nine hundred and sixty‑seven<br>users found us with no help.</em><br>
+      Imagine what happens with a budget.
+    </h2>
+    <p class="close-body">
+      We built the world's first grounded AI for international trade. The Minimum Viable Product went live at the end of March 2026. In two months, the market validated it organically. We now need seed capital to cover a lean operating base and invest seriously in marketing, product quality, professional media, and commercial presence. This is the bridge between proof‑of‑MVP and proof‑of‑revenue · and the lowest valuation point in this company's journey.
+    </p>
+
+    <div class="close-contact">
+      <div class="close-contact-cell">
+        <div class="ce-lbl">The Raise</div>
+        <div class="ce-val">$2.5M · $4M</div>
+      </div>
+      <div class="close-contact-cell">
+        <div class="ce-lbl">Pre‑Money Anchor</div>
+        <div class="ce-val">$20M · SAFE</div>
+      </div>
+      <div class="close-contact-cell">
+        <div class="ce-lbl">Target to Close</div>
+        <div class="ce-val">60 to 90 days</div>
+      </div>
+      <div class="close-contact-cell">
+        <div class="ce-lbl">Minimum Check</div>
+        <div class="ce-val">$250,000</div>
+      </div>
+    </div>
+
+    <div style="margin-top:auto;display:grid;grid-template-columns:1fr 1fr;gap:8mm;padding-top:8mm;border-top:0.5px solid rgba(255,255,255,0.25)">
+      <div>
+        <div style="font-family:var(--sans);font-size:9.5px;letter-spacing:0.24em;text-transform:uppercase;color:var(--gold-2);font-weight:600;margin-bottom:3mm">The Conversation</div>
+        <div style="font-family:var(--serif);font-size:22px;color:#fff;font-weight:500;letter-spacing:-0.01em;line-height:1.15;margin-bottom:2mm">Giuseppe Funaro</div>
+        <div style="font-family:var(--serif);font-style:italic;font-size:13px;color:rgba(255,255,255,0.6)">Chief Executive Officer · International Centre for Trade Transparency Ltd</div>
+      </div>
+      <div>
+        <div style="font-family:var(--sans);font-size:9.5px;letter-spacing:0.24em;text-transform:uppercase;color:var(--gold-2);font-weight:600;margin-bottom:3mm">Open the Door</div>
+        <div style="font-family:var(--serif);font-size:14px;color:#fff;margin-bottom:1.5mm">ceo@adamftd.com</div>
+        <div style="font-family:var(--serif);font-size:14px;color:#fff;margin-bottom:1.5mm">tidycal.com/gfunaro/book‑a‑call</div>
+        <div style="font-family:var(--serif);font-size:14px;color:var(--gold-2)">adamftd.com</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="running-foot-rule"></div>
+  <div class="running-foot">
+    <div>Next Steps · End of Book</div>
+    <div class="pgnum">16</div>
+  </div>
+</section>
+
+</div><!-- end book -->
+
+<script>
+  // TOC overlay open/close + smooth jump
+  const fab = document.getElementById('tocFab');
+  const overlay = document.getElementById('tocOverlay');
+  const closeBtn = document.getElementById('tocClose');
+  fab.addEventListener('click', () => overlay.classList.add('open'));
+  closeBtn.addEventListener('click', () => overlay.classList.remove('open'));
+  overlay.addEventListener('click', (e) => { if (e.target === overlay) overlay.classList.remove('open'); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') overlay.classList.remove('open'); });
+  document.querySelectorAll('[data-target]').forEach(a => {
+    a.addEventListener('click', () => {
+      const id = a.dataset.target;
+      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      overlay.classList.remove('open');
+    });
+  });
+  function jumpTo(id) {
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+  window.jumpTo = jumpTo;
+</script>
+
+<script>
+  // Auto-print once fonts and layout are ready
+  (async function() {
+    try { if (document.fonts && document.fonts.ready) { await document.fonts.ready; } } catch (e) {}
+    if (document.readyState !== 'complete') {
+      await new Promise(r => window.addEventListener('load', r, { once: true }));
+    }
+    await new Promise(r => setTimeout(r, 500));
+    window.print();
+  })();
+</script>
+
+</body>
+</html>
