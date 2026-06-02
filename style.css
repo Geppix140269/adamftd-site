@@ -194,6 +194,29 @@ section.dark .lede, section.dark .body-prose { color: rgba(246, 241, 230, 0.85);
 section.dark .lede strong, section.dark .body-prose strong { color: var(--gold-2); }
 section.dark .lede em, section.dark .body-prose em { color: var(--gold-2); }
 
+/* Cards and use-cards inside dark sections: reset to dark ink so text is readable on paper background */
+section.dark .card,
+section.dark .use-card {
+  color: var(--ink);
+}
+section.dark .card .card-title,
+section.dark .card h3,
+section.dark .use-card .uc-name {
+  color: var(--ink);
+}
+section.dark .card .card-body,
+section.dark .use-card .card-body,
+section.dark .use-card p {
+  color: var(--ink-2);
+}
+section.dark .use-card .uc-tag { color: var(--gold); }
+section.dark .use-card .uc-pain { color: var(--ink-2); }
+
+/* Pull quotes inside dark sections: light text on dark background */
+section.dark .pull blockquote { color: rgba(246, 241, 230, 0.92); }
+section.dark .pull blockquote em { color: var(--gold-2); }
+section.dark .pull .attr { color: rgba(246, 241, 230, 0.55); }
+
 section.cream { background: var(--paper-2); }
 section.gold-tint { background: linear-gradient(180deg, var(--paper) 0%, var(--gold-soft) 100%); }
 
